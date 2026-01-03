@@ -18,7 +18,6 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Prevent background scrolling when menu is open
     document.body.style.overflow = !isMenuOpen ? 'hidden' : '';
   };
 
@@ -28,19 +27,26 @@ const Navbar = () => {
       behavior: 'smooth'
     });
     
-    // Close mobile menu if open
     if (isMenuOpen) {
       setIsMenuOpen(false);
       document.body.style.overflow = '';
     }
   };
 
+  const navItems = [
+    { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
+    { label: 'Vision', href: '#vision' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 py-4 md:py-5 transition-all duration-500",
         isScrolled 
-          ? "bg-white/80 backdrop-blur-md shadow-sm" 
+          ? "bg-background/90 backdrop-blur-md border-b border-border" 
           : "bg-transparent"
       )}
     >
@@ -52,34 +58,35 @@ const Navbar = () => {
             e.preventDefault();
             scrollToTop();
           }}
-          aria-label="Pulse Robot"
+          aria-label="SoulX"
         >
-          <img 
-            src="/logo.svg" 
-            alt="Pulse Robot Logo" 
-            className="h-7 sm:h-8" 
-          />
+          <span className="text-2xl font-display font-semibold tracking-tight text-foreground">
+            SoulX
+          </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <a 
-            href="#" 
-            className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-            }}
-          >
-            Home
-          </a>
-          <a href="#features" className="nav-link">About</a>
-          <a href="#details" className="nav-link">Contact</a>
+        <nav className="hidden md:flex space-x-10">
+          {navItems.map((item) => (
+            <a 
+              key={item.label}
+              href={item.href} 
+              className="nav-link text-sm tracking-wide"
+              onClick={(e) => {
+                if (item.href === '#') {
+                  e.preventDefault();
+                  scrollToTop();
+                }
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Mobile menu button - increased touch target */}
+        {/* Mobile menu button */}
         <button 
-          className="md:hidden text-gray-700 p-3 focus:outline-none" 
+          className="md:hidden text-foreground p-2 focus:outline-none" 
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -87,44 +94,29 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation - improved for better touch experience */}
+      {/* Mobile Navigation */}
       <div className={cn(
-        "fixed inset-0 z-40 bg-white flex flex-col pt-16 px-6 md:hidden transition-all duration-300 ease-in-out",
+        "fixed inset-0 z-40 bg-background flex flex-col pt-20 px-6 md:hidden transition-all duration-300 ease-in-out",
         isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}>
-        <nav className="flex flex-col space-y-8 items-center mt-8">
-          <a 
-            href="#" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Home
-          </a>
-          <a 
-            href="#features" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            About
-          </a>
-          <a 
-            href="#details" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Contact
-          </a>
+        <nav className="flex flex-col space-y-6 items-center mt-8">
+          {navItems.map((item) => (
+            <a 
+              key={item.label}
+              href={item.href} 
+              className="text-2xl font-display font-medium py-2 text-foreground" 
+              onClick={(e) => {
+                if (item.href === '#') {
+                  e.preventDefault();
+                  scrollToTop();
+                }
+                setIsMenuOpen(false);
+                document.body.style.overflow = '';
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
