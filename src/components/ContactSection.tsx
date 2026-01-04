@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { toast } from "@/hooks/use-toast";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Send } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -55,52 +55,62 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left column - Info */}
           <div>
-            <div className="soulx-chip mb-6">
-              Get in Touch
-            </div>
-            <h2 className="section-title mb-6">
-              Let's create
-              <br />
-              <span className="font-serif italic font-normal">together</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-              Have a project in mind? We'd love to hear about it. 
-              Reach out and let's explore how we can bring your vision to life.
-            </p>
+            <AnimatedSection>
+              <div className="soulx-chip mb-6">
+                Get in Touch
+              </div>
+            </AnimatedSection>
             
-            <div className="space-y-6">
-              <div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
-                  Email
+            <AnimatedSection delay={100}>
+              <h2 className="section-title mb-6">
+                Let's create
+                <br />
+                <span className="font-serif italic font-normal">together</span>
+              </h2>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={200}>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+                Have a project in mind? We'd love to hear about it. 
+                Reach out and let's explore how we can bring your vision to life.
+              </p>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={300}>
+              <div className="space-y-6">
+                <div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
+                    Email
+                  </div>
+                  <a 
+                    href="mailto:hello@soulx.design" 
+                    className="text-lg font-display text-foreground hover:underline"
+                  >
+                    hello@soulx.design
+                  </a>
                 </div>
-                <a 
-                  href="mailto:hello@soulx.design" 
-                  className="text-lg font-display text-foreground hover:underline"
-                >
-                  hello@soulx.design
-                </a>
+                <div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
+                    Follow Us
+                  </div>
+                  <div className="flex gap-4">
+                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
+                      Twitter
+                    </a>
+                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
+                      LinkedIn
+                    </a>
+                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
+                      Dribbble
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
-                  Follow Us
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                    Twitter
-                  </a>
-                  <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                    LinkedIn
-                  </a>
-                  <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                    Dribbble
-                  </a>
-                </div>
-              </div>
-            </div>
+            </AnimatedSection>
           </div>
           
           {/* Right column - Form */}
-          <div>
+          <AnimatedSection animation="fade-left" delay={200}>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">
@@ -112,7 +122,7 @@ const ContactSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground transition-colors"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
                   required
                 />
               </div>
@@ -127,7 +137,7 @@ const ContactSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground transition-colors"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
                   required
                 />
               </div>
@@ -141,7 +151,7 @@ const ContactSection = () => {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground transition-colors appearance-none"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 appearance-none cursor-pointer"
                 >
                   <option value="">Select a project type</option>
                   <option value="ux-ui">UX/UI Design</option>
@@ -161,7 +171,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 resize-none"
                   required
                 />
               </div>
@@ -169,13 +179,21 @@ const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="button-primary w-full inline-flex items-center justify-center group"
+                className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                {isSubmitting ? (
+                  <>
+                    <span className="animate-pulse">Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </>
+                )}
               </button>
             </form>
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

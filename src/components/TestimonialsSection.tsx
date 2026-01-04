@@ -1,5 +1,5 @@
-
 import React from "react";
+import AnimatedSection from "./AnimatedSection";
 
 interface TestimonialProps {
   content: string;
@@ -29,34 +29,39 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 md:py-32 bg-secondary" id="testimonials">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <div className="soulx-chip mx-auto mb-6">
-            Testimonials
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <div className="soulx-chip mx-auto mb-6">
+              Testimonials
+            </div>
+            <h2 className="section-title">
+              What our clients
+              <span className="font-serif italic font-normal"> say</span>
+            </h2>
           </div>
-          <h2 className="section-title">
-            What our clients
-            <span className="font-serif italic font-normal"> say</span>
-          </h2>
-        </div>
+        </AnimatedSection>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div 
+            <AnimatedSection 
               key={index}
-              className="bg-background p-8 rounded-2xl transition-all duration-300 hover:shadow-elegant-hover"
+              animation="fade-up"
+              delay={index * 150}
             >
-              <blockquote className="text-foreground leading-relaxed mb-8">
-                "{testimonial.content}"
-              </blockquote>
-              <div className="border-t border-border pt-6">
-                <div className="font-display font-medium text-foreground">
-                  {testimonial.author}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {testimonial.role}
+              <div className="bg-background p-8 rounded-2xl transition-all duration-500 hover:shadow-elegant-hover hover:-translate-y-1 h-full flex flex-col">
+                <blockquote className="text-foreground leading-relaxed mb-8 flex-grow">
+                  "{testimonial.content}"
+                </blockquote>
+                <div className="border-t border-border pt-6">
+                  <div className="font-display font-medium text-foreground">
+                    {testimonial.author}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonial.role}
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

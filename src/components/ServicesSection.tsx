@@ -1,5 +1,5 @@
-
 import React from "react";
+import AnimatedSection from "./AnimatedSection";
 
 const services = [
   {
@@ -28,39 +28,44 @@ const ServicesSection = () => {
   return (
     <section className="py-24 md:py-32 bg-background" id="services">
       <div className="section-container">
-        <div className="max-w-3xl mb-16">
-          <div className="soulx-chip mb-6">
-            Services
+        <AnimatedSection>
+          <div className="max-w-3xl mb-16">
+            <div className="soulx-chip mb-6">
+              Services
+            </div>
+            <h2 className="section-title mb-6">
+              What we
+              <span className="font-serif italic font-normal"> offer</span>
+            </h2>
+            <p className="section-subtitle mt-0">
+              End-to-end design services to transform your ideas into impactful digital experiences.
+            </p>
           </div>
-          <h2 className="section-title mb-6">
-            What we
-            <span className="font-serif italic font-normal"> offer</span>
-          </h2>
-          <p className="section-subtitle mt-0">
-            End-to-end design services to transform your ideas into impactful digital experiences.
-          </p>
-        </div>
+        </AnimatedSection>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
-            <div 
+            <AnimatedSection 
               key={service.number}
-              className="group p-8 border border-border rounded-2xl transition-all duration-300 hover:border-foreground hover:bg-secondary"
+              animation="fade-up"
+              delay={index * 100}
             >
-              <div className="flex items-start gap-6">
-                <span className="text-4xl font-display font-light text-muted-foreground group-hover:text-foreground transition-colors">
-                  {service.number}
-                </span>
-                <div>
-                  <h3 className="text-xl font-display font-medium text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+              <div className="group p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground hover:bg-secondary hover:-translate-y-1">
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-display font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                    {service.number}
+                  </span>
+                  <div>
+                    <h3 className="text-xl font-display font-medium text-foreground mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
