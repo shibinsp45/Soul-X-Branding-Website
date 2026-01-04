@@ -1,5 +1,5 @@
-
 import React from "react";
+import AnimatedSection from "./AnimatedSection";
 
 const AboutSection = () => {
   const values = [
@@ -23,44 +23,54 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left column - Main content */}
           <div>
-            <div className="soulx-chip mb-6 opacity-0 animate-fade-in">
-              About Us
-            </div>
+            <AnimatedSection>
+              <div className="soulx-chip mb-6">
+                About Us
+              </div>
+            </AnimatedSection>
             
-            <h2 className="section-title mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              We believe design is
-              <br />
-              <span className="font-serif italic font-normal">deeply human</span>
-            </h2>
+            <AnimatedSection delay={100}>
+              <h2 className="section-title mb-8">
+                We believe design is
+                <br />
+                <span className="font-serif italic font-normal">deeply human</span>
+              </h2>
+            </AnimatedSection>
             
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              SoulX is a design and branding agency focused on creating meaningful 
-              digital experiences. We blend strategy, creativity, and technology to 
-              help brands connect with their audience on a profound level.
-            </p>
+            <AnimatedSection delay={200}>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                SoulX is a design and branding agency focused on creating meaningful 
+                digital experiences. We blend strategy, creativity, and technology to 
+                help brands connect with their audience on a profound level.
+              </p>
+            </AnimatedSection>
             
-            <p className="text-muted-foreground leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              Founded on the principle that great design serves people first, 
-              we approach every project with curiosity, empathy, and an unwavering 
-              commitment to excellence.
-            </p>
+            <AnimatedSection delay={300}>
+              <p className="text-muted-foreground leading-relaxed">
+                Founded on the principle that great design serves people first, 
+                we approach every project with curiosity, empathy, and an unwavering 
+                commitment to excellence.
+              </p>
+            </AnimatedSection>
           </div>
           
           {/* Right column - Values */}
           <div className="space-y-8">
             {values.map((value, index) => (
-              <div 
+              <AnimatedSection 
                 key={value.title}
-                className="border-l-2 border-foreground pl-6 py-2 opacity-0 animate-fade-in"
-                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+                animation="fade-left"
+                delay={400 + index * 100}
               >
-                <h3 className="text-xl font-display font-medium mb-2 text-foreground">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {value.description}
-                </p>
-              </div>
+                <div className="border-l-2 border-foreground pl-6 py-2 hover:border-foreground/50 transition-colors duration-300">
+                  <h3 className="text-xl font-display font-medium mb-2 text-foreground">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {value.description}
+                  </p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
