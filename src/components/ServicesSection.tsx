@@ -1,5 +1,6 @@
 import React from "react";
 import AnimatedSection from "./AnimatedSection";
+import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
 
 const services = [
   {
@@ -26,11 +27,16 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-background" id="services">
-      <div className="section-container">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden" id="services">
+      {/* Decorative 3D elements */}
+      <div className="absolute top-20 right-10 w-32 h-32 border border-foreground/5 rounded-3xl float-3d" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 left-10 w-24 h-24 border border-foreground/5 rounded-full float-3d" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-foreground/[0.01] blob-morph" />
+      
+      <div className="section-container relative z-10">
         <AnimatedSection>
           <div className="max-w-3xl mb-16">
-            <div className="soulx-chip mb-6">
+            <div className="soulx-chip mb-6 micro-interaction">
               Services
             </div>
             <h2 className="section-title mb-6">
@@ -45,18 +51,17 @@ const ServicesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
-            <AnimatedSection 
+            <ScrollTriggered3DCard 
               key={service.number}
-              animation="fade-up"
               delay={index * 100}
             >
-              <div className="group p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground hover:bg-secondary hover:-translate-y-1">
+              <div className="group p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground hover:bg-secondary h-full glow-effect">
                 <div className="flex items-start gap-6">
-                  <span className="text-4xl font-display font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                  <span className="text-4xl font-display font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-scale-pulse">
                     {service.number}
                   </span>
                   <div>
-                    <h3 className="text-xl font-display font-medium text-foreground mb-3">
+                    <h3 className="text-xl font-display font-medium text-foreground mb-3 group-hover:translate-x-1 transition-transform">
                       {service.title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
@@ -65,7 +70,7 @@ const ServicesSection = () => {
                   </div>
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollTriggered3DCard>
           ))}
         </div>
       </div>
