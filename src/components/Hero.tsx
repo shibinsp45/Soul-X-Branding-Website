@@ -31,14 +31,6 @@ const Hero = () => {
       
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Animated chip */}
-          <div 
-            className="soulx-chip mb-8 opacity-0 animate-fade-in" 
-            style={{ animationDelay: "0.1s" }}
-          >
-            <span className="inline-block animate-pulse-slow">●</span>
-            <span className="ml-2">UX Design & Branding Agency</span>
-          </div>
           
           {/* Main headline with staggered animation */}
           <h1 

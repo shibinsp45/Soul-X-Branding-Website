@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +35,6 @@ const Navbar = () => {
   const navItems = [
     { label: 'Home', href: '#' },
     { label: 'About', href: '#about' },
-    { label: 'Vision', href: '#vision' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -82,20 +80,16 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <ThemeToggle variant="button" />
         </nav>
 
-        {/* Mobile menu button and theme toggle */}
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <button 
-            className="text-foreground p-2 focus:outline-none" 
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        {/* Mobile menu button */}
+        <button 
+          className="md:hidden text-foreground p-2 focus:outline-none" 
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {/* Mobile Navigation */}
