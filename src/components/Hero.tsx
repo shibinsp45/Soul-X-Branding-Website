@@ -59,13 +59,7 @@ const Hero = () => {
             <br />
             <span className="inline-block hover:animate-tilt text-primary">
               Seamless
-              <svg className="absolute -bottom-2 left-0 w-full h-4 text-foreground/20" viewBox="0 0 200 20" preserveAspectRatio="none">
-                <path d="M0 10 Q50 0 100 10 T200 10" stroke="currentColor" strokeWidth="2" fill="none" className="animate-draw-line" style={{
-                strokeDasharray: 300,
-                strokeDashoffset: 300,
-                animation: "drawPath 1s ease-out 1s forwards"
-              }} />
-              </svg>
+              
             </span>
             <br />
             <span className="text-muted-foreground inline-block hover:animate-tilt">Experiences</span>
