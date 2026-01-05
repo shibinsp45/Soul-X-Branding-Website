@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Parallax3DBackground from "./Parallax3DBackground";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -97,15 +97,15 @@ const Hero = () => {
           animationDelay: "0.9s"
         }}>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">50+</div>
+              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">5+</div>
               <div className="text-sm text-muted-foreground mt-1">Projects</div>
             </div>
             <div className="text-center border-x border-border card-3d p-4">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">8+</div>
+              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">2+</div>
               <div className="text-sm text-muted-foreground mt-1">Years</div>
             </div>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">30+</div>
+              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">3+</div>
               <div className="text-sm text-muted-foreground mt-1">Clients</div>
             </div>
           </div>
@@ -117,8 +117,8 @@ const Hero = () => {
         transform: `translateY(${scrollY * 0.5}px)`,
         opacity: Math.max(0, 1 - scrollY * 0.005)
       }}>
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
-          <ArrowDown className="w-4 h-4 text-muted-foreground animate-bounce" />
+          
+          
         </div>
       </div>
     </section>;
