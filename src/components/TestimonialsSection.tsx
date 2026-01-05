@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
 
 interface TestimonialProps {
   content: string;
@@ -26,12 +27,42 @@ const testimonials: TestimonialProps[] = [
 ];
 
 const TestimonialsSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="py-24 md:py-32 bg-secondary" id="testimonials">
-      <div className="section-container">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-secondary relative overflow-hidden" id="testimonials">
+      {/* Parallax decorative elements */}
+      <div 
+        className="absolute top-0 left-1/4 w-64 h-64 bg-foreground/[0.02] rounded-full blur-3xl"
+        style={{ transform: `translateY(${scrollProgress * 80}px)` }}
+      />
+      <div 
+        className="absolute bottom-0 right-1/4 w-48 h-48 bg-foreground/[0.02] rounded-full blur-2xl"
+        style={{ transform: `translateY(${scrollProgress * -60}px)` }}
+      />
+      
+      {/* 3D floating shapes */}
+      <div className="absolute top-20 right-20 w-16 h-16 border border-foreground/5 rounded-2xl float-3d" />
+      <div className="absolute bottom-32 left-16 w-20 h-20 border border-foreground/5 rounded-full float-3d" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-10 w-24 h-24 bg-foreground/[0.01] blob-morph" />
+
+      <div className="section-container relative z-10">
         <AnimatedSection>
           <div className="text-center mb-16">
-            <div className="soulx-chip mx-auto mb-6">
+            <div className="soulx-chip mx-auto mb-6 micro-interaction">
               Testimonials
             </div>
             <h2 className="section-title">
@@ -43,12 +74,11 @@ const TestimonialsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <AnimatedSection 
+            <ScrollTriggered3DCard 
               key={index}
-              animation="fade-up"
               delay={index * 150}
             >
-              <div className="bg-background p-8 rounded-2xl transition-all duration-500 hover:shadow-elegant-hover hover:-translate-y-1 h-full flex flex-col">
+              <div className="bg-background p-8 rounded-2xl h-full flex flex-col glow-effect">
                 <blockquote className="text-foreground leading-relaxed mb-8 flex-grow">
                   "{testimonial.content}"
                 </blockquote>
@@ -61,7 +91,7 @@ const TestimonialsSection = () => {
                   </div>
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollTriggered3DCard>
           ))}
         </div>
       </div>

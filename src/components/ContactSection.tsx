@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { toast } from "@/hooks/use-toast";
-import { ArrowRight, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
 
 const ContactSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,6 +14,18 @@ const ContactSection = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -50,13 +65,28 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background" id="contact">
-      <div className="section-container">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden" id="contact">
+      {/* Parallax decorative elements */}
+      <div 
+        className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl"
+        style={{ transform: `translateY(${scrollProgress * 100}px)` }}
+      />
+      <div 
+        className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/[0.02] rounded-full blur-2xl"
+        style={{ transform: `translateY(${scrollProgress * -80}px)` }}
+      />
+      
+      {/* 3D floating shapes */}
+      <div className="absolute top-32 right-20 w-20 h-20 border border-foreground/5 rounded-2xl float-3d" />
+      <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 left-10 w-28 h-28 bg-foreground/[0.01] blob-morph" />
+
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left column - Info */}
           <div>
             <AnimatedSection>
-              <div className="soulx-chip mb-6">
+              <div className="soulx-chip mb-6 micro-interaction">
                 Get in Touch
               </div>
             </AnimatedSection>
@@ -78,40 +108,44 @@ const ContactSection = () => {
             
             <AnimatedSection delay={300}>
               <div className="space-y-6">
-                <div>
-                  <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
-                    Email
-                  </div>
-                  <a 
-                    href="mailto:hello@soulx.design" 
-                    className="text-lg font-display text-foreground hover:underline"
-                  >
-                    hello@soulx.design
-                  </a>
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
-                    Follow Us
-                  </div>
-                  <div className="flex gap-4">
-                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                      Twitter
-                    </a>
-                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                      LinkedIn
-                    </a>
-                    <a href="#" className="text-foreground hover:text-muted-foreground transition-colors">
-                      Dribbble
+                <ScrollTriggered3DCard delay={400}>
+                  <div className="p-4 rounded-xl bg-secondary/30 glow-effect">
+                    <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
+                      Email
+                    </div>
+                    <a 
+                      href="mailto:hello@soulx.design" 
+                      className="text-lg font-display text-foreground hover:underline"
+                    >
+                      hello@soulx.design
                     </a>
                   </div>
-                </div>
+                </ScrollTriggered3DCard>
+                <ScrollTriggered3DCard delay={500}>
+                  <div className="p-4 rounded-xl bg-secondary/30 glow-effect">
+                    <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
+                      Follow Us
+                    </div>
+                    <div className="flex gap-4">
+                      <a href="#" className="text-foreground hover:text-muted-foreground transition-colors tilt-hover">
+                        Twitter
+                      </a>
+                      <a href="#" className="text-foreground hover:text-muted-foreground transition-colors tilt-hover">
+                        LinkedIn
+                      </a>
+                      <a href="#" className="text-foreground hover:text-muted-foreground transition-colors tilt-hover">
+                        Dribbble
+                      </a>
+                    </div>
+                  </div>
+                </ScrollTriggered3DCard>
               </div>
             </AnimatedSection>
           </div>
           
-          {/* Right column - Form */}
-          <AnimatedSection animation="fade-left" delay={200}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Right column - Form with 3D effect */}
+          <ScrollTriggered3DCard delay={200}>
+            <form onSubmit={handleSubmit} className="space-y-6 p-8 rounded-2xl bg-secondary/30 glow-effect">
               <div>
                 <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">
                   Name *
@@ -122,7 +156,7 @@ const ContactSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
                   required
                 />
               </div>
@@ -137,7 +171,7 @@ const ContactSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
                   required
                 />
               </div>
@@ -151,7 +185,7 @@ const ContactSection = () => {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 appearance-none cursor-pointer"
                 >
                   <option value="">Select a project type</option>
                   <option value="ux-ui">UX/UI Design</option>
@@ -171,7 +205,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 resize-none"
                   required
                 />
               </div>
@@ -179,7 +213,7 @@ const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed tilt-hover"
               >
                 {isSubmitting ? (
                   <>
@@ -193,7 +227,7 @@ const ContactSection = () => {
                 )}
               </button>
             </form>
-          </AnimatedSection>
+          </ScrollTriggered3DCard>
         </div>
       </div>
     </section>
