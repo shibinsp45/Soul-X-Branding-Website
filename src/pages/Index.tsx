@@ -1,14 +1,13 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import AboutSection from "@/components/AboutSection";
-import VisionSection from "@/components/VisionSection";
+import AboutVisionSection from "@/components/AboutVisionSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FloatingThemeToggle from "@/components/FloatingThemeToggle";
 
 const Index = () => {
   useEffect(() => {
@@ -53,19 +52,29 @@ const Index = () => {
     });
   }, []);
 
+  // Parallax scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}`);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
         <Hero />
-        <AboutSection />
-        <VisionSection />
+        <AboutVisionSection />
         <ServicesSection />
         <ProjectsSection />
         <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />
+      <FloatingThemeToggle />
     </div>
   );
 };
