@@ -13,7 +13,7 @@ const Hero = () => {
     });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden" id="hero">
+  return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
       {/* 3D Parallax Background */}
       <Parallax3DBackground />
       
