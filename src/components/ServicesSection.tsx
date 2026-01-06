@@ -1,6 +1,6 @@
 import React from "react";
-import AnimatedSection from "./AnimatedSection";
 import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
+import SectionHeading from "./SectionHeading";
 const services = [{
   number: "01",
   title: "UX Research & Strategy",
@@ -30,18 +30,13 @@ const ServicesSection = () => {
       <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-foreground/[0.01] blob-morph" />
       
       <div className="section-container relative z-10">
-        <AnimatedSection>
-          <div className="max-w-3xl mb-16">
-            <div className="soulx-chip mb-6 micro-interaction">
-              Services
-            </div>
-            <h2 className="section-title mb-6 font-sans">What we offer<span className="font-normal font-sans">What we offer</span>
-            </h2>
-            <p className="section-subtitle mt-0">
-              End-to-end design services to transform your ideas into impactful digital experiences.
-            </p>
-          </div>
-        </AnimatedSection>
+        <div className="max-w-3xl mb-16">
+          <SectionHeading
+            chip="Services"
+            title="What we offer"
+            subtitle="End-to-end design services to transform your ideas into impactful digital experiences."
+          />
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => <ScrollTriggered3DCard key={service.number} delay={index * 100}>
