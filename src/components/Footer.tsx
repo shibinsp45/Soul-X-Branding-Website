@@ -1,9 +1,6 @@
-
 import React from "react";
-
 const Footer = () => {
-  return (
-    <footer className="py-12 bg-foreground text-background">
+  return <footer className="py-12 bg-foreground text-background">
       <div className="section-container py-0">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-8">
@@ -30,21 +27,9 @@ const Footer = () => {
           <p className="text-background/40 text-sm">
             © 2024 SoulX. All rights reserved.
           </p>
-          <p className="text-background/40 text-sm">
-            Built with{" "}
-            <a 
-              href="https://lovable.dev" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-background/60 hover:text-background transition-colors"
-            >
-              Lovable
-            </a>
-          </p>
+          
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

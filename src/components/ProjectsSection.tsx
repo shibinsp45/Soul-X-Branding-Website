@@ -92,8 +92,8 @@ const ProjectsSection = () => {
                 Our Work
               </div>
               <h2 className="section-title">Selected 
-Projects
-Projects<br />
+ Projects 
+              <br />
                 <span className="italic font-normal font-sans">Projects</span>
               </h2>
             </div>
