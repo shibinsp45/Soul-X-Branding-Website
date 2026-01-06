@@ -70,8 +70,8 @@ const Hero = () => {
           animationDelay: "0.5s"
         }}>
             Where creativity shapes the
-            <span className="font-serif bold text-foreground font">
- human experience</span>
+            <span className="font-serif bold text-foreground font"> 
+human experience</span>
           </p>
           
           {/* CTA Buttons with 3D hover */}
