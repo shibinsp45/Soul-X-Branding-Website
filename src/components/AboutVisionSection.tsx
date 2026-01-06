@@ -57,8 +57,8 @@ const AboutVisionSection = () => {
             
             <AnimatedSection delay={100}>
               <h2 className="section-title mb-8 font-sans">We believe design is deeply human
-deeply human<br />
-                <span className="font-serif italic font-normal">deeply human</span>
+              <br />
+                <span className="font-serif italic font-normal"></span>
               </h2>
             </AnimatedSection>
             
