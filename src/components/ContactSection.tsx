@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
 import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
+import SectionHeading from "./SectionHeading";
+import AnimatedSection from "./AnimatedSection";
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -81,18 +82,12 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left column - Info */}
           <div>
-            <AnimatedSection>
-              <div className="soulx-chip mb-6 micro-interaction">
-                Get in Touch
-              </div>
-            </AnimatedSection>
-            
-            <AnimatedSection delay={100}>
-              <h2 className="section-title mb-6 font-sans">Let's create together
-              <br />
-                <span className="font-serif italic font-normal">together</span>
-              </h2>
-            </AnimatedSection>
+            <SectionHeading
+              chip="Get in Touch"
+              title="Let's create"
+              titleAccent="together"
+              className="mb-6"
+            />
             
             <AnimatedSection delay={200}>
               <p className="text-lg text-muted-foreground leading-relaxed mb-12">

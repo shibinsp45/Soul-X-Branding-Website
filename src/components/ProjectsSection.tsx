@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
 import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
+import SectionHeading from "./SectionHeading";
+import AnimatedSection from "./AnimatedSection";
 interface Project {
   id: string;
   title: string;
@@ -86,18 +87,11 @@ const ProjectsSection = () => {
 
       <div className="section-container relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <AnimatedSection>
-            <div>
-              <div className="soulx-chip mb-6 micro-interaction">
-                Our Work
-              </div>
-              <h2 className="section-title">Selected 
- Projects 
-              <br />
-                <span className="italic font-normal font-sans">Projects</span>
-              </h2>
-            </div>
-          </AnimatedSection>
+          <SectionHeading
+            chip="Our Work"
+            title="Selected"
+            titleAccent="Projects"
+          />
           
           {/* Category Filter with 3D effect */}
           <AnimatedSection delay={200}>
