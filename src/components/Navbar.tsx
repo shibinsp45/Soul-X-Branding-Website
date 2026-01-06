@@ -92,33 +92,42 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <div 
-        className={cn(
-          "fixed inset-0 z-40 bg-background/98 backdrop-blur-sm flex flex-col pt-24 px-6 md:hidden transition-all duration-300 ease-in-out",
-          isMenuOpen 
-            ? "opacity-100 visible" 
-            : "opacity-0 invisible pointer-events-none"
-        )}
-      >
-        <nav className="flex flex-col space-y-6 items-center mt-8">
-          {navItems.map(item => (
-            <a 
-              key={item.label} 
-              href={item.href} 
-              className="text-2xl font-display font-medium py-2 text-foreground hover:text-foreground/70 transition-colors"
-              onClick={e => {
-                if (item.href === '#') {
-                  e.preventDefault();
-                  scrollToTop();
-                }
-                closeMenu();
-              }}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-background flex flex-col md:hidden"
+          style={{ top: 0 }}
+        >
+          {/* Close button area at top */}
+          <div className="flex justify-end p-4 pt-5">
+            <button 
+              className="text-foreground p-2 focus:outline-none" 
+              onClick={closeMenu} 
+              aria-label="Close menu"
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+              <X size={24} />
+            </button>
+          </div>
+          
+          <nav className="flex flex-col space-y-6 items-center mt-12">
+            {navItems.map(item => (
+              <a 
+                key={item.label} 
+                href={item.href} 
+                className="text-2xl font-display font-medium py-2 text-foreground hover:text-foreground/70 transition-colors"
+                onClick={e => {
+                  if (item.href === '#') {
+                    e.preventDefault();
+                    scrollToTop();
+                  }
+                  closeMenu();
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
