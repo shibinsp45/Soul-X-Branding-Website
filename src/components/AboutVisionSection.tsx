@@ -114,9 +114,7 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-medium leading-tight mb-12">​ <span className="italic font-sans"> how it works</span>Design is not just what it looks like and feels like how it works and more importantly how makes the people feel"  
-                <span className="font-serif italic"> how it makes people feel</span>​."
-              </blockquote>
+              
             </AnimatedSection>
             
             <div className="pt-8 border-t border-background/20">
