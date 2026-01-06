@@ -59,7 +59,7 @@ const ThemeToggle: React.FC = () => {
             />
           </div>
           <span className="text-foreground whitespace-nowrap text-xs hidden sm:inline">
-            {isDark ? "Vitamin D OFF" : "Vitamin D ON"}
+            {isDark ? "Dark Soul" : "Vitamin D ON"}
           </span>
         </button>
       </TooltipTrigger>
