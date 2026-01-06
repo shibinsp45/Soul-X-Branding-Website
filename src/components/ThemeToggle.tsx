@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -43,9 +44,20 @@ const ThemeToggle: React.FC = () => {
           )}
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
-          <span className="text-lg transition-transform duration-300 group-hover:scale-110">
-            {isDark ? "🌙" : "🌞"}
-          </span>
+          <div className="relative w-5 h-5">
+            <Sun 
+              className={cn(
+                "h-5 w-5 text-foreground transition-all duration-300 absolute inset-0",
+                isDark ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
+              )} 
+            />
+            <Moon 
+              className={cn(
+                "h-5 w-5 text-foreground transition-all duration-300 absolute inset-0",
+                isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
+              )} 
+            />
+          </div>
           <span className="text-foreground whitespace-nowrap text-xs hidden sm:inline">
             {isDark ? "Vitamin D OFF" : "Vitamin D ON"}
           </span>
