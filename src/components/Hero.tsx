@@ -55,7 +55,7 @@ const Hero = () => {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
           animationDelay: "0.3s"
         }}>
-            <span className="inline-block hover:animate-tilt transition-transform">Crafting</span>
+            <span className="inline-block hover:animate-tilt transition-transform font-sans">Crafting</span>
             <br />
             <span className="inline-block hover:animate-tilt text-primary">
               Seamless
