@@ -107,17 +107,19 @@ const AboutVisionSection = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-background/[0.02] blob-morph pointer-events-none" />
           
           <div className="max-w-4xl relative z-10">
-            <AnimatedSection className="border-0">
+            <AnimatedSection>
               <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-background text-foreground tracking-wider uppercase mb-8 micro-interaction tilt-hover">
                 Our Vision
               </div>
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
-              
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-medium leading-tight mb-12">​ <span className="italic font-sans"> how it works</span>Design is not just what it looks like and feels like how it works and more importantly how makes the people feel"  
+                <span className="font-serif italic"> how it makes people feel</span>​."
+              </blockquote>
             </AnimatedSection>
             
-            <div className="pt-8 border-t py-0 border-primary border-0">
+            <div className="pt-8 border-t border-background/20">
               <AnimatedSection delay={400}>
                 <p className="text-lg md:text-xl text-background/80 leading-relaxed mb-6">
                   We envision a world where every digital interaction is intuitive, 
