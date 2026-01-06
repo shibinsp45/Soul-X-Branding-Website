@@ -7,7 +7,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import FloatingThemeToggle from "@/components/FloatingThemeToggle";
 
 const Index = () => {
   useEffect(() => {
@@ -74,7 +73,6 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
-      <FloatingThemeToggle />
     </div>
   );
 };
