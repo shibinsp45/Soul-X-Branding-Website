@@ -83,7 +83,7 @@ const AboutVisionSection = () => {
           <div className="space-y-8">
             {values.map((value, index) => <ScrollTriggered3DCard key={value.title} delay={400 + index * 100}>
                 <div className="border-l-2 border-foreground pl-6 py-4 hover:border-foreground/50 transition-all duration-300 hover:pl-8 bg-secondary/30 rounded-r-xl glow-effect">
-                  <h3 className="text-xl font-display font-medium mb-2 text-foreground">
+                  <h3 className="text-xl font-medium mb-2 text-foreground font-sans">
                     {value.title}
                   </h3>
                   <p className="text-muted-foreground">
