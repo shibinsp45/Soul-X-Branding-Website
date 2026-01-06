@@ -3,7 +3,6 @@ import { toast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import ScrollTriggered3DCard from "./ScrollTriggered3DCard";
-
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -14,7 +13,6 @@ const ContactSection = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -22,22 +20,23 @@ const ContactSection = () => {
       const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
       setScrollProgress(progress);
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, {
+      passive: true
+    });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Please fill in all required fields",
@@ -45,7 +44,6 @@ const ContactSection = () => {
       });
       return;
     }
-
     setIsSubmitting(true);
 
     // Simulate API call
@@ -63,22 +61,20 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }, 1000);
   };
-
-  return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden" id="contact">
+  return <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden" id="contact">
       {/* Parallax decorative elements */}
-      <div 
-        className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl"
-        style={{ transform: `translateY(${scrollProgress * 100}px)` }}
-      />
-      <div 
-        className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/[0.02] rounded-full blur-2xl"
-        style={{ transform: `translateY(${scrollProgress * -80}px)` }}
-      />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl" style={{
+      transform: `translateY(${scrollProgress * 100}px)`
+    }} />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/[0.02] rounded-full blur-2xl" style={{
+      transform: `translateY(${scrollProgress * -80}px)`
+    }} />
       
       {/* 3D floating shapes */}
       <div className="absolute top-32 right-20 w-20 h-20 border border-foreground/5 rounded-2xl float-3d" />
-      <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{ animationDelay: '3s' }} />
+      <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{
+      animationDelay: '3s'
+    }} />
       <div className="absolute top-1/2 left-10 w-28 h-28 bg-foreground/[0.01] blob-morph" />
 
       <div className="section-container relative z-10">
@@ -92,9 +88,8 @@ const ContactSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={100}>
-              <h2 className="section-title mb-6">
-                Let's create
-                <br />
+              <h2 className="section-title mb-6 font-sans">Let's create together
+              <br />
                 <span className="font-serif italic font-normal">together</span>
               </h2>
             </AnimatedSection>
@@ -113,10 +108,7 @@ const ContactSection = () => {
                     <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">
                       Email
                     </div>
-                    <a 
-                      href="mailto:hello@soulx.design" 
-                      className="text-lg font-display text-foreground hover:underline"
-                    >
+                    <a href="mailto:hello@soulx.design" className="text-lg font-display text-foreground hover:underline">
                       hello@soulx.design
                     </a>
                   </div>
@@ -150,43 +142,21 @@ const ContactSection = () => {
                 <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">
                   Name *
                 </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
-                  required
-                />
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300" required />
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm text-muted-foreground mb-2">
                   Email *
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300"
-                  required
-                />
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300" required />
               </div>
               
               <div>
                 <label htmlFor="projectType" className="block text-sm text-muted-foreground mb-2">
                   Project Type
                 </label>
-                <select
-                  id="projectType"
-                  name="projectType"
-                  value={formData.projectType}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 appearance-none cursor-pointer"
-                >
+                <select id="projectType" name="projectType" value={formData.projectType} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 appearance-none cursor-pointer">
                   <option value="">Select a project type</option>
                   <option value="ux-ui">UX/UI Design</option>
                   <option value="branding">Brand Identity</option>
@@ -199,39 +169,21 @@ const ContactSection = () => {
                 <label htmlFor="message" className="block text-sm text-muted-foreground mb-2">
                   Message *
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 resize-none"
-                  required
-                />
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all duration-300 resize-none" required />
               </div>
               
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed tilt-hover"
-              >
-                {isSubmitting ? (
-                  <>
+              <button type="submit" disabled={isSubmitting} className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed tilt-hover">
+                {isSubmitting ? <>
                     <span className="animate-pulse">Sending...</span>
-                  </>
-                ) : (
-                  <>
+                  </> : <>
                     Send Message
                     <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </>
-                )}
+                  </>}
               </button>
             </form>
           </ScrollTriggered3DCard>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
