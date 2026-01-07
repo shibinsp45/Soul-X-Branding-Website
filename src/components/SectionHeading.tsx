@@ -46,7 +46,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         {title}
         {titleAccent && <>
             {" "}
-            <span className="font-serif italic font-normal">{titleAccent}</span>
+            <span className="font-normal font-sans">{titleAccent}</span>
           </>}
       </h2>
       
