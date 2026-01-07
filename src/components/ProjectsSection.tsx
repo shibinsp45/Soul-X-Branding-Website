@@ -67,7 +67,7 @@ const ProjectsSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const filteredProjects = activeCategory === "All" ? projects : projects.filter(p => p.category === activeCategory);
-  return <section ref={sectionRef} className="py-16 md:py-20 bg-secondary relative overflow-hidden" id="projects">
+  return <section ref={sectionRef} className="py-24 md:py-32 bg-secondary relative overflow-hidden" id="projects">
       {/* Parallax decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl" style={{
       transform: `translateY(${scrollProgress * 100}px)`

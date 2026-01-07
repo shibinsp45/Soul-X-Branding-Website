@@ -19,7 +19,7 @@ const services = [{
   description: "Responsive, performant websites that perfectly express your brand and convert visitors into customers."
 }];
 const ServicesSection = () => {
-  return <section className="py-16 md:py-20 bg-background relative overflow-hidden" id="services">
+  return <section className="py-24 md:py-32 bg-background relative overflow-hidden" id="services">
       {/* Decorative 3D elements */}
       <div className="absolute top-20 right-10 w-32 h-32 border border-foreground/5 rounded-3xl float-3d" style={{
       animationDelay: '1s'
