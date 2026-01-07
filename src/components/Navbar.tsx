@@ -91,43 +91,61 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Overlay */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-background flex flex-col md:hidden"
-          style={{ top: 0 }}
-        >
-          {/* Close button area at top */}
-          <div className="flex justify-end p-4 pt-5">
-            <button 
-              className="text-foreground p-2 focus:outline-none" 
-              onClick={closeMenu} 
-              aria-label="Close menu"
-            >
-              <X size={24} />
-            </button>
-          </div>
-          
-          <nav className="flex flex-col space-y-6 items-center mt-12">
-            {navItems.map(item => (
-              <a 
-                key={item.label} 
-                href={item.href} 
-                className="text-2xl font-display font-medium py-2 text-foreground hover:text-foreground/70 transition-colors"
-                onClick={e => {
-                  if (item.href === '#') {
-                    e.preventDefault();
-                    scrollToTop();
-                  }
-                  closeMenu();
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+      {/* Mobile Navigation Overlay - Full Page */}
+      <div 
+        className={`fixed inset-0 z-40 bg-background flex flex-col md:hidden transition-all duration-500 ${
+          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
+      >
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full" />
+        <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45" />
+        <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl" />
+        
+        {/* Close button area at top */}
+        <div className="flex justify-between items-center p-6 pt-5">
+          <span className="text-2xl font-bold text-foreground">Soul X</span>
+          <button 
+            className="text-foreground p-2 focus:outline-none hover:bg-foreground/5 rounded-full transition-colors" 
+            onClick={closeMenu} 
+            aria-label="Close menu"
+          >
+            <X size={28} />
+          </button>
         </div>
-      )}
+        
+        {/* Centered navigation */}
+        <nav className="flex-1 flex flex-col justify-center items-center space-y-8 px-8">
+          {navItems.map((item, index) => (
+            <a 
+              key={item.label} 
+              href={item.href} 
+              className={`text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary transition-all duration-300 transform ${
+                isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+              style={{ 
+                transitionDelay: isMenuOpen ? `${index * 100 + 200}ms` : '0ms'
+              }}
+              onClick={e => {
+                if (item.href === '#') {
+                  e.preventDefault();
+                  scrollToTop();
+                }
+                closeMenu();
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        
+        {/* Footer in mobile menu */}
+        <div className={`p-8 text-center transition-all duration-500 ${
+          isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`} style={{ transitionDelay: isMenuOpen ? '600ms' : '0ms' }}>
+          <p className="text-sm text-muted-foreground">Let's create something amazing together</p>
+        </div>
+      </div>
     </header>
   );
 };
