@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-secondary relative overflow-hidden" id="testimonials">
+    <section ref={sectionRef} className="py-16 md:py-20 bg-secondary relative overflow-hidden" id="testimonials">
       {/* Parallax decorative elements */}
       <div 
         className="absolute top-0 left-1/4 w-64 h-64 bg-foreground/[0.02] rounded-full blur-3xl" 
