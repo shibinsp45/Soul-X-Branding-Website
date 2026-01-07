@@ -113,9 +113,6 @@ const AboutVisionSection = () => {
               </div>
             </AnimatedSection>
             
-            <AnimatedSection delay={200}>
-              
-            </AnimatedSection>
             
             <div className="pt-8 border-t border-background/20">
               <AnimatedSection delay={400}>
