@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Parallax3DBackground from "./Parallax3DBackground";
+import InteractiveParticles from "./InteractiveParticles";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
@@ -16,6 +17,9 @@ const Hero = () => {
   return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
       {/* 3D Parallax Background */}
       <Parallax3DBackground />
+      
+      {/* Interactive Particles */}
+      <InteractiveParticles />
       
       {/* Animated grid pattern with 3D perspective */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -122,8 +126,8 @@ const Hero = () => {
           animationDelay: "0.5s"
         }}>
             Where creativity shapes the
-            <span className="font-serif bold text-foreground font"> 
-human experience</span>
+            <br />
+            <span className="font-serif font-bold text-foreground">human experience</span>
           </p>
           
           {/* CTA Buttons with 3D hover */}
