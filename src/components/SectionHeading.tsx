@@ -40,13 +40,13 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           {chip}
         </div>}
       
-      <h2 ref={titleRef} className={cn("section-title font-sans transition-all duration-700 ease-out", subtitle ? "mb-6" : "", titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={{
+      <h2 ref={titleRef} className={cn("text-4xl md:text-5xl lg:text-6xl font-display font-medium text-foreground tracking-tight transition-all duration-700 ease-out", subtitle ? "mb-6" : "", titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={{
       transitionDelay: "100ms"
     }}>
         {title}
         {titleAccent && <>
-            <br />
-            <span className="font-serif font-normal">{titleAccent}</span>
+            {" "}
+            <span className="font-serif italic font-normal">{titleAccent}</span>
           </>}
       </h2>
       
