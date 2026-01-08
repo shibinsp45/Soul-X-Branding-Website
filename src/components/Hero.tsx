@@ -126,12 +126,12 @@ const Hero = () => {
           </h1>
           
           {/* Motto */}
-          <p className="mt-8 text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-light" style={{
+          <p className="mt-8 text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-light tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
             Where creativity shapes the
             <br />
-            <span className="font-serif font-bold text-foreground">human experience</span>
+            <span className="font-serif italic font-normal text-foreground/80">human experience</span>
           </p>
           
           {/* CTA Buttons with 3D hover */}
