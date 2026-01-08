@@ -121,7 +121,7 @@ const InteractiveParticles = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-0"
+      className="absolute inset-0 pointer-events-none z-0 hidden dark:block"
       style={{ opacity: 0.6 }}
     />
   );

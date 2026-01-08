@@ -34,9 +34,9 @@ const Parallax3DBackground: React.FC<Parallax3DBackgroundProps> = ({ className =
       className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
       style={{ perspective: '1000px' }}
     >
-      {/* 3D Grid */}
+      {/* 3D Grid - hidden in light mode */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className="hidden dark:block absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `
             linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
@@ -48,9 +48,9 @@ const Parallax3DBackground: React.FC<Parallax3DBackgroundProps> = ({ className =
         }}
       />
 
-      {/* Floating 3D shapes */}
+      {/* Floating 3D shapes - hidden in light mode */}
       <div 
-        className="absolute top-1/4 left-1/4 w-32 h-32 border border-foreground/5 rounded-2xl float-3d"
+        className="hidden dark:block absolute top-1/4 left-1/4 w-32 h-32 border border-foreground/5 rounded-2xl float-3d"
         style={{ 
           transform: `translate3d(var(--mouse-x, 0), var(--mouse-y, 0), 50px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg))`,
           animationDelay: '0s'
@@ -58,7 +58,7 @@ const Parallax3DBackground: React.FC<Parallax3DBackgroundProps> = ({ className =
       />
       
       <div 
-        className="absolute top-1/3 right-1/4 w-24 h-24 border border-foreground/5 rounded-full float-3d"
+        className="hidden dark:block absolute top-1/3 right-1/4 w-24 h-24 border border-foreground/5 rounded-full float-3d"
         style={{ 
           transform: `translate3d(calc(var(--mouse-x, 0) * -0.5), calc(var(--mouse-y, 0) * -0.5), 100px)`,
           animationDelay: '2s'
@@ -66,33 +66,33 @@ const Parallax3DBackground: React.FC<Parallax3DBackgroundProps> = ({ className =
       />
 
       <div 
-        className="absolute bottom-1/4 left-1/3 w-20 h-20 border border-foreground/5 float-3d"
+        className="hidden dark:block absolute bottom-1/4 left-1/3 w-20 h-20 border border-foreground/5 float-3d"
         style={{ 
           transform: `translate3d(calc(var(--mouse-x, 0) * 0.7), calc(var(--mouse-y, 0) * 0.7), 30px) rotate(45deg)`,
           animationDelay: '4s'
         }}
       />
 
-      {/* Morphing blob */}
+      {/* Morphing blob - hidden in light mode */}
       <div 
-        className="absolute top-1/2 right-1/3 w-40 h-40 bg-foreground/[0.02] blob-morph"
+        className="hidden dark:block absolute top-1/2 right-1/3 w-40 h-40 bg-foreground/[0.02] blob-morph"
         style={{ animationDelay: '1s' }}
       />
 
-      {/* Particles */}
-      <div className="particle particle-1 top-20 left-20 w-2 h-2 bg-foreground/10" />
-      <div className="particle particle-2 top-40 right-32 w-1.5 h-1.5 bg-foreground/15" />
-      <div className="particle particle-3 bottom-32 left-1/2 w-1 h-1 bg-foreground/20" />
-      <div className="particle particle-1 top-1/2 left-10 w-2.5 h-2.5 bg-foreground/5" style={{ animationDelay: '5s' }} />
-      <div className="particle particle-2 bottom-20 right-20 w-1.5 h-1.5 bg-foreground/10" style={{ animationDelay: '3s' }} />
+      {/* Particles - hidden in light mode */}
+      <div className="hidden dark:block particle particle-1 top-20 left-20 w-2 h-2 bg-foreground/10" />
+      <div className="hidden dark:block particle particle-2 top-40 right-32 w-1.5 h-1.5 bg-foreground/15" />
+      <div className="hidden dark:block particle particle-3 bottom-32 left-1/2 w-1 h-1 bg-foreground/20" />
+      <div className="hidden dark:block particle particle-1 top-1/2 left-10 w-2.5 h-2.5 bg-foreground/5" style={{ animationDelay: '5s' }} />
+      <div className="hidden dark:block particle particle-2 bottom-20 right-20 w-1.5 h-1.5 bg-foreground/10" style={{ animationDelay: '3s' }} />
 
-      {/* Glowing orbs */}
+      {/* Glowing orbs - hidden in light mode */}
       <div 
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full orb-glow"
+        className="hidden dark:block absolute top-1/4 right-1/4 w-64 h-64 rounded-full orb-glow"
         style={{ animationDelay: '0s' }}
       />
       <div 
-        className="absolute bottom-1/3 left-1/4 w-48 h-48 rounded-full orb-glow"
+        className="hidden dark:block absolute bottom-1/3 left-1/4 w-48 h-48 rounded-full orb-glow"
         style={{ animationDelay: '2s' }}
       />
     </div>

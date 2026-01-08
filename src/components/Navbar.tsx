@@ -97,10 +97,10 @@ const Navbar = () => {
           isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full" />
-        <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45" />
-        <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl" />
+        {/* Decorative elements - hidden in light mode */}
+        <div className="hidden dark:block absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full" />
+        <div className="hidden dark:block absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45" />
+        <div className="hidden dark:block absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl" />
         
         {/* Close button area at top */}
         <div className="flex justify-between items-center p-6 pt-5">
