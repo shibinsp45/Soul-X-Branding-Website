@@ -138,11 +138,11 @@ const Hero = () => {
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.7s"
         }}>
-            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover">
+            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover transition-shadow duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] dark:hover:shadow-[0_0_40px_hsl(var(--primary)/0.6)]">
               View Our Work
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover">
+            <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover transition-shadow duration-300 hover:shadow-[0_0_25px_hsl(var(--foreground)/0.15)] dark:hover:shadow-[0_0_30px_hsl(var(--foreground)/0.2)]">
               Let's Create Together
             </a>
           </div>
