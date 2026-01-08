@@ -112,12 +112,12 @@ const Hero = () => {
       }}>
           
           {/* Main headline with staggered animation and 3D effect */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in [text-shadow:0_4px_24px_hsl(var(--foreground)/0.08)] dark:[text-shadow:0_4px_32px_hsl(var(--foreground)/0.15)]" style={{
           animationDelay: "0.3s"
         }}>
             <span className="inline-block hover:animate-tilt transition-transform font-sans">Crafting</span>
             <br />
-            <span className="inline-block hover:animate-tilt text-primary">
+            <span className="inline-block hover:animate-tilt text-primary [text-shadow:0_4px_24px_hsl(var(--primary)/0.3)] dark:[text-shadow:0_4px_32px_hsl(var(--primary)/0.4)]">
               Seamless
               
             </span>
