@@ -97,6 +97,9 @@ const Hero = () => {
       transform: `translateY(${scrollY * -0.15}px)`
     }} />
       
+      {/* Dark blue gradient at bottom - dark mode only */}
+      <div className="hidden dark:block absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[hsl(220,60%,8%)] via-[hsl(220,50%,12%)/0.6] to-transparent pointer-events-none" />
+      
       {/* Large decorative text with parallax */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" style={{
       transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`
