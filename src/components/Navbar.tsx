@@ -75,6 +75,23 @@ const Navbar = () => {
     closeMenu();
   };
 
+  const scrollToSection = (href: string) => {
+    if (href === '#') {
+      scrollToTop();
+      return;
+    }
+    const element = document.querySelector(href);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth'
+      });
+    }
+    closeMenu();
+  };
+
   // Close menu when clicking overlay background
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -106,14 +123,19 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map(item => <a key={item.label} href={item.href} className="nav-link text-sm tracking-wide" onClick={e => {
-          if (item.href === '#') {
-            e.preventDefault();
-            scrollToTop();
-          }
-        }}>
+          {navItems.map(item => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="nav-link text-sm tracking-wide"
+              onClick={e => {
+                e.preventDefault();
+                scrollToSection(item.href);
+              }}
+            >
               {item.label}
-            </a>)}
+            </a>
+          ))}
         </nav>
 
         {/* Right side: Theme Toggle + Mobile Menu */}
@@ -122,15 +144,34 @@ const Navbar = () => {
             <ThemeToggle />
           </div>
           
-          {/* Mobile menu button */}
+          {/* Mobile menu button with animated icon */}
           <button
-            className="md:hidden p-2 text-foreground hover:bg-foreground/5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="md:hidden p-2 text-foreground hover:bg-foreground/5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 relative w-10 h-10 flex items-center justify-center"
             onClick={toggleMenu}
-            aria-label="Open menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
           >
-            <Menu size={24} />
+            <span className="relative w-6 h-5 flex flex-col justify-between">
+              <span
+                className={cn(
+                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out origin-center",
+                  isMenuOpen ? "rotate-45 translate-y-[9px]" : ""
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out",
+                  isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out origin-center",
+                  isMenuOpen ? "-rotate-45 -translate-y-[9px]" : ""
+                )}
+              />
+            </span>
           </button>
         </div>
       </div>
@@ -156,17 +197,26 @@ const Navbar = () => {
           
           {/* Centered navigation */}
           <nav className="flex-1 flex flex-col justify-center items-center space-y-8 px-8">
-            {navItems.map((item, index) => <a key={item.label} ref={index === navItems.length - 1 ? lastFocusableRef : undefined} href={item.href} className={cn("text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary", "focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2", "transition-all duration-500 ease-out transform", isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")} style={{
-            transitionDelay: isMenuOpen ? `${index * 80 + 150}ms` : '0ms'
-          }} onClick={e => {
-            if (item.href === '#') {
-              e.preventDefault();
-              scrollToTop();
-            }
-            closeMenu();
-          }}>
+            {navItems.map((item, index) => (
+              <a
+                key={item.label}
+                ref={index === navItems.length - 1 ? lastFocusableRef : undefined}
+                href={item.href}
+                className={cn(
+                  "text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2",
+                  "transition-all duration-500 ease-out transform",
+                  isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                )}
+                style={{ transitionDelay: isMenuOpen ? `${index * 80 + 150}ms` : '0ms' }}
+                onClick={e => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
+              >
                 {item.label}
-              </a>)}
+              </a>
+            ))}
           </nav>
           
           {/* Footer in mobile menu */}
