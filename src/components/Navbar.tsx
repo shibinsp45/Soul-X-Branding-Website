@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -189,7 +188,7 @@ const Navbar = () => {
           <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl pointer-events-none" />
           
           {/* Centered navigation */}
-          <nav className="relative z-10 flex-1 flex flex-col justify-center items-center space-y-8 px-8">
+          <nav className="relative z-20 flex-1 flex flex-col justify-center items-center space-y-8 px-8">
             {isMenuOpen && navItems.map((item, index) => (
               <a
                 key={item.label}
@@ -198,7 +197,8 @@ const Navbar = () => {
                 className={cn(
                   "text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary",
                   "focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2",
-                  "opacity-0 animate-fade-in"
+                  "opacity-100",
+                  "animate-fade-in motion-reduce:animate-none"
                 )}
                 style={{ animationDelay: `${index * 80 + 150}ms` }}
                 onClick={e => {
