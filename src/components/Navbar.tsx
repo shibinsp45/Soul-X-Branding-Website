@@ -176,20 +176,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Overlay - Full Page */}
-      <div id="mobile-menu" ref={menuRef} className={cn("fixed inset-0 z-[55] md:hidden transition-all duration-500 ease-out", isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")} onClick={handleOverlayClick} onKeyDown={handleTabKey} role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+        {/* Mobile Navigation Overlay - Full Page */}
+      <div id="mobile-menu" ref={menuRef} className={cn("fixed inset-0 z-50 md:hidden transition-all duration-500 ease-out", isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")} onClick={handleOverlayClick} onKeyDown={handleTabKey} role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
         {/* Dark overlay background */}
         <div className={cn("absolute inset-0 bg-background transition-opacity duration-500", isMenuOpen ? "opacity-100" : "opacity-0")} />
         
         {/* Menu content container */}
-        <div className={cn("relative h-full flex flex-col transition-transform duration-500 ease-out", isMenuOpen ? "translate-y-0" : "-translate-y-8")}>
-          {/* Header with close button */}
-          <div className="flex justify-end items-center px-6 py-4 pt-5">
-            <button ref={firstFocusableRef} className="text-foreground p-3 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:bg-foreground/5 rounded-full transition-colors" onClick={closeMenu} aria-label="Close menu">
-              <X size={28} />
-            </button>
-          </div>
-          
+        <div className={cn("relative h-full flex flex-col pt-24 transition-transform duration-500 ease-out", isMenuOpen ? "translate-y-0" : "-translate-y-8")}>
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full pointer-events-none" />
           <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45 pointer-events-none" />
