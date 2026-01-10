@@ -179,18 +179,18 @@ const Navbar = () => {
         {/* Mobile Navigation Overlay - Full Page */}
       <div id="mobile-menu" ref={menuRef} className={cn("fixed inset-0 z-50 md:hidden transition-all duration-500 ease-out", isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")} onClick={handleOverlayClick} onKeyDown={handleTabKey} role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
         {/* Dark overlay background */}
-        <div className={cn("absolute inset-0 bg-background transition-opacity duration-500", isMenuOpen ? "opacity-100" : "opacity-0")} />
+        <div className={cn("absolute inset-0 z-0 bg-background transition-opacity duration-500 pointer-events-none", isMenuOpen ? "opacity-100" : "opacity-0")} />
         
         {/* Menu content container */}
-        <div className={cn("relative h-full flex flex-col pt-24 transition-transform duration-500 ease-out", isMenuOpen ? "translate-y-0" : "-translate-y-8")}>
+        <div className={cn("relative z-10 h-full flex flex-col pt-24 transition-transform duration-500 ease-out", isMenuOpen ? "translate-y-0" : "-translate-y-8")}>
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full pointer-events-none" />
           <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45 pointer-events-none" />
           <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl pointer-events-none" />
           
           {/* Centered navigation */}
-          <nav className="flex-1 flex flex-col justify-center items-center space-y-8 px-8">
-            {navItems.map((item, index) => (
+          <nav className="relative z-10 flex-1 flex flex-col justify-center items-center space-y-8 px-8">
+            {isMenuOpen && navItems.map((item, index) => (
               <a
                 key={item.label}
                 ref={index === navItems.length - 1 ? lastFocusableRef : undefined}
@@ -198,10 +198,9 @@ const Navbar = () => {
                 className={cn(
                   "text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary",
                   "focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2",
-                  "transition-all duration-500 ease-out transform",
-                  isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  "opacity-0 animate-fade-in"
                 )}
-                style={{ transitionDelay: isMenuOpen ? `${index * 80 + 150}ms` : '0ms' }}
+                style={{ animationDelay: `${index * 80 + 150}ms` }}
                 onClick={e => {
                   e.preventDefault();
                   scrollToSection(item.href);
