@@ -151,7 +151,7 @@ const Hero = () => {
           </div>
           
           {/* Stats row with 3D cards */}
-          <div className="mt-20 grid grid-cols-3 gap-8 max-w-xl mx-auto opacity-0 animate-slide-up-fade" style={{
+          <div className="mt-12 md:mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.9s"
         }}>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
