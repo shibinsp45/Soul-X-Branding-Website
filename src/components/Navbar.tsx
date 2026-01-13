@@ -176,31 +176,30 @@ const Navbar = () => {
       </div>
 
         {/* Mobile Navigation Overlay - Full Page */}
-      <div id="mobile-menu" ref={menuRef} className={cn("fixed inset-0 z-50 md:hidden transition-all duration-500 ease-out", isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")} onClick={handleOverlayClick} onKeyDown={handleTabKey} role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
-        {/* Dark overlay background */}
-        <div className={cn("absolute inset-0 z-0 bg-background transition-opacity duration-500 pointer-events-none", isMenuOpen ? "opacity-100" : "opacity-0")} />
-        
-        {/* Menu content container */}
-        <div className={cn("relative z-10 h-full flex flex-col pt-24 transition-transform duration-500 ease-out", isMenuOpen ? "translate-y-0" : "-translate-y-8")}>
+      {isMenuOpen && (
+        <div 
+          id="mobile-menu" 
+          ref={menuRef} 
+          className="fixed inset-0 z-40 md:hidden bg-background"
+          onClick={handleOverlayClick} 
+          onKeyDown={handleTabKey} 
+          role="dialog" 
+          aria-modal="true" 
+          aria-label="Mobile navigation menu"
+        >
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full pointer-events-none" />
           <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45 pointer-events-none" />
           <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl pointer-events-none" />
           
           {/* Centered navigation */}
-          <nav className="relative z-20 flex-1 flex flex-col justify-center items-center space-y-8 px-8">
-            {isMenuOpen && navItems.map((item, index) => (
+          <nav className="h-full flex flex-col justify-center items-center space-y-8 px-8">
+            {navItems.map((item, index) => (
               <a
                 key={item.label}
                 ref={index === navItems.length - 1 ? lastFocusableRef : undefined}
                 href={item.href}
-                className={cn(
-                  "text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary",
-                  "focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2",
-                  "opacity-100",
-                  "animate-fade-in motion-reduce:animate-none"
-                )}
-                style={{ animationDelay: `${index * 80 + 150}ms` }}
+                className="text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
                 onClick={e => {
                   e.preventDefault();
                   scrollToSection(item.href);
@@ -212,13 +211,11 @@ const Navbar = () => {
           </nav>
           
           {/* Footer in mobile menu */}
-          <div className={cn("p-8 text-center transition-all duration-500 ease-out", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={{
-          transitionDelay: isMenuOpen ? '500ms' : '0ms'
-        }}>
+          <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
             <p className="text-sm text-muted-foreground">Let's create something amazing together</p>
           </div>
         </div>
-      </div>
+      )}
     </header>;
 };
 export default Navbar;
