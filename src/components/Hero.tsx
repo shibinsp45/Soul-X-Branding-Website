@@ -115,14 +115,13 @@ const Hero = () => {
       }}>
           
           {/* Main headline with staggered animation and 3D effect */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in [text-shadow:0_4px_24px_hsl(var(--foreground)/0.08)] dark:[text-shadow:0_4px_32px_hsl(var(--foreground)/0.15)]" style={{
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
           animationDelay: "0.3s"
         }}>
             <span className="inline-block hover:animate-tilt transition-transform font-sans">Crafting</span>
             <br />
-            <span className="inline-block hover:animate-tilt text-primary [text-shadow:0_4px_24px_hsl(var(--primary)/0.3)] dark:[text-shadow:0_4px_32px_hsl(var(--primary)/0.4)]">
+            <span className="inline-block hover:animate-tilt text-primary">
               Seamless
-              
             </span>
             <br />
             <span className="text-muted-foreground inline-block hover:animate-tilt">Experiences</span>
@@ -141,11 +140,11 @@ const Hero = () => {
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.7s"
         }}>
-            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover transition-shadow duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] dark:hover:shadow-[0_0_40px_hsl(var(--primary)/0.6)]">
+            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover">
               View Our Work
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover transition-shadow duration-300 hover:shadow-[0_0_25px_hsl(var(--foreground)/0.15)] dark:hover:shadow-[0_0_30px_hsl(var(--foreground)/0.2)]">
+            <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover">
               Let's Create Together
             </a>
           </div>
