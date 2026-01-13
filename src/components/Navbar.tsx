@@ -1,133 +1,100 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
+
+const navItems = [
+  { label: "Home", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+] as const;
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const firstFocusableRef = useRef<HTMLButtonElement>(null);
-  const lastFocusableRef = useRef<HTMLAnchorElement>(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true
-    });
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Lock body scroll when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-      // Focus the close button when menu opens
-      firstFocusableRef.current?.focus();
-    } else {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    }
+    if (!isMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
+      document.body.style.overflow = prevOverflow;
     };
   }, [isMenuOpen]);
 
-  // Handle Escape key to close menu
+  // Close on Escape
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) {
-        closeMenu();
-      }
+    if (!isMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [isMenuOpen]);
 
-  // Focus trap
-  const handleTabKey = useCallback((e: React.KeyboardEvent) => {
-    if (e.key !== 'Tab' || !isMenuOpen) return;
-    if (e.shiftKey) {
-      if (document.activeElement === firstFocusableRef.current) {
-        e.preventDefault();
-        lastFocusableRef.current?.focus();
-      }
-    } else {
-      if (document.activeElement === lastFocusableRef.current) {
-        e.preventDefault();
-        firstFocusableRef.current?.focus();
-      }
-    }
-  }, [isMenuOpen]);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    closeMenu();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMenuOpen(false);
   };
 
   const scrollToSection = (href: string) => {
-    if (href === '#') {
+    if (href === "#") {
       scrollToTop();
       return;
     }
+
     const element = document.querySelector(href);
     if (element) {
       const navHeight = 80;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - navHeight,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: elementPosition - navHeight, behavior: "smooth" });
     }
-    closeMenu();
+
+    setIsMenuOpen(false);
   };
 
-  // Close menu when clicking overlay background
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      closeMenu();
-    }
-  };
-  const navItems = [{
-    label: 'Home',
-    href: '#'
-  }, {
-    label: 'About',
-    href: '#about'
-  }, {
-    label: 'Projects',
-    href: '#projects'
-  }, {
-    label: 'Contact',
-    href: '#contact'
-  }];
-  return <header className={cn("fixed top-0 left-0 right-0 z-50 py-4 md:py-5 transition-all duration-500", isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" : "bg-transparent")}>
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 py-4 md:py-5 transition-all duration-500",
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-transparent"
+      )}
+    >
       <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="#" className="flex items-center space-x-2 z-[60]" onClick={e => {
-        e.preventDefault();
-        scrollToTop();
-      }} aria-label="SoulX">
-          <span className="tracking-tight text-foreground text-3xl font-bold font-sans">Soul X</span>
+        <a
+          href="#"
+          className="flex items-center space-x-2"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToTop();
+          }}
+          aria-label="SoulX"
+        >
+          <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
+            Soul X
+          </span>
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               className="nav-link text-sm tracking-wide"
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
@@ -138,84 +105,88 @@ const Navbar = () => {
         </nav>
 
         {/* Right side: Theme Toggle + Mobile Menu */}
-        <div className="flex items-center gap-3 z-[60]">
-          <div className={cn("transition-opacity duration-300", isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100")}>
+        <div className="flex items-center gap-3">
+          <div
+            className={cn(
+              "transition-opacity duration-300",
+              isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+            )}
+          >
             <ThemeToggle />
           </div>
-          
-          {/* Mobile menu button with animated icon */}
+
           <button
-            className="md:hidden p-2 text-foreground hover:bg-foreground/5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 relative w-10 h-10 flex items-center justify-center"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            type="button"
+            className="md:hidden p-2 text-foreground hover:bg-foreground/5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
           >
+            <span className="sr-only">Open menu</span>
             <span className="relative w-6 h-5 flex flex-col justify-between">
-              <span
-                className={cn(
-                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out origin-center",
-                  isMenuOpen ? "rotate-45 translate-y-[9px]" : ""
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out",
-                  isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100"
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ease-out origin-center",
-                  isMenuOpen ? "-rotate-45 -translate-y-[9px]" : ""
-                )}
-              />
+              <span className="block h-0.5 w-6 bg-foreground rounded-full" />
+              <span className="block h-0.5 w-6 bg-foreground rounded-full" />
+              <span className="block h-0.5 w-6 bg-foreground rounded-full" />
             </span>
           </button>
         </div>
       </div>
 
-        {/* Mobile Navigation Overlay - Full Page */}
+      {/* Mobile Menu (full screen) */}
       {isMenuOpen && (
-        <div 
-          id="mobile-menu" 
-          ref={menuRef} 
-          className="fixed inset-0 z-40 md:hidden bg-background"
-          onClick={handleOverlayClick} 
-          onKeyDown={handleTabKey} 
-          role="dialog" 
-          aria-modal="true" 
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-[100] md:hidden bg-background"
+          role="dialog"
+          aria-modal="true"
           aria-label="Mobile navigation menu"
         >
-          {/* Decorative elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full pointer-events-none" />
-          <div className="absolute bottom-32 right-8 w-24 h-24 border border-foreground/5 rotate-45 pointer-events-none" />
-          <div className="absolute top-1/3 right-16 w-16 h-16 bg-foreground/[0.02] rounded-2xl pointer-events-none" />
-          
-          {/* Centered navigation */}
-          <nav className="h-full flex flex-col justify-center items-center space-y-8 px-8">
+          <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
+            <a
+              href="#"
+              className="flex items-center space-x-2"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToTop();
+              }}
+              aria-label="SoulX"
+            >
+              <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
+                Soul X
+              </span>
+            </a>
+
+            <button
+              type="button"
+              className="p-2 rounded-lg border border-border bg-background hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5 text-foreground" />
+            </button>
+          </div>
+
+          <nav className="h-[calc(100dvh-80px)] flex flex-col items-center justify-center gap-8 px-8">
             {navItems.map((item, index) => (
               <a
                 key={item.label}
-                ref={index === navItems.length - 1 ? lastFocusableRef : undefined}
                 href={item.href}
                 className="text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
+                style={{ animationDelay: `${index * 80 + 100}ms` }}
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          
-          {/* Footer in mobile menu */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
-            <p className="text-sm text-muted-foreground">Let's create something amazing together</p>
-          </div>
         </div>
       )}
-    </header>;
+    </header>
+  );
 };
+
 export default Navbar;
