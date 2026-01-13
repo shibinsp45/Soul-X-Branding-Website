@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -134,57 +135,71 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu (full screen) */}
-      {isMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-[100] md:hidden bg-background"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation menu"
-        >
-          <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
-            <a
-              href="#"
-              className="flex items-center space-x-2"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToTop();
-              }}
-              aria-label="SoulX"
-            >
-              <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
-                Soul X
-              </span>
-            </a>
-
-            <button
-              type="button"
-              className="p-2 rounded-lg border border-border bg-background hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5 text-foreground" />
-            </button>
-          </div>
-
-          <nav className="h-[calc(100dvh-80px)] flex flex-col items-center justify-center gap-8 px-8">
-            {navItems.map((item, index) => (
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            id="mobile-menu"
+            className="fixed inset-0 z-[100] md:hidden bg-background"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
               <a
-                key={item.label}
-                href={item.href}
-                className="text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
+                href="#"
+                className="flex items-center space-x-2"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.href);
+                  scrollToTop();
                 }}
-                style={{ animationDelay: `${index * 80 + 100}ms` }}
+                aria-label="SoulX"
               >
-                {item.label}
+                <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
+                  Soul X
+                </span>
               </a>
-            ))}
-          </nav>
-        </div>
-      )}
+
+              <button
+                type="button"
+                className="p-2 rounded-lg border border-border bg-background hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5 text-foreground" />
+              </button>
+            </div>
+
+            <motion.nav
+              className="h-[calc(100dvh-80px)] flex flex-col items-center justify-center gap-8 px-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+            >
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  className="text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.15 + index * 0.05, ease: "easeOut" }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
