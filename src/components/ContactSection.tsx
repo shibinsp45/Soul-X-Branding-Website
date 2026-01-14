@@ -62,7 +62,7 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }, 1000);
   };
-  return <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden" id="contact">
+  return <section ref={sectionRef} className="py-16 md:py-20 bg-background relative overflow-hidden" id="contact">
       {/* Parallax decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl" style={{
       transform: `translateY(${scrollProgress * 100}px)`
