@@ -26,7 +26,7 @@ const AboutVisionSection = () => {
     title: "Craftsmanship",
     description: "Every pixel, every interaction is meticulously designed with intention."
   }];
-  return <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden" id="about">
+  return <section ref={sectionRef} className="py-16 md:py-20 bg-background relative overflow-hidden" id="about">
       {/* Enhanced parallax background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-foreground/[0.02] blur-3xl" style={{
