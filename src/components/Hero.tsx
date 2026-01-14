@@ -124,7 +124,7 @@ const Hero = () => {
               Seamless
             </span>
             <br />
-            <span className="text-muted-foreground inline-block hover:animate-tilt">Experiences</span>
+            <span className="text-foreground/70 inline-block hover:animate-tilt">Experiences</span>
           </h1>
           
           {/* Motto */}
