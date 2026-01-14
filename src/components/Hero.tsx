@@ -133,7 +133,7 @@ const Hero = () => {
         }}>
             Where creativity shapes the
             <br />
-            <span className="font-serif italic font-normal text-foreground/80">human experience</span>
+            <span className="font-sans font-medium text-foreground">human experience</span>
           </p>
           
           {/* CTA Buttons with 3D hover */}
