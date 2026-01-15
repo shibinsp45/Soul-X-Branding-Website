@@ -87,15 +87,6 @@ const Hero = () => {
       }} />
       </div>
       
-      {/* Gradient orbs - hidden in light mode */}
-      <div className="hidden dark:block absolute top-[70%] left-[8%] w-40 h-40 rounded-full blur-3xl bg-primary/5 float-3d" style={{
-      animationDelay: "2s",
-      transform: `translateY(${scrollY * 0.2}px)`
-    }} />
-      <div className="hidden dark:block absolute top-[20%] right-[25%] w-32 h-32 rounded-full blur-2xl bg-foreground/[0.02] float-3d" style={{
-      animationDelay: "4.5s",
-      transform: `translateY(${scrollY * -0.15}px)`
-    }} />
       
       {/* Dark blue gradient at bottom - dark mode only */}
       <div className="hidden dark:block absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[hsl(220,60%,8%)] via-[hsl(220,50%,12%)/0.6] to-transparent pointer-events-none" />
