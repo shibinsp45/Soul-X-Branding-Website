@@ -13,41 +13,41 @@ interface Project {
   tags: string[];
 }
 const projects: Project[] = [{
-  id: "zenith-finance",
-  title: "Zenith Finance",
+  id: "fudit",
+  title: "Fudit",
   category: "UX/UI Design",
-  description: "Complete redesign of a fintech platform focusing on accessibility and user trust.",
-  tags: ["Mobile App", "Web Platform", "Design System"]
+  description: "AI-powered food delivery app that revolutionizes how users discover and order meals.",
+  tags: ["Mobile App", "AI/ML", "Food Tech"]
 }, {
-  id: "artisan-coffee",
-  title: "Artisan Coffee Co.",
-  category: "Brand Identity",
-  description: "Crafting a warm, artisanal brand identity for a specialty coffee roaster.",
-  tags: ["Logo Design", "Packaging", "Brand Guidelines"]
-}, {
-  id: "mindful-app",
-  title: "Mindful",
-  category: "Web Design",
-  description: "Designing a serene digital experience for a meditation and wellness app.",
-  tags: ["Website", "App Design", "Illustration"]
-}, {
-  id: "nova-architecture",
-  title: "Nova Architecture",
-  category: "Brand Identity",
-  description: "Modern, sophisticated branding for an innovative architecture firm.",
-  tags: ["Visual Identity", "Website", "Print Design"]
-}, {
-  id: "healthtrack",
-  title: "HealthTrack",
+  id: "fitness-tracking",
+  title: "Fitness Tracking App",
   category: "UX/UI Design",
-  description: "User-centered design for a healthcare management platform.",
-  tags: ["UX Research", "Prototyping", "Testing"]
+  description: "Comprehensive fitness tracking application designed to motivate and guide users on their wellness journey.",
+  tags: ["Mobile App", "Health Tech", "UX Research"]
 }, {
-  id: "bloom-botanicals",
-  title: "Bloom Botanicals",
+  id: "happy-cart",
+  title: "Happy Cart",
+  category: "Brand Identity",
+  description: "Vibrant and playful branding for an e-commerce shopping platform.",
+  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
+}, {
+  id: "nuren-ai",
+  title: "Nuren AI",
   category: "Web Design",
-  description: "E-commerce experience that brings the beauty of plants to digital.",
-  tags: ["E-commerce", "Photography", "Brand"]
+  description: "Modern landing page design for an AI-powered platform showcasing cutting-edge technology.",
+  tags: ["Landing Page", "AI/ML", "Web Design"]
+}, {
+  id: "trillionair",
+  title: "Trillionair",
+  category: "Web Design",
+  description: "Premium landing page design for a luxury fintech platform with bold aesthetics.",
+  tags: ["Landing Page", "Fintech", "Premium Design"]
+}, {
+  id: "foodit-brand",
+  title: "Foodit",
+  category: "Brand Identity",
+  description: "Complete brand identity system for a modern food delivery service.",
+  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
 }];
 const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 const ProjectsSection = () => {

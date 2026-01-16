@@ -22,125 +22,125 @@ interface CaseStudyData {
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
-  "zenith-finance": {
-    id: "zenith-finance",
-    title: "Zenith Finance",
+  "fudit": {
+    id: "fudit",
+    title: "Fudit",
     category: "UX/UI Design",
-    client: "Zenith Finance",
-    year: "2024",
-    duration: "4 months",
-    overview: "Complete redesign of a fintech platform focusing on accessibility and user trust. We transformed a complex financial tool into an intuitive experience that users love.",
-    challenge: "The existing platform suffered from low user engagement and high abandonment rates. Users found the interface confusing, and trust indicators were poorly communicated. The mobile experience was particularly problematic.",
-    solution: "We conducted extensive user research to understand pain points, then redesigned the entire experience with a focus on clarity, trust, and accessibility. New features included simplified navigation, clear visual hierarchies, and comprehensive onboarding flows.",
-    results: [
-      "40% increase in user engagement",
-      "65% reduction in support tickets",
-      "92% user satisfaction score",
-      "3x faster task completion"
-    ],
-    tags: ["Mobile App", "Web Platform", "Design System"],
-    nextProject: "artisan-coffee",
-    prevProject: "bloom-botanicals"
-  },
-  "artisan-coffee": {
-    id: "artisan-coffee",
-    title: "Artisan Coffee Co.",
-    category: "Brand Identity",
-    client: "Artisan Coffee Co.",
-    year: "2024",
-    duration: "3 months",
-    overview: "Crafting a warm, artisanal brand identity for a specialty coffee roaster. The brand needed to convey quality, craftsmanship, and approachability.",
-    challenge: "The client was launching a new specialty coffee brand and needed a complete visual identity that would stand out in a crowded market while communicating their commitment to quality and sustainability.",
-    solution: "We developed a comprehensive brand identity including logo, packaging, signage, and digital presence. The design language emphasizes handcrafted quality through custom typography and warm, earthy colors.",
-    results: [
-      "Successful launch in 15 retail locations",
-      "Featured in 3 design publications",
-      "200% increase in social media following",
-      "Strong brand recognition within first quarter"
-    ],
-    tags: ["Logo Design", "Packaging", "Brand Guidelines"],
-    nextProject: "mindful-app",
-    prevProject: "zenith-finance"
-  },
-  "mindful-app": {
-    id: "mindful-app",
-    title: "Mindful",
-    category: "Web Design",
-    client: "Mindful Wellness",
+    client: "Fudit Inc.",
     year: "2024",
     duration: "5 months",
-    overview: "Designing a serene digital experience for a meditation and wellness app. The design needed to embody calmness and encourage daily practice.",
-    challenge: "Creating a digital product for wellness presented unique challenges—how do you design an app that encourages users to disconnect? The interface needed to be functional yet peaceful.",
-    solution: "We created a minimalist design language with gentle animations, soothing color palettes, and intuitive navigation. The experience guides users naturally through their wellness journey without overwhelming them.",
+    overview: "AI-powered food delivery app that revolutionizes how users discover and order meals through intelligent recommendations and seamless ordering experience.",
+    challenge: "Users faced decision fatigue when ordering food online. With thousands of options available, choosing the right meal became overwhelming. The existing food delivery landscape lacked personalization and smart recommendations.",
+    solution: "We designed an AI-driven recommendation engine that learns user preferences, dietary restrictions, and ordering patterns. The intuitive interface guides users through a personalized food discovery journey with smart filters and mood-based suggestions.",
     results: [
-      "4.8 star rating on app stores",
-      "85% daily active user retention",
-      "Featured in Apple's 'Apps We Love'",
-      "1M+ downloads in first year"
+      "45% faster ordering process",
+      "3x increase in repeat orders",
+      "92% user satisfaction rate",
+      "Featured in App Store"
     ],
-    tags: ["Website", "App Design", "Illustration"],
-    nextProject: "nova-architecture",
-    prevProject: "artisan-coffee"
+    tags: ["Mobile App", "AI/ML", "Food Tech", "UX Research"],
+    nextProject: "fitness-tracking",
+    prevProject: "foodit-brand"
   },
-  "nova-architecture": {
-    id: "nova-architecture",
-    title: "Nova Architecture",
-    category: "Brand Identity",
-    client: "Nova Architecture Studio",
-    year: "2023",
-    duration: "4 months",
-    overview: "Modern, sophisticated branding for an innovative architecture firm. The identity reflects their bold, contemporary approach to design.",
-    challenge: "Nova needed a brand identity that communicated innovation and precision while maintaining warmth and approachability. Their previous branding felt dated and didn't reflect their award-winning work.",
-    solution: "We developed a geometric visual language inspired by architectural forms. The identity system is flexible enough for various applications while maintaining strong recognition.",
-    results: [
-      "30% increase in RFP responses",
-      "Brand recognized at design awards",
-      "Improved recruitment of top talent",
-      "Client satisfaction score of 95%"
-    ],
-    tags: ["Visual Identity", "Website", "Print Design"],
-    nextProject: "healthtrack",
-    prevProject: "mindful-app"
-  },
-  "healthtrack": {
-    id: "healthtrack",
-    title: "HealthTrack",
+  "fitness-tracking": {
+    id: "fitness-tracking",
+    title: "Fitness Tracking App",
     category: "UX/UI Design",
-    client: "HealthTrack Systems",
-    year: "2023",
+    client: "FitLife Studios",
+    year: "2024",
     duration: "6 months",
-    overview: "User-centered design for a healthcare management platform. The system needed to work seamlessly for patients, providers, and administrators.",
-    challenge: "Healthcare software is notoriously complex. We needed to create an interface that different user types could navigate easily while maintaining compliance with strict healthcare regulations.",
-    solution: "Through extensive research with healthcare professionals and patients, we designed role-specific dashboards and streamlined workflows. Accessibility was paramount throughout the design process.",
+    overview: "Comprehensive fitness tracking application designed to motivate and guide users on their wellness journey with personalized workout plans and progress visualization.",
+    challenge: "Most fitness apps overwhelm users with complex metrics and generic workout plans. Users often abandon apps within the first week due to lack of personalization and motivation.",
+    solution: "We created a user-centered fitness experience with adaptive workout plans, intuitive progress tracking, and gamification elements. The design emphasizes celebration of small wins and builds sustainable habits.",
     results: [
-      "50% reduction in onboarding time",
-      "WCAG 2.1 AA compliance achieved",
-      "Deployed across 200+ clinics",
-      "Patient satisfaction up 45%"
+      "78% user retention after 30 days",
+      "4.9 star app rating",
+      "50% increase in workout completion",
+      "1M+ active users"
     ],
-    tags: ["UX Research", "Prototyping", "Testing"],
-    nextProject: "bloom-botanicals",
-    prevProject: "nova-architecture"
+    tags: ["Mobile App", "Health Tech", "UX Research", "Gamification"],
+    nextProject: "happy-cart",
+    prevProject: "fudit"
   },
-  "bloom-botanicals": {
-    id: "bloom-botanicals",
-    title: "Bloom Botanicals",
-    category: "Web Design",
-    client: "Bloom Botanicals",
-    year: "2023",
+  "happy-cart": {
+    id: "happy-cart",
+    title: "Happy Cart",
+    category: "Brand Identity",
+    client: "Happy Cart E-commerce",
+    year: "2024",
     duration: "3 months",
-    overview: "E-commerce experience that brings the beauty of plants to digital. The design celebrates nature while driving conversions.",
-    challenge: "Selling plants online is challenging—customers can't touch or smell the products. The website needed to create an immersive experience that would build confidence in purchasing living products online.",
-    solution: "We created a visually rich e-commerce experience with detailed product photography, care guides integrated into the shopping flow, and a personalized plant recommendation quiz.",
+    overview: "Vibrant and playful branding for an e-commerce shopping platform that brings joy to online shopping through delightful visual experiences.",
+    challenge: "The e-commerce market is saturated with similar-looking brands. Happy Cart needed a distinctive identity that would resonate with younger audiences while maintaining trust and professionalism.",
+    solution: "We developed a cheerful brand identity with a custom mascot, vibrant color palette, and playful typography. The design system extends across packaging, digital touchpoints, and marketing materials.",
     results: [
-      "150% increase in conversion rate",
-      "Average order value up 35%",
-      "Cart abandonment reduced by 40%",
-      "Return rate below industry average"
+      "Brand recognition up 200%",
+      "35% increase in engagement",
+      "Featured in Behance galleries",
+      "Successful launch in 3 markets"
     ],
-    tags: ["E-commerce", "Photography", "Brand"],
-    nextProject: "zenith-finance",
-    prevProject: "healthtrack"
+    tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Packaging"],
+    nextProject: "nuren-ai",
+    prevProject: "fitness-tracking"
+  },
+  "nuren-ai": {
+    id: "nuren-ai",
+    title: "Nuren AI",
+    category: "Web Design",
+    client: "Nuren Technologies",
+    year: "2024",
+    duration: "2 months",
+    overview: "Modern landing page design for an AI-powered platform showcasing cutting-edge technology with elegant visuals and clear value propositions.",
+    challenge: "AI products often struggle to communicate complex technology in an accessible way. Nuren needed a landing page that would demystify their AI capabilities while building trust with potential users.",
+    solution: "We designed a sleek, modern landing page with animated visualizations that explain AI concepts intuitively. The design balances technical credibility with approachable language and clear CTAs.",
+    results: [
+      "65% increase in conversions",
+      "Average time on page: 4 min",
+      "40% reduction in bounce rate",
+      "Successfully raised Series A"
+    ],
+    tags: ["Landing Page", "AI/ML", "Web Design", "Motion Design"],
+    nextProject: "trillionair",
+    prevProject: "happy-cart"
+  },
+  "trillionair": {
+    id: "trillionair",
+    title: "Trillionair",
+    category: "Web Design",
+    client: "Trillionair Finance",
+    year: "2024",
+    duration: "3 months",
+    overview: "Premium landing page design for a luxury fintech platform with bold aesthetics that communicate exclusivity and financial sophistication.",
+    challenge: "High-net-worth individuals expect digital experiences that match their lifestyle. Trillionair needed a web presence that exuded luxury, trust, and financial expertise.",
+    solution: "We crafted an immersive landing experience with premium animations, sophisticated typography, and a dark, elegant color scheme. Every interaction reinforces the brand's exclusive positioning.",
+    results: [
+      "300% increase in qualified leads",
+      "Featured in Awwwards",
+      "Average account size up 45%",
+      "Industry recognition awards"
+    ],
+    tags: ["Landing Page", "Fintech", "Premium Design", "Animation"],
+    nextProject: "foodit-brand",
+    prevProject: "nuren-ai"
+  },
+  "foodit-brand": {
+    id: "foodit-brand",
+    title: "Foodit",
+    category: "Brand Identity",
+    client: "Foodit Delivery",
+    year: "2024",
+    duration: "4 months",
+    overview: "Complete brand identity system for a modern food delivery service that balances appetite appeal with technological innovation.",
+    challenge: "Food delivery services often look generic or overly tech-focused. Foodit needed a brand that would feel fresh, appetizing, and memorable while conveying reliability and speed.",
+    solution: "We created a mouth-watering brand identity with custom illustrations, a warm color palette, and typography that feels both modern and approachable. The system works seamlessly across app, packaging, and marketing.",
+    results: [
+      "Brand recall up 180%",
+      "Social engagement doubled",
+      "Successful market expansion",
+      "Design awards recognition"
+    ],
+    tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Illustration"],
+    nextProject: "fudit",
+    prevProject: "trillionair"
   }
 };
 
