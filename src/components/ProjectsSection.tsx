@@ -46,7 +46,8 @@ const projects: Project[] = [{
   title: "Trillionair",
   category: "Web Design",
   description: "Premium landing page design for a luxury fintech platform with bold aesthetics.",
-  tags: ["Landing Page", "Fintech", "Premium Design"]
+  tags: ["Landing Page", "Fintech", "Premium Design"],
+  image: "/projects/trillionair-cover.png"
 }, {
   id: "foodit-brand",
   title: "Foodit",

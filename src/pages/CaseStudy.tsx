@@ -125,7 +125,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Landing Page", "Fintech", "Premium Design", "Animation"],
     nextProject: "foodit-brand",
-    prevProject: "nuren-ai"
+    prevProject: "nuren-ai",
+    image: "/projects/trillionair-cover.png"
   },
   "foodit-brand": {
     id: "foodit-brand",
