@@ -19,6 +19,7 @@ interface CaseStudyData {
   tags: string[];
   nextProject?: string;
   prevProject?: string;
+  image?: string;
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -40,7 +41,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Mobile App", "AI/ML", "Food Tech", "UX Research"],
     nextProject: "fitness-tracking",
-    prevProject: "foodit-brand"
+    prevProject: "elitepath",
+    image: "/projects/fudit-cover.png"
   },
   "fitness-tracking": {
     id: "fitness-tracking",
@@ -60,7 +62,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Mobile App", "Health Tech", "UX Research", "Gamification"],
     nextProject: "happy-cart",
-    prevProject: "fudit"
+    prevProject: "fudit",
+    image: "/projects/fitness-cover.png"
   },
   "happy-cart": {
     id: "happy-cart",
@@ -80,7 +83,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Packaging"],
     nextProject: "nuren-ai",
-    prevProject: "fitness-tracking"
+    prevProject: "fitness-tracking",
+    image: "/projects/happycart-cover.png"
   },
   "nuren-ai": {
     id: "nuren-ai",
@@ -100,7 +104,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Landing Page", "AI/ML", "Web Design", "Motion Design"],
     nextProject: "trillionair",
-    prevProject: "happy-cart"
+    prevProject: "happy-cart",
+    image: "/projects/nuren-cover.png"
   },
   "trillionair": {
     id: "trillionair",
@@ -139,8 +144,29 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Design awards recognition"
     ],
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Illustration"],
-    nextProject: "fudit",
+    nextProject: "elitepath",
     prevProject: "trillionair"
+  },
+  "elitepath": {
+    id: "elitepath",
+    title: "ElitePath",
+    category: "UX/UI Design",
+    client: "ElitePath Education",
+    year: "2024",
+    duration: "4 months",
+    overview: "Student management dashboard that streamlines academic administration and enhances learning experiences through intuitive design and powerful analytics.",
+    challenge: "Educational institutions struggle with fragmented systems for managing students, courses, and performance tracking. Administrators and students alike face confusion navigating multiple platforms.",
+    solution: "We designed a unified dashboard that centralizes student management, course scheduling, performance analytics, and communication tools. The clean, intuitive interface reduces administrative overhead while empowering students.",
+    results: [
+      "60% reduction in admin time",
+      "95% user adoption rate",
+      "40% improvement in grades",
+      "Deployed in 50+ institutions"
+    ],
+    tags: ["Dashboard", "EdTech", "Web App", "Data Visualization"],
+    nextProject: "fudit",
+    prevProject: "foodit-brand",
+    image: "/projects/elitepath-cover.png"
   }
 };
 
@@ -225,9 +251,17 @@ const CaseStudy = () => {
         <div className="section-container">
           <AnimatedSection animation="scale">
             <div className="aspect-[16/9] bg-gradient-to-br from-secondary to-muted rounded-2xl flex items-center justify-center overflow-hidden group glow-effect">
-              <span className="text-[15vw] md:text-[10vw] font-serif italic text-foreground/10 group-hover:scale-110 transition-transform duration-700">
-                {study.title.charAt(0)}
-              </span>
+              {study.image ? (
+                <img 
+                  src={study.image} 
+                  alt={study.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              ) : (
+                <span className="text-[15vw] md:text-[10vw] font-serif italic text-foreground/10 group-hover:scale-110 transition-transform duration-700">
+                  {study.title.charAt(0)}
+                </span>
+              )}
             </div>
           </AnimatedSection>
         </div>
