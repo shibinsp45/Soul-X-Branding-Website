@@ -11,31 +11,36 @@ interface Project {
   category: string;
   description: string;
   tags: string[];
+  image?: string;
 }
 const projects: Project[] = [{
   id: "fudit",
   title: "Fudit",
   category: "UX/UI Design",
   description: "AI-powered food delivery app that revolutionizes how users discover and order meals.",
-  tags: ["Mobile App", "AI/ML", "Food Tech"]
+  tags: ["Mobile App", "AI/ML", "Food Tech"],
+  image: "/projects/fudit-cover.png"
 }, {
   id: "fitness-tracking",
   title: "Fitness Tracking App",
   category: "UX/UI Design",
   description: "Comprehensive fitness tracking application designed to motivate and guide users on their wellness journey.",
-  tags: ["Mobile App", "Health Tech", "UX Research"]
+  tags: ["Mobile App", "Health Tech", "UX Research"],
+  image: "/projects/fitness-cover.png"
 }, {
   id: "happy-cart",
   title: "Happy Cart",
   category: "Brand Identity",
   description: "Vibrant and playful branding for an e-commerce shopping platform.",
-  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
+  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+  image: "/projects/happycart-cover.png"
 }, {
   id: "nuren-ai",
   title: "Nuren AI",
   category: "Web Design",
   description: "Modern landing page design for an AI-powered platform showcasing cutting-edge technology.",
-  tags: ["Landing Page", "AI/ML", "Web Design"]
+  tags: ["Landing Page", "AI/ML", "Web Design"],
+  image: "/projects/nuren-cover.png"
 }, {
   id: "trillionair",
   title: "Trillionair",
@@ -48,6 +53,13 @@ const projects: Project[] = [{
   category: "Brand Identity",
   description: "Complete brand identity system for a modern food delivery service.",
   tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
+}, {
+  id: "elitepath",
+  title: "ElitePath",
+  category: "UX/UI Design",
+  description: "Student management dashboard that streamlines academic administration and enhances learning experiences.",
+  tags: ["Dashboard", "EdTech", "Web App"],
+  image: "/projects/elitepath-cover.png"
 }];
 const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 const ProjectsSection = () => {
@@ -107,18 +119,31 @@ const ProjectsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => <ScrollTriggered3DCard key={project.id} delay={index * 100}>
               <Link to={`/project/${project.id}`} className="group block bg-background rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect">
-                {/* Project Image Placeholder with parallax */}
+                {/* Project Image with parallax */}
                 <div className="aspect-[4/3] bg-muted relative overflow-hidden">
-                  <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-500" />
-                  <div className="absolute inset-0 flex items-center justify-center" style={{
-                transform: `scale(${1 + scrollProgress * 0.1})`
-              }}>
-                    <span className="text-7xl font-serif italic text-foreground/10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-700">
-                      {project.title.charAt(0)}
-                    </span>
-                  </div>
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{
+                        transform: `scale(${1 + scrollProgress * 0.05})`
+                      }}
+                    />
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-500" />
+                      <div className="absolute inset-0 flex items-center justify-center" style={{
+                        transform: `scale(${1 + scrollProgress * 0.1})`
+                      }}>
+                        <span className="text-7xl font-serif italic text-foreground/10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-700">
+                          {project.title.charAt(0)}
+                        </span>
+                      </div>
+                    </>
+                  )}
                   {/* Hover overlay with 3D arrow */}
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 rotate-0 group-hover:rotate-45 transition-all duration-500">
                       <ArrowUpRight className="w-5 h-5" />
                     </div>
