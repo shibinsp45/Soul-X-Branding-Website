@@ -56,6 +56,13 @@ const projects: Project[] = [{
   tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
   image: "/projects/foodit-cover.png"
 }, {
+  id: "beat",
+  title: "Beat",
+  category: "Web Design",
+  description: "Modern landing page for a music streaming platform with vibrant purple aesthetics and dynamic interactions.",
+  tags: ["Landing Page", "Music Tech", "Web Design"],
+  image: "/projects/beat-cover.png"
+}, {
   id: "elitepath",
   title: "ElitePath",
   category: "UX/UI Design",

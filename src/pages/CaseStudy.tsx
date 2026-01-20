@@ -145,9 +145,30 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Design awards recognition"
     ],
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Illustration"],
-    nextProject: "elitepath",
+    nextProject: "beat",
     prevProject: "trillionair",
     image: "/projects/foodit-cover.png"
+  },
+  "beat": {
+    id: "beat",
+    title: "Beat",
+    category: "Web Design",
+    client: "Beat Music",
+    year: "2024",
+    duration: "2 months",
+    overview: "Modern landing page for a music streaming platform featuring vibrant purple aesthetics and dynamic interactions that capture the energy of music.",
+    challenge: "The music streaming market is crowded with established players. Beat needed a landing page that would stand out, convey the energy of music, and convert visitors into subscribers.",
+    solution: "We designed a bold, immersive landing experience with dynamic animations, a striking purple color palette, and interactive elements that respond to user engagement. The design captures the rhythm and energy of music.",
+    results: [
+      "150% increase in signups",
+      "Average session time: 5 min",
+      "Social shares up 300%",
+      "Featured on design blogs"
+    ],
+    tags: ["Landing Page", "Music Tech", "Web Design", "Animation"],
+    nextProject: "elitepath",
+    prevProject: "foodit-brand",
+    image: "/projects/beat-cover.png"
   },
   "elitepath": {
     id: "elitepath",
@@ -167,7 +188,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Dashboard", "EdTech", "Web App", "Data Visualization"],
     nextProject: "fudit",
-    prevProject: "foodit-brand",
+    prevProject: "beat",
     image: "/projects/elitepath-cover.png"
   }
 };
