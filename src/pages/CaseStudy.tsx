@@ -146,7 +146,8 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Illustration"],
     nextProject: "elitepath",
-    prevProject: "trillionair"
+    prevProject: "trillionair",
+    image: "/projects/foodit-cover.png"
   },
   "elitepath": {
     id: "elitepath",

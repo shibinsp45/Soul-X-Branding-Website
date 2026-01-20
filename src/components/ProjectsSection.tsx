@@ -53,7 +53,8 @@ const projects: Project[] = [{
   title: "Foodit",
   category: "Brand Identity",
   description: "Complete brand identity system for a modern food delivery service.",
-  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
+  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+  image: "/projects/foodit-cover.png"
 }, {
   id: "elitepath",
   title: "ElitePath",
