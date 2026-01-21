@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import { ArrowRight } from "lucide-react";
-import Parallax3DBackground from "./Parallax3DBackground";
 import InteractiveParticles from "./InteractiveParticles";
+
+const GalaxyBackground = React.lazy(() => import("./GalaxyBackground"));
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
@@ -15,19 +17,13 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
-      {/* 3D Parallax Background */}
-      <Parallax3DBackground />
+      {/* Galaxy Background for dark mode */}
+      <Suspense fallback={null}>
+        <GalaxyBackground />
+      </Suspense>
       
       {/* Interactive Particles */}
       <InteractiveParticles />
-      
-      {/* Animated grid pattern with 3D perspective - hidden in light mode */}
-      <div className="hidden dark:block absolute inset-0 opacity-[0.03]" style={{
-      backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-      backgroundSize: '80px 80px',
-      transform: `translateY(${scrollY * 0.1}px)`
-    }} />
       
       
       
