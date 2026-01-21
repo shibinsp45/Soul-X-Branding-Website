@@ -57,10 +57,10 @@ const projects: Project[] = [{
   image: "/projects/foodit-cover.png"
 }, {
   id: "beat",
-  title: "Beat",
+  title: "Beat Education",
   category: "Web Design",
-  description: "Modern landing page for a music streaming platform with vibrant purple aesthetics and dynamic interactions.",
-  tags: ["Landing Page", "Music Tech", "Web Design"],
+  description: "Dynamic landing page for an entrepreneurial training platform that transforms students into startup founders through hands-on venture building.",
+  tags: ["Landing Page", "EdTech", "Web Design"],
   image: "/projects/beat-cover.png"
 }, {
   id: "elitepath",
