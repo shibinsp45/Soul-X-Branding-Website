@@ -86,15 +86,6 @@ const Parallax3DBackground: React.FC<Parallax3DBackgroundProps> = ({ className =
       <div className="hidden dark:block particle particle-1 top-1/2 left-10 w-2.5 h-2.5 bg-foreground/5" style={{ animationDelay: '5s' }} />
       <div className="hidden dark:block particle particle-2 bottom-20 right-20 w-1.5 h-1.5 bg-foreground/10" style={{ animationDelay: '3s' }} />
 
-      {/* Glowing orbs - hidden in light mode */}
-      <div 
-        className="hidden dark:block absolute top-1/4 right-1/4 w-64 h-64 rounded-full orb-glow"
-        style={{ animationDelay: '0s' }}
-      />
-      <div 
-        className="hidden dark:block absolute bottom-1/3 left-1/4 w-48 h-48 rounded-full orb-glow"
-        style={{ animationDelay: '2s' }}
-      />
     </div>
   );
 };
