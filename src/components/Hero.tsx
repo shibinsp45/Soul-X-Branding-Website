@@ -29,63 +29,7 @@ const Hero = () => {
       transform: `translateY(${scrollY * 0.1}px)`
     }} />
       
-      {/* 3D Floating decorative elements - hidden in light mode */}
-      <div className="hidden dark:block absolute top-1/4 left-10 w-16 h-16 border border-foreground/10 rounded-2xl float-3d" style={{
-      animationDelay: "0s",
-      transform: `translateY(${scrollY * 0.15}px) rotateX(${scrollY * 0.05}deg)`
-    }} />
-      <div className="hidden dark:block absolute top-1/3 right-20 w-24 h-24 border border-foreground/5 rounded-full float-3d" style={{
-      animationDelay: "2s",
-      transform: `translateY(${scrollY * -0.1}px) rotateY(${scrollY * 0.08}deg)`
-    }} />
-      <div className="hidden dark:block absolute bottom-1/3 left-1/4 w-12 h-12 border border-foreground/10 rotate-45 float-3d" style={{
-      animationDelay: "4s",
-      transform: `translateY(${scrollY * 0.2}px) rotateZ(${45 + scrollY * 0.1}deg)`
-    }} />
-      <div className="hidden dark:block absolute top-1/2 right-1/4 w-20 h-20 bg-foreground/[0.02] rounded-full blob-morph" />
       
-      {/* New 3D geometric elements - hidden in light mode */}
-      <div className="hidden dark:block absolute top-[15%] right-[15%] w-32 h-32 border border-foreground/5 rounded-3xl float-3d" style={{
-      animationDelay: "1s",
-      transform: `translateY(${scrollY * -0.12}px) rotateX(${scrollY * 0.03}deg) rotateY(${scrollY * 0.05}deg)`,
-      background: "linear-gradient(135deg, hsl(var(--foreground) / 0.02), transparent)"
-    }} />
-      <div className="hidden dark:block absolute bottom-[20%] right-[10%] w-8 h-8 bg-primary/10 rounded-full float-3d" style={{
-      animationDelay: "3s",
-      transform: `translateY(${scrollY * 0.25}px) scale(${1 + scrollY * 0.0005})`
-    }} />
-      <div className="hidden dark:block absolute top-[40%] left-[5%] w-6 h-6 border-2 border-foreground/10 rounded-full float-3d" style={{
-      animationDelay: "5s",
-      transform: `translateY(${scrollY * -0.18}px)`
-    }} />
-      <div className="hidden dark:block absolute bottom-[25%] left-[15%] w-14 h-14 border border-primary/20 rotate-12 float-3d" style={{
-      animationDelay: "2.5s",
-      transform: `translateY(${scrollY * 0.15}px) rotateZ(${12 + scrollY * 0.08}deg)`
-    }} />
-      
-      {/* 3D Floating rings - hidden in light mode */}
-      <div className="hidden dark:block absolute top-[60%] right-[30%] w-28 h-28 border-2 border-foreground/5 rounded-full float-3d" style={{
-      animationDelay: "1.5s",
-      transform: `translateY(${scrollY * -0.08}px) rotateX(${60 + scrollY * 0.02}deg)`
-    }} />
-      <div className="hidden dark:block absolute top-[25%] left-[30%] w-20 h-20 border border-foreground/[0.03] rounded-full float-3d" style={{
-      animationDelay: "4s",
-      transform: `translateY(${scrollY * 0.1}px) rotateY(${scrollY * 0.06}deg)`
-    }} />
-      
-      {/* 3D Cube wireframe effect - hidden in light mode */}
-      <div className="hidden dark:block absolute bottom-[40%] right-[5%] w-16 h-16 float-3d" style={{
-      animationDelay: "3.5s",
-      transform: `translateY(${scrollY * -0.15}px) rotateX(${scrollY * 0.1}deg) rotateY(${scrollY * 0.1}deg)`,
-      transformStyle: "preserve-3d"
-    }}>
-        <div className="absolute inset-0 border border-foreground/10" style={{
-        transform: "translateZ(8px)"
-      }} />
-        <div className="absolute inset-0 border border-foreground/5" style={{
-        transform: "translateZ(-8px)"
-      }} />
-      </div>
       
       
       
