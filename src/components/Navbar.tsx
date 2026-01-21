@@ -72,7 +72,7 @@ const Navbar = () => {
           : "bg-transparent"
       )}
     >
-      <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <a
           href="#"
@@ -148,7 +148,7 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
+            <div className="container max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
               <a
                 href="#"
                 className="flex items-center space-x-2"
