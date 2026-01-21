@@ -151,21 +151,21 @@ const caseStudies: Record<string, CaseStudyData> = {
   },
   "beat": {
     id: "beat",
-    title: "Beat",
+    title: "Beat Education",
     category: "Web Design",
-    client: "Beat Music",
+    client: "Beat School of Business",
     year: "2024",
     duration: "2 months",
-    overview: "Modern landing page for a music streaming platform featuring vibrant purple aesthetics and dynamic interactions that capture the energy of music.",
-    challenge: "The music streaming market is crowded with established players. Beat needed a landing page that would stand out, convey the energy of music, and convert visitors into subscribers.",
-    solution: "We designed a bold, immersive landing experience with dynamic animations, a striking purple color palette, and interactive elements that respond to user engagement. The design captures the rhythm and energy of music.",
+    overview: "Dynamic landing page for an entrepreneurial training platform that replaces traditional classroom learning with a startup studio approach, guiding students from idea to investor pitch through hands-on venture building.",
+    challenge: "Beat Education needed a digital presence that would differentiate their innovative startup-studio learning model from traditional business schools and training institutes, while appealing to aspiring entrepreneurs.",
+    solution: "We crafted an immersive landing experience with bold purple aesthetics and dynamic interactions that convey innovation and entrepreneurial energy. The design emphasizes the hands-on, action-oriented nature of their Business Entrepreneurship Action Training approach.",
     results: [
-      "150% increase in signups",
-      "Average session time: 5 min",
-      "Social shares up 300%",
-      "Featured on design blogs"
+      "200% increase in enrollment inquiries",
+      "85% improvement in page engagement",
+      "Student applications doubled",
+      "Featured in EdTech publications"
     ],
-    tags: ["Landing Page", "Music Tech", "Web Design", "Animation"],
+    tags: ["Landing Page", "EdTech", "Web Design", "Animation"],
     nextProject: "elitepath",
     prevProject: "foodit-brand",
     image: "/projects/beat-cover.png"
