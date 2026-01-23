@@ -44,9 +44,9 @@ function StarField({ count = 5000 }) {
 function GalaxySpiral({ count = 8000 }) {
   const ref = useRef<THREE.Points>(null);
   
-  const positions = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
+  const { positions, colors } = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    const cols = new Float32Array(count * 3);
     
     const branches = 4;
     const spin = 2;
@@ -64,18 +64,18 @@ function GalaxySpiral({ count = 8000 }) {
       const randomY = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radius * 0.3;
       const randomZ = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radius;
       
-      positions[i * 3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
-      positions[i * 3 + 1] = randomY;
-      positions[i * 3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
+      pos[i * 3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
+      pos[i * 3 + 1] = randomY;
+      pos[i * 3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
       
       const mixedColor = insideColor.clone();
       mixedColor.lerp(outsideColor, radius / 8);
       
-      colors[i * 3] = mixedColor.r;
-      colors[i * 3 + 1] = mixedColor.g;
-      colors[i * 3 + 2] = mixedColor.b;
+      cols[i * 3] = mixedColor.r;
+      cols[i * 3 + 1] = mixedColor.g;
+      cols[i * 3 + 2] = mixedColor.b;
     }
-    return { positions, colors };
+    return { positions: pos, colors: cols };
   }, [count]);
 
   useFrame((state) => {
@@ -85,7 +85,7 @@ function GalaxySpiral({ count = 8000 }) {
   });
 
   return (
-    <Points ref={ref} positions={positions.positions} colors={positions.colors} stride={3} frustumCulled={false}>
+    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
         vertexColors
