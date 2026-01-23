@@ -1,6 +1,6 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
+import { Points, PointMaterial, Line } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Lovable injects `data-lov-*` attributes into JSX elements for editing.
@@ -172,7 +172,109 @@ function NebulaCloud({ count = 1000 }) {
   );
 }
 
+interface ShootingStar {
+  id: number;
+  start: [number, number, number];
+  end: [number, number, number];
+  progress: number;
+  speed: number;
+  opacity: number;
+}
+
+function ShootingStars({ reducedMotion }: { reducedMotion: boolean }) {
+  const [stars, setStars] = useState<ShootingStar[]>([]);
+  const nextId = useRef(0);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+
+    const spawnStar = () => {
+      const x = (Math.random() - 0.5) * 30;
+      const y = Math.random() * 10 + 5;
+      const z = (Math.random() - 0.5) * 20;
+      
+      const angle = Math.random() * Math.PI * 0.5 + Math.PI * 0.25;
+      const length = Math.random() * 3 + 2;
+      
+      const newStar: ShootingStar = {
+        id: nextId.current++,
+        start: [x, y, z],
+        end: [x + Math.cos(angle) * length, y - Math.sin(angle) * length, z],
+        progress: 0,
+        speed: Math.random() * 0.02 + 0.015,
+        opacity: 1,
+      };
+      
+      setStars(prev => [...prev, newStar]);
+    };
+
+    const interval = setInterval(() => {
+      if (Math.random() > 0.7) spawnStar();
+    }, 800);
+
+    return () => clearInterval(interval);
+  }, [reducedMotion]);
+
+  useFrame(() => {
+    if (reducedMotion) return;
+    
+    setStars(prev => 
+      prev
+        .map(star => ({
+          ...star,
+          progress: star.progress + star.speed,
+          opacity: star.progress > 0.7 ? 1 - (star.progress - 0.7) / 0.3 : 1,
+        }))
+        .filter(star => star.progress < 1)
+    );
+  });
+
+  if (reducedMotion) return null;
+
+  return (
+    <>
+      {stars.map(star => {
+        const currentPos: [number, number, number] = [
+          star.start[0] + (star.end[0] - star.start[0]) * star.progress,
+          star.start[1] + (star.end[1] - star.start[1]) * star.progress,
+          star.start[2] + (star.end[2] - star.start[2]) * star.progress,
+        ];
+        
+        const tailLength = 0.15;
+        const tailStart = Math.max(0, star.progress - tailLength);
+        const tailPos: [number, number, number] = [
+          star.start[0] + (star.end[0] - star.start[0]) * tailStart,
+          star.start[1] + (star.end[1] - star.start[1]) * tailStart,
+          star.start[2] + (star.end[2] - star.start[2]) * tailStart,
+        ];
+
+        return (
+          <Line
+            key={star.id}
+            points={[tailPos, currentPos]}
+            color="#ffffff"
+            lineWidth={2}
+            transparent
+            opacity={star.opacity * 0.8}
+          />
+        );
+      })}
+    </>
+  );
+}
+
 const GalaxyBackground: React.FC = () => {
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+    
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
   return (
     <div className="absolute inset-0 hidden dark:block">
       <Canvas
@@ -184,6 +286,7 @@ const GalaxyBackground: React.FC = () => {
         <StarField count={3000} />
         <GalaxySpiral count={6000} />
         <NebulaCloud count={800} />
+        <ShootingStars reducedMotion={reducedMotion} />
       </Canvas>
     </div>
   );
