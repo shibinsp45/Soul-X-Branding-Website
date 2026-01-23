@@ -3,6 +3,42 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Lovable injects `data-lov-*` attributes into JSX elements for editing.
+// React Three Fiber interprets dashed props as nested property paths (e.g. `data-lov-id` -> obj.data.lov.id)
+// and will crash if the intermediate objects don't exist.
+//
+// This patch ensures common Three.js instance types have a safe `data.lov` object.
+let __lovableThreeDataPatched = false;
+function patchPrototypeData(proto: any) {
+  if (!proto) return;
+  if (Object.getOwnPropertyDescriptor(proto, 'data')) return;
+
+  Object.defineProperty(proto, 'data', {
+    configurable: true,
+    get() {
+      const self = this as any;
+      if (!self.__lovableData) self.__lovableData = { lov: {} };
+      if (!self.__lovableData.lov) self.__lovableData.lov = {};
+      return self.__lovableData;
+    },
+    set(v) {
+      (this as any).__lovableData = v;
+    },
+  });
+}
+
+function ensureLovableThreeDataPatch() {
+  if (__lovableThreeDataPatched) return;
+  __lovableThreeDataPatched = true;
+
+  patchPrototypeData((THREE as any).Object3D?.prototype);
+  patchPrototypeData((THREE as any).Material?.prototype);
+  patchPrototypeData((THREE as any).BufferGeometry?.prototype);
+  patchPrototypeData((THREE as any).Texture?.prototype);
+}
+
+ensureLovableThreeDataPatch();
+
 function StarField({ count = 5000 }) {
   const ref = useRef<THREE.Points>(null);
   
@@ -85,7 +121,7 @@ function GalaxySpiral({ count = 8000 }) {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+    <Points ref={ref} positions={positions} colors={colors} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
         vertexColors
