@@ -1,8 +1,19 @@
 import React, { useEffect, useRef, useState, Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import InteractiveParticles from "./InteractiveParticles";
+import GalaxyErrorBoundary from "./GalaxyErrorBoundary";
 
 const GalaxyBackground = React.lazy(() => import("./GalaxyBackground"));
+
+// Static fallback gradient for when WebGL fails
+const GalaxyFallback = () => (
+  <div 
+    className="absolute inset-0 dark:block hidden"
+    style={{
+      background: 'radial-gradient(ellipse at center, hsl(var(--primary) / 0.15) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, hsl(265 90% 50% / 0.1) 0%, transparent 40%), hsl(var(--background))',
+    }}
+  />
+);
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -17,10 +28,12 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
-      {/* Galaxy Background for dark mode */}
-      <Suspense fallback={null}>
-        <GalaxyBackground />
-      </Suspense>
+      {/* Galaxy Background for dark mode - wrapped in error boundary */}
+      <GalaxyErrorBoundary fallback={<GalaxyFallback />}>
+        <Suspense fallback={null}>
+          <GalaxyBackground />
+        </Suspense>
+      </GalaxyErrorBoundary>
       
       {/* Interactive Particles */}
       <InteractiveParticles />
