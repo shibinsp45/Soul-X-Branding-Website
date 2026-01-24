@@ -89,23 +89,7 @@ const ProjectsSection = () => {
   }, []);
   const filteredProjects = activeCategory === "All" ? projects : projects.filter(p => p.category === activeCategory);
   return <section ref={sectionRef} className="py-16 md:py-20 bg-secondary relative overflow-hidden" id="projects">
-      {/* Parallax decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-foreground/[0.02] rounded-full blur-3xl" style={{
-      transform: `translateY(${scrollProgress * 100}px)`
-    }} />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/[0.02] rounded-full blur-2xl" style={{
-      transform: `translateY(${scrollProgress * -50}px)`
-    }} />
       
-      {/* 3D floating shapes */}
-      <div className="absolute top-32 left-10 w-20 h-20 border border-foreground/5 rounded-2xl float-3d" style={{
-      animationDelay: '0s'
-    }} />
-      <div className="absolute top-1/2 right-20 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{
-      animationDelay: '2s'
-    }} />
-      <div className="absolute bottom-32 left-1/3 w-24 h-24 bg-foreground/[0.01] blob-morph" />
-
       <div className="section-container relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <SectionHeading
@@ -125,26 +109,21 @@ const ProjectsSection = () => {
         </div>
         
         {/* Projects Grid with 3D cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 sm:px-0">
           {filteredProjects.map((project, index) => <ScrollTriggered3DCard key={project.id} delay={index * 100}>
-              <Link to={`/project/${project.id}`} className="group block bg-background rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect">
-                {/* Project Image with parallax */}
-                <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+              <Link to={`/project/${project.id}`} className="group block bg-background rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect max-w-sm mx-auto md:max-w-none">
+                {/* Project Image */}
+                <div className="aspect-[4/3] bg-muted relative overflow-hidden flex items-center justify-center">
                   {project.image ? (
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{
-                        transform: `scale(${1 + scrollProgress * 0.05})`
-                      }}
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-500" />
-                      <div className="absolute inset-0 flex items-center justify-center" style={{
-                        transform: `scale(${1 + scrollProgress * 0.1})`
-                      }}>
+                      <div className="absolute inset-0 flex items-center justify-center">
                         <span className="text-7xl font-serif italic text-foreground/10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-700">
                           {project.title.charAt(0)}
                         </span>
