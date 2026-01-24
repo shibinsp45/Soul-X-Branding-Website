@@ -81,17 +81,7 @@ const Hero = () => {
   return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
       {/* Space horizon background for dark mode */}
       <SpaceHorizonBackground />
-      
-      
-      
-      {/* Large decorative text with parallax */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" style={{
-      transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`
-    }}>
-        <span className="text-[20vw] font-display font-bold text-foreground/[0.02] select-none whitespace-nowrap">
-          SOULX
-        </span>
-      </div>
+
       
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center" style={{
