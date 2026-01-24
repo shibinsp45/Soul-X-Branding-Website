@@ -1,6 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
+// Space horizon background with planet silhouette and glow
+const SpaceHorizonBackground = () => (
+  <div className="absolute inset-0 overflow-hidden dark:block hidden">
+    {/* Dark space background */}
+    <div className="absolute inset-0 bg-black" />
+    
+    {/* Subtle stars */}
+    <div className="absolute inset-0">
+      {[...Array(80)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-white/60"
+          style={{
+            width: Math.random() * 2 + 1 + 'px',
+            height: Math.random() * 2 + 1 + 'px',
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 70 + '%',
+            opacity: Math.random() * 0.6 + 0.2,
+          }}
+        />
+      ))}
+    </div>
+    
+    {/* Glow behind planet */}
+    <div 
+      className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[200%] aspect-square"
+      style={{
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, rgba(255,255,255,0.02) 35%, transparent 55%)',
+      }}
+    />
+    
+    {/* Planet silhouette - large curved arc at bottom */}
+    <div 
+      className="absolute left-1/2 -translate-x-1/2 w-[250%] aspect-square rounded-full bg-[#0a0a0a]"
+      style={{
+        bottom: '-220%',
+        boxShadow: 'inset 0 200px 150px -100px rgba(30,30,30,1)',
+      }}
+    />
+  </div>
+);
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
@@ -14,6 +56,8 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
+      {/* Space horizon background for dark mode */}
+      <SpaceHorizonBackground />
       
       
       
