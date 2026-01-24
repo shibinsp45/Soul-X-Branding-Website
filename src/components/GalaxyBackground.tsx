@@ -492,8 +492,6 @@ const GalaxyBackground: React.FC = () => {
         <ambientLight intensity={0.1} />
         <StarField count={3000} />
         <GalaxySpiral count={6000} />
-        <NebulaCloud count={800} />
-        <ShootingStarsWithBursts reducedMotion={reducedMotion} />
       </Canvas>
     </div>
   );

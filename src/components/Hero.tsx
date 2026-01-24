@@ -8,10 +8,7 @@ const GalaxyBackground = React.lazy(() => import("./GalaxyBackground"));
 // Static fallback gradient for when WebGL fails
 const GalaxyFallback = () => (
   <div 
-    className="absolute inset-0 dark:block hidden"
-    style={{
-      background: 'radial-gradient(ellipse at center, hsl(var(--primary) / 0.15) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, hsl(265 90% 50% / 0.1) 0%, transparent 40%), hsl(var(--background))',
-    }}
+    className="absolute inset-0 dark:block hidden bg-background"
   />
 );
 
