@@ -1,25 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
+// Generate stable star positions (memoized to prevent re-render flicker)
+const stars = React.useMemo(() => 
+  [...Array(80)].map((_, i) => ({
+    id: i,
+    size: Math.random() * 2 + 1,
+    left: Math.random() * 100,
+    top: Math.random() * 70,
+    opacity: Math.random() * 0.6 + 0.3,
+    delay: Math.random() * 4,
+    duration: 2 + Math.random() * 3,
+  })), []
+);
+
 // Space horizon background with planet silhouette and glow
 const SpaceHorizonBackground = () => (
   <div className="absolute inset-0 overflow-hidden dark:block hidden">
+    {/* Twinkling animation keyframes */}
+    <style>{`
+      @keyframes twinkle {
+        0%, 100% { opacity: var(--star-opacity); }
+        50% { opacity: calc(var(--star-opacity) * 0.3); }
+      }
+    `}</style>
+    
     {/* Dark space background */}
     <div className="absolute inset-0 bg-black" />
     
-    {/* Subtle stars */}
+    {/* Subtle twinkling stars */}
     <div className="absolute inset-0">
-      {[...Array(80)].map((_, i) => (
+      {stars.map((star) => (
         <div
-          key={i}
-          className="absolute rounded-full bg-white/60"
+          key={star.id}
+          className="absolute rounded-full bg-white"
           style={{
-            width: Math.random() * 2 + 1 + 'px',
-            height: Math.random() * 2 + 1 + 'px',
-            left: Math.random() * 100 + '%',
-            top: Math.random() * 70 + '%',
-            opacity: Math.random() * 0.6 + 0.2,
-          }}
+            width: star.size + 'px',
+            height: star.size + 'px',
+            left: star.left + '%',
+            top: star.top + '%',
+            '--star-opacity': star.opacity,
+            opacity: star.opacity,
+            animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
+          } as React.CSSProperties}
         />
       ))}
     </div>
