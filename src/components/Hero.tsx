@@ -1,18 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-// Generate stable star positions (memoized to prevent re-render flicker)
-const stars = React.useMemo(() => 
-  [...Array(80)].map((_, i) => ({
-    id: i,
-    size: Math.random() * 2 + 1,
-    left: Math.random() * 100,
-    top: Math.random() * 70,
-    opacity: Math.random() * 0.6 + 0.3,
-    delay: Math.random() * 4,
-    duration: 2 + Math.random() * 3,
-  })), []
-);
+// Generate stable star positions (created once at module level to prevent re-render flicker)
+const stars = [...Array(80)].map((_, i) => ({
+  id: i,
+  size: Math.random() * 2 + 1,
+  left: Math.random() * 100,
+  top: Math.random() * 70,
+  opacity: Math.random() * 0.6 + 0.3,
+  delay: Math.random() * 4,
+  duration: 2 + Math.random() * 3,
+}));
 
 // Space horizon background with planet silhouette and glow
 const SpaceHorizonBackground = () => (
