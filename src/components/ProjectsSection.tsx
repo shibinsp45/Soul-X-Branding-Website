@@ -76,6 +76,13 @@ const projects: Project[] = [{
   description: "Student management dashboard that streamlines academic administration and enhances learning experiences.",
   tags: ["Dashboard", "EdTech", "Web App"],
   image: "/projects/elitepath-cover.png"
+}, {
+  id: "groplan",
+  title: "Gro Plan",
+  category: "UX/UI Design",
+  description: "Smart grocery and meal planning app that helps users manage groceries, meals, and pantry tracking all in one place.",
+  tags: ["Mobile App", "Food Tech", "UX Case Study"],
+  image: "/projects/groplan-cover.png"
 }];
 const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 const ProjectsSection = () => {
