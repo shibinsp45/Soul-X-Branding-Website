@@ -111,14 +111,14 @@ const ProjectsSection = () => {
         {/* Projects Grid with 3D cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 sm:px-0">
           {filteredProjects.map((project, index) => <ScrollTriggered3DCard key={project.id} delay={index * 100}>
-              <Link to={`/project/${project.id}`} className="group block bg-background rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect max-w-sm mx-auto md:max-w-none">
+              <Link to={`/project/${project.id}`} className="group block bg-card rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect max-w-sm mx-auto md:max-w-none border border-border/50">
                 {/* Project Image */}
-                <div className="aspect-[4/3] bg-muted relative overflow-hidden flex items-center justify-center">
+                <div className="aspect-[4/3] relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-muted/80 via-muted to-muted/60 p-4">
                   {project.image ? (
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 rounded-lg"
                     />
                   ) : (
                     <>
@@ -130,8 +130,8 @@ const ProjectsSection = () => {
                       </div>
                     </>
                   )}
-                  {/* Hover overlay with 3D arrow */}
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
+                  {/* Hover overlay with arrow */}
+                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 rotate-0 group-hover:rotate-45 transition-all duration-500">
                       <ArrowUpRight className="w-5 h-5" />
                     </div>
