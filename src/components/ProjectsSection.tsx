@@ -127,12 +127,12 @@ const ProjectsSection = () => {
           {filteredProjects.map((project, index) => <ScrollTriggered3DCard key={project.id} delay={index * 100}>
               <Link to={`/project/${project.id}`} className="group block bg-card rounded-2xl overflow-hidden transition-all duration-500 h-full glow-effect max-w-sm mx-auto md:max-w-none border border-border/50">
                 {/* Project Image */}
-                <div className="aspect-[4/3] relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-muted/80 via-muted to-muted/60">
+                <div className="aspect-[4/3] relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-muted/80 via-muted to-muted/60 p-3">
                   {project.image ? (
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <>
