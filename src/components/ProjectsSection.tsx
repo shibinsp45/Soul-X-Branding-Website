@@ -56,6 +56,13 @@ const projects: Project[] = [{
   tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
   image: "/projects/foodit-cover.png"
 }, {
+  id: "beebite",
+  title: "BeeBite",
+  category: "Brand Identity",
+  description: "Playful and vibrant branding for a food delivery mobile app with a friendly bee mascot.",
+  tags: ["Logo Design", "Brand Guidelines", "Mobile App"],
+  image: "/projects/beebite-cover.png"
+}, {
   id: "beat",
   title: "Beat Education",
   category: "Web Design",
