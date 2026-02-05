@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
@@ -12,7 +12,7 @@ interface Project {
   description: string;
   tags: string[];
   image?: string;
-  size?: "small" | "medium" | "large";
+  bgGradient: string;
 }
 
 const projects: Project[] = [
@@ -23,16 +23,16 @@ const projects: Project[] = [
     description: "AI-powered food delivery app that revolutionizes how users discover and order meals.",
     tags: ["Mobile App", "AI/ML", "Food Tech"],
     image: "/projects/fudit-cover.png",
-    size: "medium"
+    bgGradient: "linear-gradient(135deg, hsl(200, 60%, 50%) 0%, hsl(180, 50%, 40%) 50%, hsl(220, 40%, 35%) 100%)",
   },
   {
     id: "fitness-tracking",
-    title: "Fitness Tracking App",
+    title: "GetFit",
     category: "UX/UI Design",
     description: "Comprehensive fitness tracking application designed to motivate and guide users on their wellness journey.",
     tags: ["Mobile App", "Health Tech", "UX Research"],
     image: "/projects/fitness-cover.png",
-    size: "large"
+    bgGradient: "linear-gradient(135deg, hsl(340, 70%, 45%) 0%, hsl(320, 60%, 40%) 50%, hsl(280, 50%, 35%) 100%)",
   },
   {
     id: "happy-cart",
@@ -41,7 +41,7 @@ const projects: Project[] = [
     description: "Vibrant and playful branding for an e-commerce shopping platform.",
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
     image: "/projects/happycart-cover.png",
-    size: "medium"
+    bgGradient: "linear-gradient(135deg, hsl(40, 80%, 55%) 0%, hsl(30, 70%, 50%) 50%, hsl(20, 60%, 45%) 100%)",
   },
   {
     id: "nuren-ai",
@@ -50,7 +50,7 @@ const projects: Project[] = [
     description: "Modern landing page design for an AI-powered platform showcasing cutting-edge technology.",
     tags: ["Landing Page", "AI/ML", "Web Design"],
     image: "/projects/nuren-cover.png",
-    size: "small"
+    bgGradient: "linear-gradient(135deg, hsl(260, 60%, 50%) 0%, hsl(280, 50%, 45%) 50%, hsl(300, 40%, 40%) 100%)",
   },
   {
     id: "trillionair",
@@ -59,7 +59,7 @@ const projects: Project[] = [
     description: "Premium landing page design for a luxury fintech platform with bold aesthetics.",
     tags: ["Landing Page", "Fintech", "Premium Design"],
     image: "/projects/trillionair-cover.png",
-    size: "large"
+    bgGradient: "linear-gradient(135deg, hsl(45, 90%, 50%) 0%, hsl(35, 80%, 45%) 50%, hsl(25, 70%, 40%) 100%)",
   },
   {
     id: "foodit-brand",
@@ -68,7 +68,7 @@ const projects: Project[] = [
     description: "Complete brand identity system for a modern food delivery service.",
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
     image: "/projects/foodit-cover.png",
-    size: "medium"
+    bgGradient: "linear-gradient(135deg, hsl(10, 80%, 55%) 0%, hsl(0, 70%, 50%) 50%, hsl(350, 60%, 45%) 100%)",
   },
   {
     id: "beebite",
@@ -77,7 +77,7 @@ const projects: Project[] = [
     description: "Playful and vibrant branding for a food delivery mobile app with a friendly bee mascot.",
     tags: ["Logo Design", "Brand Guidelines", "Mobile App"],
     image: "/projects/beebite-cover.png",
-    size: "small"
+    bgGradient: "linear-gradient(135deg, hsl(50, 90%, 55%) 0%, hsl(40, 80%, 50%) 50%, hsl(30, 70%, 45%) 100%)",
   },
   {
     id: "beat",
@@ -86,7 +86,7 @@ const projects: Project[] = [
     description: "Dynamic landing page for an entrepreneurial training platform.",
     tags: ["Landing Page", "EdTech", "Web Design"],
     image: "/projects/beat-cover.png",
-    size: "medium"
+    bgGradient: "linear-gradient(135deg, hsl(220, 70%, 50%) 0%, hsl(240, 60%, 45%) 50%, hsl(260, 50%, 40%) 100%)",
   },
   {
     id: "elitepath",
@@ -95,7 +95,7 @@ const projects: Project[] = [
     description: "Student management dashboard that streamlines academic administration.",
     tags: ["Dashboard", "EdTech", "Web App"],
     image: "/projects/elitepath-cover.png",
-    size: "large"
+    bgGradient: "linear-gradient(135deg, hsl(160, 50%, 40%) 0%, hsl(180, 45%, 35%) 50%, hsl(200, 40%, 30%) 100%)",
   },
   {
     id: "groplan",
@@ -104,33 +104,48 @@ const projects: Project[] = [
     description: "Smart grocery and meal planning app for managing groceries, meals, and pantry tracking.",
     tags: ["Mobile App", "Food Tech", "UX Case Study"],
     image: "/projects/groplan-cover.png",
-    size: "medium"
-  }
+    bgGradient: "linear-gradient(135deg, hsl(120, 50%, 45%) 0%, hsl(140, 45%, 40%) 50%, hsl(160, 40%, 35%) 100%)",
+  },
 ];
 
 const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
+  const defaultGradient = "linear-gradient(135deg, hsl(220, 15%, 15%) 0%, hsl(240, 10%, 10%) 50%, hsl(260, 8%, 8%) 100%)";
+
   return (
     <section 
-      ref={sectionRef} 
-      className="py-16 md:py-20 bg-background relative overflow-hidden" 
+      className="py-20 md:py-28 relative overflow-hidden transition-all duration-700 ease-out min-h-screen"
       id="projects"
+      style={{
+        background: isHovering && activeProject ? activeProject.bgGradient : defaultGradient,
+      }}
     >
+      {/* Gradient overlay */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)",
+        }}
+      />
+
       <div className="section-container relative z-10">
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <SectionHeading
-            chip="Our Work"
-            title="Selected"
-            titleAccent="Projects"
-          />
+          <div>
+            <p className="text-sm md:text-base text-white/60 tracking-wider mb-4 uppercase">Our Work</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white">
+              Selected <span className="font-serif italic text-white/80">Projects</span>
+            </h2>
+          </div>
           
           {/* Category Filter */}
           <AnimatedSection delay={200}>
@@ -142,8 +157,8 @@ const ProjectsSection = () => {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     activeCategory === category 
-                      ? "bg-foreground text-background" 
-                      : "bg-secondary text-foreground hover:bg-foreground/10"
+                      ? "bg-white text-black" 
+                      : "bg-white/10 text-white hover:bg-white/20"
                   )}
                 >
                   {category}
@@ -152,77 +167,90 @@ const ProjectsSection = () => {
             </div>
           </AnimatedSection>
         </div>
-        
-        {/* Bento Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px]">
-          {filteredProjects.map((project, index) => {
-            // Determine grid span based on size and position for visual variety
-            const getGridClasses = () => {
-              if (project.size === "large") {
-                return "col-span-2 row-span-2";
-              }
-              if (project.size === "medium") {
-                return index % 5 === 0 ? "col-span-2 row-span-1" : "col-span-1 row-span-1";
-              }
-              return "col-span-1 row-span-1";
-            };
 
-            // Apply depth blur effect - center items are focused, outer items blurred
-            const getBlurClass = () => {
-              const centerIndex = Math.floor(filteredProjects.length / 2);
-              const distance = Math.abs(index - centerIndex);
-              if (distance === 0) return "";
-              if (distance === 1) return "md:blur-[0.5px]";
-              if (distance >= 2) return "md:blur-[1px] md:hover:blur-0";
-              return "";
-            };
+        {/* Main content area */}
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 min-h-[500px] md:min-h-[600px]">
+          
+          {/* Preview image - left side */}
+          <div 
+            className={cn(
+              "w-full md:w-[45%] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ease-out",
+              isHovering && activeProject 
+                ? "opacity-100 translate-x-0 scale-100" 
+                : "opacity-30 -translate-x-4 scale-95"
+            )}
+          >
+            {activeProject ? (
+              <img 
+                src={activeProject.image} 
+                alt={activeProject.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-white/5 flex items-center justify-center">
+                <p className="text-white/40 text-lg">Hover a project</p>
+              </div>
+            )}
+          </div>
 
-            return (
-              <AnimatedSection 
-                key={project.id} 
-                delay={index * 80}
-                className={cn(getGridClasses())}
+          {/* Names list - right side */}
+          <div className="w-full md:w-[50%] flex flex-col items-end gap-1">
+            {filteredProjects.map((project, index) => (
+              <Link
+                key={project.id}
+                to={`/project/${project.id}`}
+                onMouseEnter={() => {
+                  setActiveProject(project);
+                  setIsHovering(true);
+                }}
+                onMouseLeave={() => {
+                  setIsHovering(false);
+                }}
+                className={cn(
+                  "group text-right text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
+                  "font-serif italic font-light tracking-tight",
+                  "transition-all duration-500 ease-out cursor-pointer",
+                  "flex items-center gap-4",
+                  activeProject?.id === project.id && isHovering
+                    ? "text-white scale-105 translate-x-0" 
+                    : isHovering 
+                      ? "text-white/25 scale-100 translate-x-4"
+                      : "text-white/50 hover:text-white"
+                )}
+                style={{ 
+                  lineHeight: "1.2",
+                }}
               >
-                <Link 
-                  to={`/project/${project.id}`} 
-                  className={cn(
-                    "group relative block w-full h-full rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-500",
-                    getBlurClass(),
-                    "hover:scale-[1.02] hover:z-10 hover:shadow-2xl hover:shadow-foreground/10"
-                  )}
-                >
-                  {/* Project Image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted/80 to-muted/60">
-                    {project.image && (
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    )}
-                  </div>
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  {/* Hover Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                      {project.category}
-                    </div>
-                    <h3 className="text-lg md:text-xl font-display font-medium text-foreground">
-                      {project.title}
-                    </h3>
-                  </div>
-                  
-                  {/* Arrow Icon */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
-                </Link>
-              </AnimatedSection>
-            );
-          })}
+                <span className={cn(
+                  "transition-all duration-300",
+                  activeProject?.id === project.id && isHovering ? "opacity-100" : "opacity-0"
+                )}>
+                  <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
+                </span>
+                {project.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Active project info */}
+        <div className={cn(
+          "mt-12 transition-all duration-500",
+          isHovering && activeProject ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        )}>
+          {activeProject && (
+            <div className="max-w-xl">
+              <p className="text-white/60 text-sm uppercase tracking-wider mb-2">{activeProject.category}</p>
+              <p className="text-white/80 text-lg">{activeProject.description}</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {activeProject.tags.map(tag => (
+                  <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/70">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
