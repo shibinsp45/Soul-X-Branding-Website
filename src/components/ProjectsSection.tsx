@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import SectionHeading from "./SectionHeading";
 import AnimatedSection from "./AnimatedSection";
 
 interface Project {
@@ -79,51 +78,18 @@ const projects: Project[] = [
     image: "/projects/beebite-cover.png",
     bgGradient: "linear-gradient(135deg, hsl(50, 90%, 55%) 0%, hsl(40, 80%, 50%) 50%, hsl(30, 70%, 45%) 100%)",
   },
-  {
-    id: "beat",
-    title: "Beat Education",
-    category: "Web Design",
-    description: "Dynamic landing page for an entrepreneurial training platform.",
-    tags: ["Landing Page", "EdTech", "Web Design"],
-    image: "/projects/beat-cover.png",
-    bgGradient: "linear-gradient(135deg, hsl(220, 70%, 50%) 0%, hsl(240, 60%, 45%) 50%, hsl(260, 50%, 40%) 100%)",
-  },
-  {
-    id: "elitepath",
-    title: "ElitePath",
-    category: "UX/UI Design",
-    description: "Student management dashboard that streamlines academic administration.",
-    tags: ["Dashboard", "EdTech", "Web App"],
-    image: "/projects/elitepath-cover.png",
-    bgGradient: "linear-gradient(135deg, hsl(160, 50%, 40%) 0%, hsl(180, 45%, 35%) 50%, hsl(200, 40%, 30%) 100%)",
-  },
-  {
-    id: "groplan",
-    title: "Gro Plan",
-    category: "UX/UI Design",
-    description: "Smart grocery and meal planning app for managing groceries, meals, and pantry tracking.",
-    tags: ["Mobile App", "Food Tech", "UX Case Study"],
-    image: "/projects/groplan-cover.png",
-    bgGradient: "linear-gradient(135deg, hsl(120, 50%, 45%) 0%, hsl(140, 45%, 40%) 50%, hsl(160, 40%, 35%) 100%)",
-  },
 ];
 
-const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
+const defaultGradient = "linear-gradient(135deg, hsl(220, 15%, 8%) 0%, hsl(240, 10%, 6%) 50%, hsl(260, 8%, 4%) 100%)";
 
 const ProjectsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [isHovering, setIsHovering] = useState(false);
-
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
-
-  const defaultGradient = "linear-gradient(135deg, hsl(220, 15%, 15%) 0%, hsl(240, 10%, 10%) 50%, hsl(260, 8%, 8%) 100%)";
+  const [flippedCard, setFlippedCard] = useState<string | null>(null);
 
   return (
     <section 
-      className="py-20 md:py-28 relative overflow-hidden transition-all duration-700 ease-out min-h-screen"
+      className="py-24 md:py-32 relative overflow-hidden transition-all duration-700 ease-out min-h-screen flex items-center"
       id="projects"
       style={{
         background: isHovering && activeProject ? activeProject.bgGradient : defaultGradient,
@@ -133,116 +99,107 @@ const ProjectsSection = () => {
       <div 
         className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%)",
         }}
       />
 
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 w-full">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div>
-            <p className="text-sm md:text-base text-white/60 tracking-wider mb-4 uppercase">Our Work</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white">
-              Selected <span className="font-serif italic text-white/80">Projects</span>
-            </h2>
-          </div>
-          
-          {/* Category Filter */}
-          <AnimatedSection delay={200}>
-            <div className="flex flex-wrap gap-2">
-              {categories.map(category => (
-                <button 
-                  key={category} 
-                  onClick={() => setActiveCategory(category)} 
-                  className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                    activeCategory === category 
-                      ? "bg-white text-black" 
-                      : "bg-white/10 text-white hover:bg-white/20"
-                  )}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-sm md:text-base text-white/60 tracking-wider mb-4 uppercase">Our Work</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white">
+            Selected <span className="font-serif italic text-white/80">Projects</span>
+          </h2>
+        </AnimatedSection>
 
-        {/* Main content area */}
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 min-h-[500px] md:min-h-[600px]">
-          
-          {/* Preview image - left side */}
-          <div 
-            className={cn(
-              "w-full md:w-[45%] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ease-out",
-              isHovering && activeProject 
-                ? "opacity-100 translate-x-0 scale-100" 
-                : "opacity-30 -translate-x-4 scale-95"
-            )}
-          >
-            {activeProject ? (
-              <img 
-                src={activeProject.image} 
-                alt={activeProject.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                <p className="text-white/40 text-lg">Hover a project</p>
-              </div>
-            )}
-          </div>
-
-          {/* Names list - right side */}
-          <div className="w-full md:w-[50%] flex flex-col items-end gap-1">
-            {filteredProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                to={`/project/${project.id}`}
-                onMouseEnter={() => {
-                  setActiveProject(project);
-                  setIsHovering(true);
-                }}
-                onMouseLeave={() => {
-                  setIsHovering(false);
-                }}
+        {/* Centered project titles */}
+        <div className="flex flex-col items-center justify-center gap-2 md:gap-3">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className="perspective-1000"
+              style={{ perspective: "1000px" }}
+              onMouseEnter={() => {
+                setActiveProject(project);
+                setIsHovering(true);
+                setFlippedCard(project.id);
+              }}
+              onMouseLeave={() => {
+                setIsHovering(false);
+                setFlippedCard(null);
+              }}
+            >
+              <div
                 className={cn(
-                  "group text-right text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
-                  "font-serif italic font-light tracking-tight",
-                  "transition-all duration-500 ease-out cursor-pointer",
-                  "flex items-center gap-4",
-                  activeProject?.id === project.id && isHovering
-                    ? "text-white scale-105 translate-x-0" 
-                    : isHovering 
-                      ? "text-white/25 scale-100 translate-x-4"
-                      : "text-white/50 hover:text-white"
+                  "relative transition-transform duration-700 cursor-pointer",
+                  flippedCard === project.id ? "[transform:rotateX(180deg)]" : ""
                 )}
                 style={{ 
-                  lineHeight: "1.2",
+                  transformStyle: "preserve-3d",
                 }}
               >
-                <span className={cn(
-                  "transition-all duration-300",
-                  activeProject?.id === project.id && isHovering ? "opacity-100" : "opacity-0"
-                )}>
-                  <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
-                </span>
-                {project.title}
-              </Link>
-            ))}
-          </div>
+                {/* Front - Title */}
+                <div 
+                  className="backface-hidden"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <span
+                    className={cn(
+                      "block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
+                      "font-serif italic font-light tracking-tight",
+                      "transition-all duration-500 ease-out",
+                      activeProject?.id === project.id && isHovering
+                        ? "text-white scale-105" 
+                        : isHovering 
+                          ? "text-white/20"
+                          : "text-white/50 hover:text-white/70"
+                    )}
+                    style={{ 
+                      lineHeight: "1.15",
+                    }}
+                  >
+                    {project.title}
+                  </span>
+                </div>
+
+                {/* Back - Project Link Card */}
+                <div 
+                  className="absolute inset-0 backface-hidden flex items-center justify-center"
+                  style={{ 
+                    backfaceVisibility: "hidden",
+                    transform: "rotateX(180deg)",
+                  }}
+                >
+                  <Link
+                    to={`/project/${project.id}`}
+                    className={cn(
+                      "flex items-center gap-3 px-6 py-3 md:px-8 md:py-4",
+                      "bg-white/10 backdrop-blur-md rounded-full",
+                      "border border-white/20",
+                      "text-white font-medium text-lg md:text-xl",
+                      "hover:bg-white/20 hover:border-white/40",
+                      "transition-all duration-300 group"
+                    )}
+                  >
+                    <span>View {project.title}</span>
+                    <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Active project info */}
         <div className={cn(
-          "mt-12 transition-all duration-500",
+          "mt-16 text-center transition-all duration-500",
           isHovering && activeProject ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         )}>
           {activeProject && (
-            <div className="max-w-xl">
+            <div className="max-w-xl mx-auto">
               <p className="text-white/60 text-sm uppercase tracking-wider mb-2">{activeProject.category}</p>
               <p className="text-white/80 text-lg">{activeProject.description}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="flex flex-wrap justify-center gap-2 mt-4">
                 {activeProject.tags.map(tag => (
                   <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/70">
                     {tag}
