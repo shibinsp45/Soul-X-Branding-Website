@@ -112,43 +112,23 @@ const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
-  const defaultGradient = "linear-gradient(135deg, hsl(220, 15%, 15%) 0%, hsl(240, 10%, 10%) 50%, hsl(260, 8%, 8%) 100%)";
-
-  // Get first 3 projects for the horizontal tabs
-  const tabProjects = filteredProjects.slice(0, 3);
-  // Get first 2 projects for the large preview cards
-  const cardProjects = filteredProjects.slice(0, 2);
-
   return (
     <section 
-      className="py-20 md:py-28 relative overflow-hidden transition-all duration-700 ease-out min-h-screen"
+      className="py-20 md:py-28 relative overflow-hidden bg-background"
       id="projects"
-      style={{
-        background: isHovering && activeProject ? activeProject.bgGradient : defaultGradient,
-      }}
     >
-      {/* Gradient overlay */}
-      <div 
-        className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)",
-        }}
-      />
-
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <p className="text-sm md:text-base text-white/60 tracking-wider mb-4 uppercase">Our Work</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white">
-              Selected <span className="font-serif italic text-white/80">Projects</span>
+            <p className="text-sm md:text-base text-muted-foreground tracking-wider mb-4 uppercase">Our Work</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-foreground">
+              Selected <span className="font-serif italic text-foreground/80">Projects</span>
             </h2>
           </div>
           
@@ -162,8 +142,8 @@ const ProjectsSection = () => {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     activeCategory === category 
-                      ? "bg-white text-black" 
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-foreground text-background" 
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
                   )}
                 >
                   {category}
@@ -173,105 +153,43 @@ const ProjectsSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Horizontal project tabs */}
-        <div className="flex flex-wrap gap-4 mb-8">
-          {tabProjects.map((project) => (
-            <Link
-              key={project.id}
-              to={`/project/${project.id}`}
-              onMouseEnter={() => {
-                setActiveProject(project);
-                setIsHovering(true);
-              }}
-              onMouseLeave={() => {
-                setIsHovering(false);
-              }}
-              className={cn(
-                "group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300",
-                "font-serif italic text-2xl md:text-3xl",
-                activeProject?.id === project.id && isHovering
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              )}
-              style={{
-                background: activeProject?.id === project.id && isHovering 
-                  ? project.bgGradient.replace('135deg', '90deg')
-                  : 'rgba(255,255,255,0.05)',
-              }}
-            >
-              <ArrowUpRight className={cn(
-                "w-5 h-5 transition-transform duration-300",
-                activeProject?.id === project.id && isHovering ? "rotate-0" : "-rotate-45"
-              )} />
-              {project.title}
-            </Link>
-          ))}
-        </div>
-
-        {/* Two-column card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {cardProjects.map((project) => (
-            <Link
-              key={project.id}
-              to={`/project/${project.id}`}
-              onMouseEnter={() => {
-                setActiveProject(project);
-                setIsHovering(true);
-              }}
-              onMouseLeave={() => {
-                setIsHovering(false);
-              }}
-              className="group"
-            >
-              {/* Image card */}
-              <div 
-                className={cn(
-                  "aspect-[4/3] rounded-2xl overflow-hidden mb-4 transition-all duration-500",
-                  "border-2 border-white/10 hover:border-white/30",
-                  activeProject?.id === project.id && isHovering
-                    ? "scale-[1.02] shadow-2xl"
-                    : "scale-100"
-                )}
-                style={{
-                  background: project.bgGradient,
-                }}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, index) => (
+            <AnimatedSection key={project.id} delay={index * 100}>
+              <Link
+                to={`/project/${project.id}`}
+                className="group block"
               >
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover rounded-xl m-auto p-4"
-                />
-              </div>
-              
-              {/* Description card */}
-              <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm">
-                <p className="text-white/50 text-xs uppercase tracking-wider mb-2">
-                  {project.category}
-                </p>
-                <p className="text-white/80 text-sm mb-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/60">
-                      {tag}
-                    </span>
-                  ))}
+                {/* Card */}
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                  {/* Image */}
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Content on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <p className="text-white/60 text-xs uppercase tracking-wider mb-2">
+                      {project.category}
+                    </p>
+                    <h3 className="text-white text-2xl font-serif italic mb-2">
+                      {project.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-white/80 text-sm">
+                      <span>View Project</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </AnimatedSection>
           ))}
-        </div>
-
-        {/* View all projects link */}
-        <div className="mt-12 text-center">
-          <Link 
-            to="/projects"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-lg"
-          >
-            View all projects
-            <ArrowUpRight className="w-5 h-5" />
-          </Link>
         </div>
       </div>
     </section>
