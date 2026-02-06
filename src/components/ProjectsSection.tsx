@@ -121,6 +121,11 @@ const ProjectsSection = () => {
 
   const defaultGradient = "linear-gradient(135deg, hsl(220, 15%, 15%) 0%, hsl(240, 10%, 10%) 50%, hsl(260, 8%, 8%) 100%)";
 
+  // Get first 3 projects for the horizontal tabs
+  const tabProjects = filteredProjects.slice(0, 3);
+  // Get first 2 projects for the large preview cards
+  const cardProjects = filteredProjects.slice(0, 2);
+
   return (
     <section 
       className="py-20 md:py-28 relative overflow-hidden transition-all duration-700 ease-out min-h-screen"
@@ -168,89 +173,105 @@ const ProjectsSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Main content area */}
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 min-h-[500px] md:min-h-[600px]">
-          
-          {/* Preview image - left side */}
-          <div 
-            className={cn(
-              "w-full md:w-[45%] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ease-out",
-              isHovering && activeProject 
-                ? "opacity-100 translate-x-0 scale-100" 
-                : "opacity-30 -translate-x-4 scale-95"
-            )}
-          >
-            {activeProject ? (
-              <img 
-                src={activeProject.image} 
-                alt={activeProject.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                <p className="text-white/40 text-lg">Hover a project</p>
-              </div>
-            )}
-          </div>
-
-          {/* Names list - right side */}
-          <div className="w-full md:w-[50%] flex flex-col items-end gap-1">
-            {filteredProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                to={`/project/${project.id}`}
-                onMouseEnter={() => {
-                  setActiveProject(project);
-                  setIsHovering(true);
-                }}
-                onMouseLeave={() => {
-                  setIsHovering(false);
-                }}
-                className={cn(
-                  "group text-right text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
-                  "font-serif italic font-light tracking-tight",
-                  "transition-all duration-500 ease-out cursor-pointer",
-                  "flex items-center gap-4",
-                  activeProject?.id === project.id && isHovering
-                    ? "text-white scale-105 translate-x-0" 
-                    : isHovering 
-                      ? "text-white/25 scale-100 translate-x-4"
-                      : "text-white/50 hover:text-white"
-                )}
-                style={{ 
-                  lineHeight: "1.2",
-                }}
-              >
-                <span className={cn(
-                  "transition-all duration-300",
-                  activeProject?.id === project.id && isHovering ? "opacity-100" : "opacity-0"
-                )}>
-                  <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
-                </span>
-                {project.title}
-              </Link>
-            ))}
-          </div>
+        {/* Horizontal project tabs */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          {tabProjects.map((project) => (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              onMouseEnter={() => {
+                setActiveProject(project);
+                setIsHovering(true);
+              }}
+              onMouseLeave={() => {
+                setIsHovering(false);
+              }}
+              className={cn(
+                "group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300",
+                "font-serif italic text-2xl md:text-3xl",
+                activeProject?.id === project.id && isHovering
+                  ? "text-white"
+                  : "text-white/70 hover:text-white"
+              )}
+              style={{
+                background: activeProject?.id === project.id && isHovering 
+                  ? project.bgGradient.replace('135deg', '90deg')
+                  : 'rgba(255,255,255,0.05)',
+              }}
+            >
+              <ArrowUpRight className={cn(
+                "w-5 h-5 transition-transform duration-300",
+                activeProject?.id === project.id && isHovering ? "rotate-0" : "-rotate-45"
+              )} />
+              {project.title}
+            </Link>
+          ))}
         </div>
 
-        {/* Active project info */}
-        <div className={cn(
-          "mt-12 transition-all duration-500",
-          isHovering && activeProject ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        )}>
-          {activeProject && (
-            <div className="max-w-xl">
-              <p className="text-white/60 text-sm uppercase tracking-wider mb-2">{activeProject.category}</p>
-              <p className="text-white/80 text-lg">{activeProject.description}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {activeProject.tags.map(tag => (
-                  <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/70">
-                    {tag}
-                  </span>
-                ))}
+        {/* Two-column card grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {cardProjects.map((project) => (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              onMouseEnter={() => {
+                setActiveProject(project);
+                setIsHovering(true);
+              }}
+              onMouseLeave={() => {
+                setIsHovering(false);
+              }}
+              className="group"
+            >
+              {/* Image card */}
+              <div 
+                className={cn(
+                  "aspect-[4/3] rounded-2xl overflow-hidden mb-4 transition-all duration-500",
+                  "border-2 border-white/10 hover:border-white/30",
+                  activeProject?.id === project.id && isHovering
+                    ? "scale-[1.02] shadow-2xl"
+                    : "scale-100"
+                )}
+                style={{
+                  background: project.bgGradient,
+                }}
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover rounded-xl m-auto p-4"
+                />
               </div>
-            </div>
-          )}
+              
+              {/* Description card */}
+              <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm">
+                <p className="text-white/50 text-xs uppercase tracking-wider mb-2">
+                  {project.category}
+                </p>
+                <p className="text-white/80 text-sm mb-3">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 text-white/60">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* View all projects link */}
+        <div className="mt-12 text-center">
+          <Link 
+            to="/projects"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-lg"
+          >
+            View all projects
+            <ArrowUpRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
     </section>
