@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 interface Project {
   id: string;
@@ -112,10 +117,25 @@ const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(p => p.category === activeCategory);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollPrev = () => api?.scrollPrev();
+  const scrollNext = () => api?.scrollNext();
 
   return (
     <section 
@@ -153,55 +173,102 @@ const ProjectsSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <AnimatedSection key={project.id} delay={index * 100}>
-              <Link
-                to={`/project/${project.id}`}
-                className="group block perspective-1000"
-              >
-                {/* Flip Card Container */}
-                <div className="relative aspect-[4/5] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                  {/* Front Side */}
-                  <div className="absolute inset-0 rounded-3xl overflow-hidden bg-muted [backface-visibility:hidden]">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  {/* Back Side */}
-                  <div 
-                    className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-6 text-center"
-                    style={{ background: project.bgGradient }}
+        {/* Carousel */}
+        <div className="relative">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 md:-ml-6">
+              {filteredProjects.map((project) => (
+                <CarouselItem key={project.id} className="pl-4 md:pl-6 basis-full sm:basis-1/2">
+                  <Link
+                    to={`/project/${project.id}`}
+                    className="group block"
                   >
-                    <p className="text-white/70 text-xs uppercase tracking-wider mb-3">
-                      {project.category}
-                    </p>
-                    <h3 className="text-white text-2xl md:text-3xl font-serif italic mb-4">
-                      {project.title}
-                    </h3>
-                    <p className="text-white/80 text-sm mb-6 line-clamp-3">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6 justify-center">
-                      {project.tags.slice(0, 2).map(tag => (
-                        <span key={tag} className="px-3 py-1 bg-white/20 rounded-full text-white text-xs">
-                          {tag}
-                        </span>
-                      ))}
+                    {/* Card Image */}
+                    <div 
+                      className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5"
+                      style={{ background: project.bgGradient }}
+                    >
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 flex items-center gap-2 text-foreground font-medium">
+                          <span>View Project</span>
+                          <ArrowUpRight className="w-4 h-4" />
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-white font-medium">
-                      <span>View Project</span>
-                      <ArrowUpRight className="w-5 h-5" />
+                    
+                    {/* Caption */}
+                    <div className="space-y-2">
+                      <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
+                        {project.category}
+                      </p>
+                      <h3 className="text-2xl md:text-3xl font-serif italic text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground line-clamp-2">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tags.slice(0, 2).map(tag => (
+                          <span key={tag} className="px-3 py-1 bg-muted rounded-full text-xs text-muted-foreground">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Link>
-            </AnimatedSection>
-          ))}
+                  </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Navigation Arrows */}
+          <div className="flex items-center justify-center gap-4 mt-10">
+            <button
+              onClick={scrollPrev}
+              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            {/* Dots indicator */}
+            <div className="flex items-center gap-2">
+              {filteredProjects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => api?.scrollTo(index)}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    current === index 
+                      ? "bg-foreground w-6" 
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={scrollNext}
+              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
