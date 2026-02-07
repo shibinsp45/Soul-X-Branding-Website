@@ -185,42 +185,52 @@ const ProjectsSection = () => {
           >
             <CarouselContent className="-ml-4 md:-ml-6">
               {filteredProjects.map((project) => (
-                <CarouselItem key={project.id} className="pl-4 md:pl-6 basis-full sm:basis-1/2">
+                <CarouselItem key={project.id} className="pl-4 md:pl-6 basis-full sm:basis-1/2 lg:basis-1/3">
                   <Link
                     to={`/project/${project.id}`}
                     className="group block"
                   >
-                    {/* Card Image */}
-                    <div 
-                      className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5"
-                      style={{ background: project.bgGradient }}
-                    >
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 flex items-center gap-2 text-foreground font-medium">
-                          <span>View Project</span>
-                          <ArrowUpRight className="w-4 h-4" />
+                    {/* Project Title at Top */}
+                    <div className="mb-4">
+                      <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider mb-1">
+                        {project.category}
+                      </p>
+                      <h3 className="text-xl md:text-2xl font-serif italic text-foreground">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    {/* Flip Card Container */}
+                    <div className="perspective-1000">
+                      <div className="relative aspect-[4/5] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                        {/* Front Side - Image */}
+                        <div className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden]">
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        
+                        {/* Back Side - View Project */}
+                        <div 
+                          className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-6 text-center"
+                          style={{ background: project.bgGradient }}
+                        >
+                          <div className="flex items-center gap-2 text-white font-medium text-lg">
+                            <span>View Project</span>
+                            <ArrowUpRight className="w-5 h-5" />
+                          </div>
                         </div>
                       </div>
                     </div>
                     
-                    {/* Caption */}
-                    <div className="space-y-2">
-                      <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
-                        {project.category}
-                      </p>
-                      <h3 className="text-2xl md:text-3xl font-serif italic text-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-muted-foreground line-clamp-2">
+                    {/* Caption at Bottom */}
+                    <div className="mt-4 space-y-2">
+                      <p className="text-sm text-muted-foreground line-clamp-2">
                         {project.description}
                       </p>
-                      <div className="flex flex-wrap gap-2 pt-2">
+                      <div className="flex flex-wrap gap-2">
                         {project.tags.slice(0, 2).map(tag => (
                           <span key={tag} className="px-3 py-1 bg-muted rounded-full text-xs text-muted-foreground">
                             {tag}
