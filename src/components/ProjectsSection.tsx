@@ -159,31 +159,43 @@ const ProjectsSection = () => {
             <AnimatedSection key={project.id} delay={index * 100}>
               <Link
                 to={`/project/${project.id}`}
-                className="group block"
+                className="group block perspective-1000"
               >
-                {/* Card */}
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-                  {/* Image */}
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                {/* Flip Card Container */}
+                <div className="relative aspect-[4/5] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  {/* Front Side */}
+                  <div className="absolute inset-0 rounded-3xl overflow-hidden bg-muted [backface-visibility:hidden]">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  {/* Content on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-2">
+                  {/* Back Side */}
+                  <div 
+                    className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-6 text-center"
+                    style={{ background: project.bgGradient }}
+                  >
+                    <p className="text-white/70 text-xs uppercase tracking-wider mb-3">
                       {project.category}
                     </p>
-                    <h3 className="text-white text-2xl font-serif italic mb-2">
+                    <h3 className="text-white text-2xl md:text-3xl font-serif italic mb-4">
                       {project.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
+                    <p className="text-white/80 text-sm mb-6 line-clamp-3">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6 justify-center">
+                      {project.tags.slice(0, 2).map(tag => (
+                        <span key={tag} className="px-3 py-1 bg-white/20 rounded-full text-white text-xs">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2 text-white font-medium">
                       <span>View Project</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-5 h-5" />
                     </div>
                   </div>
                 </div>
