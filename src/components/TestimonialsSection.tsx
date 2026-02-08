@@ -10,17 +10,17 @@ interface TestimonialProps {
 
 const testimonials: TestimonialProps[] = [
   {
-    content: "SoulX transformed our digital presence completely. Their attention to detail and deep understanding of user experience resulted in a 40% increase in engagement.",
+    content: "We came to SoulX with a confusing product and left with a brand our users actually understand. Our conversion rate jumped 47% in the first month after launch. They didn't just make things pretty—they made our business work better.",
     author: "Sarah Chen",
     role: "CEO, Zenith Finance"
   },
   {
-    content: "Working with SoulX felt like a true partnership. They took the time to understand our brand's essence and translated it beautifully across all touchpoints.",
+    content: "Most agencies give you a logo and disappear. SoulX gave us a complete identity we could actually use—and walked us through exactly how to apply it. Six months later, customers still tell us our packaging is what made them try us.",
     author: "Michael Rodriguez",
     role: "Founder, Artisan Coffee Co."
   },
   {
-    content: "The team at SoulX brings both creativity and strategic thinking to every project. Our new brand identity perfectly captures who we are and where we're headed.",
+    content: "I was skeptical about hiring a small studio, but that's exactly what made SoulX great. No junior designers learning on our dime. Every meeting was with the people actually doing the work. Our new website cut our sales cycle in half.",
     author: "Dr. Amara Patel",
     role: "Director, Nova Architecture"
   }

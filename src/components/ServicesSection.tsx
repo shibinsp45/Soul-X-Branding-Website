@@ -4,19 +4,19 @@ import SectionHeading from "./SectionHeading";
 const services = [{
   number: "01",
   title: "UX Research & Strategy",
-  description: "Deep user research, persona development, and strategic planning to ensure every design decision is backed by insights."
+  description: "Understand your users deeply. We uncover what your customers actually need—so you build products they'll love, not features they'll ignore."
 }, {
   number: "02",
   title: "UI Design & Prototyping",
-  description: "Beautiful, functional interfaces with interactive prototypes that bring concepts to life before development."
+  description: "Interfaces that feel intuitive. We design and test before you build, reducing development costs and eliminating guesswork."
 }, {
   number: "03",
   title: "Brand Identity Design",
-  description: "Comprehensive visual identities including logos, color systems, typography, and brand guidelines."
+  description: "Stand out in crowded markets. We create distinctive visual identities that make your brand memorable and trustworthy from first impression."
 }, {
   number: "04",
   title: "Web Design & Development",
-  description: "Responsive, performant websites that perfectly express your brand and convert visitors into customers."
+  description: "Websites that work as hard as you do. Fast, responsive, and built to convert visitors into customers—not just impress them."
 }];
 const ServicesSection = () => {
   return <section className="py-16 md:py-20 bg-background relative overflow-hidden" id="services">

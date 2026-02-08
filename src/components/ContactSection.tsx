@@ -83,16 +83,16 @@ const ContactSection = () => {
           {/* Left column - Info */}
           <div>
             <SectionHeading
-              chip="Get in Touch"
-              title="Let's create"
-              titleAccent="together"
+              chip="Start a Conversation"
+              title="Ready to build"
+              titleAccent="something great?"
               className="mb-6"
             />
             
             <AnimatedSection delay={200}>
               <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-                Have a project in mind? We'd love to hear about it. 
-                Reach out and let's explore how we can bring your vision to life.
+                Tell us about your project and we'll get back to you within 24 hours with 
+                honest feedback on how we can help—or if we're the right fit.
               </p>
             </AnimatedSection>
             
@@ -171,7 +171,7 @@ const ContactSection = () => {
                 {isSubmitting ? <>
                     <span className="animate-pulse">Sending...</span>
                   </> : <>
-                    Send Message
+                    Let's Talk
                     <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </>}
               </button>
