@@ -139,39 +139,43 @@ const ProjectsSection = () => {
             <CarouselContent className="-ml-4 md:-ml-6">
               {filteredProjects.map(project => <CarouselItem key={project.id} className="pl-4 md:pl-6 basis-full sm:basis-1/2 lg:basis-1/3">
                   <Link to={`/project/${project.id}`} className="group block">
-                    {/* Project Title at Top */}
-                    <div className="mb-4">
-                      <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider mb-1">
-                        {project.category}
-                      </p>
-                      <h3 className="text-xl md:text-2xl italic text-foreground text-center font-mono">
+                    {/* Project Title as Chip */}
+                    <div className="mb-4 flex items-center justify-center gap-2">
+                      <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-foreground text-background uppercase tracking-wider">
                         {project.title}
-                      </h3>
+                      </span>
                     </div>
 
                     {/* Flip Card Container */}
-                    <div className="perspective-1000">
+                    <div className="[perspective:1000px]">
                       <div className="relative aspect-[4/5] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                         {/* Front Side - Image */}
-                        <div className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden]">
+                        <div className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] border border-border">
                           <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                         </div>
                         
                         {/* Back Side - View Project */}
-                        <div className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-6 text-center" style={{
-                      background: project.bgGradient
-                    }}>
-                          <div className="flex items-center gap-2 text-white font-medium text-lg">
+                        <div className="absolute inset-0 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-6 text-center bg-secondary border border-border">
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">
+                            {project.category}
+                          </p>
+                          <h3 className="text-xl font-medium text-foreground mb-4">
+                            {project.title}
+                          </h3>
+                          <div className="flex items-center gap-2 text-foreground font-medium text-base hover:text-primary transition-colors">
                             <span>View Project</span>
-                            <ArrowUpRight className="w-5 h-5" />
+                            <ArrowUpRight className="w-4 h-4" />
                           </div>
                         </div>
                       </div>
                     </div>
                     
                     {/* Caption at Bottom */}
-                    <div className="mt-4 space-y-2">
-                      <p className="text-sm text-muted-foreground line-clamp-2">
+                    <div className="mt-4 space-y-3">
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                        {project.category}
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
