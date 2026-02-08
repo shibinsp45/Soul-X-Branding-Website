@@ -17,80 +17,80 @@ const projects: Project[] = [{
   id: "fudit",
   title: "Fudit",
   category: "UX/UI Design",
-  description: "AI-powered food delivery app that revolutionizes how users discover and order meals.",
-  tags: ["Mobile App", "AI/ML", "Food Tech"],
+  description: "Redesigned the entire ordering experience. Result: 35% faster checkout flow and 28% increase in repeat orders.",
+  tags: ["End-to-End UX", "Mobile App"],
   image: "/projects/fudit-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(200, 60%, 50%) 0%, hsl(180, 50%, 40%) 50%, hsl(220, 40%, 35%) 100%)"
 }, {
   id: "fitness-tracking",
   title: "GetFit",
   category: "UX/UI Design",
-  description: "Comprehensive fitness tracking application designed to motivate and guide users on their wellness journey.",
-  tags: ["Mobile App", "Health Tech", "UX Research"],
+  description: "Created a motivating fitness experience from scratch. Result: 4.8 star rating and 60% user retention at 30 days.",
+  tags: ["UX Research", "UI Design"],
   image: "/projects/fitness-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(340, 70%, 45%) 0%, hsl(320, 60%, 40%) 50%, hsl(280, 50%, 35%) 100%)"
 }, {
   id: "happy-cart",
   title: "Happy Cart",
   category: "Brand Identity",
-  description: "Vibrant and playful branding for an e-commerce shopping platform.",
-  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+  description: "Built a distinctive brand that stands out in crowded e-commerce. Result: 45% increase in brand recall.",
+  tags: ["Logo", "Brand System"],
   image: "/projects/happycart-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(40, 80%, 55%) 0%, hsl(30, 70%, 50%) 50%, hsl(20, 60%, 45%) 100%)"
 }, {
   id: "nuren-ai",
   title: "Nuren AI",
   category: "Web Design",
-  description: "Modern landing page design for an AI-powered platform showcasing cutting-edge technology.",
-  tags: ["Landing Page", "AI/ML", "Web Design"],
+  description: "Designed a landing page that explains complex AI simply. Result: 3x increase in demo requests.",
+  tags: ["Web Design", "Copywriting"],
   image: "/projects/nuren-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(260, 60%, 50%) 0%, hsl(280, 50%, 45%) 50%, hsl(300, 40%, 40%) 100%)"
 }, {
   id: "trillionair",
   title: "Trillionair",
   category: "Web Design",
-  description: "Premium landing page design for a luxury fintech platform with bold aesthetics.",
-  tags: ["Landing Page", "Fintech", "Premium Design"],
+  description: "Created a premium fintech presence that builds instant trust. Result: 52% lift in qualified leads.",
+  tags: ["Web Design", "Brand Strategy"],
   image: "/projects/trillionair-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(45, 90%, 50%) 0%, hsl(35, 80%, 45%) 50%, hsl(25, 70%, 40%) 100%)"
 }, {
   id: "foodit-brand",
   title: "Foodit",
   category: "Brand Identity",
-  description: "Complete brand identity system for a modern food delivery service.",
-  tags: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+  description: "Developed a complete visual identity for launch. Result: Secured seed funding within 3 months.",
+  tags: ["Brand Identity", "Guidelines"],
   image: "/projects/foodit-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(10, 80%, 55%) 0%, hsl(0, 70%, 50%) 50%, hsl(350, 60%, 45%) 100%)"
 }, {
   id: "beebite",
   title: "BeeBite",
   category: "Brand Identity",
-  description: "Playful and vibrant branding for a food delivery mobile app with a friendly bee mascot.",
-  tags: ["Logo Design", "Brand Guidelines", "Mobile App"],
+  description: "Created a memorable character-driven brand. Result: 89% positive brand sentiment in user testing.",
+  tags: ["Brand Identity", "Mascot Design"],
   image: "/projects/beebite-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(50, 90%, 55%) 0%, hsl(40, 80%, 50%) 50%, hsl(30, 70%, 45%) 100%)"
 }, {
   id: "beat",
   title: "Beat Education",
   category: "Web Design",
-  description: "Dynamic landing page for an entrepreneurial training platform.",
-  tags: ["Landing Page", "EdTech", "Web Design"],
+  description: "Designed a high-converting landing page for course sales. Result: 67% increase in enrollment.",
+  tags: ["Web Design", "Conversion"],
   image: "/projects/beat-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(220, 70%, 50%) 0%, hsl(240, 60%, 45%) 50%, hsl(260, 50%, 40%) 100%)"
 }, {
   id: "elitepath",
   title: "ElitePath",
   category: "UX/UI Design",
-  description: "Student management dashboard that streamlines academic administration.",
-  tags: ["Dashboard", "EdTech", "Web App"],
+  description: "Simplified complex admin workflows into an intuitive dashboard. Result: 40% reduction in support tickets.",
+  tags: ["Dashboard UX", "Web App"],
   image: "/projects/elitepath-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(160, 50%, 40%) 0%, hsl(180, 45%, 35%) 50%, hsl(200, 40%, 30%) 100%)"
 }, {
   id: "groplan",
   title: "Gro Plan",
   category: "UX/UI Design",
-  description: "Smart grocery and meal planning app for managing groceries, meals, and pantry tracking.",
-  tags: ["Mobile App", "Food Tech", "UX Case Study"],
+  description: "Designed a meal planning app people actually use daily. Result: Featured in App Store's Food & Drink.",
+  tags: ["UX Research", "Mobile App"],
   image: "/projects/groplan-cover.png",
   bgGradient: "linear-gradient(135deg, hsl(120, 50%, 45%) 0%, hsl(140, 45%, 40%) 50%, hsl(160, 40%, 35%) 100%)"
 }];

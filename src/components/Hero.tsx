@@ -90,22 +90,22 @@ const Hero = () => {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
           animationDelay: "0.3s"
         }}>
-            <span className="inline-block hover:animate-tilt transition-transform font-sans">Crafting</span>
+            <span className="inline-block hover:animate-tilt transition-transform font-sans">Design</span>
             <br />
             <span className="inline-block hover:animate-tilt text-primary">
-              Seamless
+              That Feels
             </span>
             <br />
-            <span className="text-foreground/70 inline-block hover:animate-tilt">Experiences</span>
+            <span className="text-foreground/70 inline-block hover:animate-tilt">Human</span>
           </h1>
           
-          {/* Motto */}
+          {/* Subheadline */}
           <p className="mt-10 text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
-            Where creativity shapes the
+            We craft brands and digital products that
             <br />
-            <span className="font-sans font-semibold text-foreground">human experience</span>
+            <span className="font-sans font-semibold text-foreground">connect, convert, and endure</span>
           </p>
           
           {/* CTA Buttons with 3D hover */}
@@ -113,11 +113,11 @@ const Hero = () => {
           animationDelay: "0.7s"
         }}>
             <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover">
-              View Our Work
+              See Our Impact
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
             <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover">
-              Let's Create Together
+              Start a Project
             </a>
           </div>
           

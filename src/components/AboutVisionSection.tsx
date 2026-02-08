@@ -17,14 +17,14 @@ const AboutVisionSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const values = [{
-    title: "Empathy",
-    description: "We deeply understand user needs and emotions, crafting solutions that truly resonate."
+    title: "Human-First Thinking",
+    description: "We start with people, not pixels. Every decision is grounded in real user behavior and genuine business needs."
   }, {
-    title: "Innovation",
-    description: "Pushing creative boundaries while maintaining functionality and purpose."
+    title: "Strategic, Not Just Pretty",
+    description: "Design without strategy is just decoration. We solve problems first, then make them beautiful."
   }, {
-    title: "Craftsmanship",
-    description: "Every pixel, every interaction is meticulously designed with intention."
+    title: "Partnership, Not Projects",
+    description: "We invest in your success. You get a dedicated team that cares about outcomes, not just deliverables."
   }];
   return <section ref={sectionRef} className="py-16 md:py-20 bg-background relative overflow-hidden" id="about">
       {/* Enhanced parallax background elements */}
@@ -51,30 +51,30 @@ const AboutVisionSection = () => {
           <div>
             <AnimatedSection>
               <div className="soulx-chip mb-6 micro-interaction">
-                About Us
+                Why SoulX
               </div>
             </AnimatedSection>
             
             <AnimatedSection delay={100}>
-              <h2 className="section-title mb-8 font-sans">We believe design is deeply human
+              <h2 className="section-title mb-8 font-sans">Design that drives
               <br />
-                <span className="font-serif italic font-normal"></span>
+                <span className="font-serif italic font-normal">real results</span>
               </h2>
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                SoulX is a design and branding agency focused on creating meaningful 
-                digital experiences. We blend strategy, creativity, and technology to 
-                help brands connect with their audience on a profound level.
+                We're a small, focused team of designers and strategists who 
+                obsess over the details that matter. No layers of account managers. 
+                No templated solutions. Just direct collaboration with people who 
+                genuinely care about your product.
               </p>
             </AnimatedSection>
             
             <AnimatedSection delay={300}>
               <p className="text-muted-foreground leading-relaxed">
-                Founded on the principle that great design serves people first, 
-                we approach every project with curiosity, empathy, and an unwavering 
-                commitment to excellence.
+                Every brand we build and every interface we design starts with 
+                one question: how will this make someone's life better?
               </p>
             </AnimatedSection>
           </div>
