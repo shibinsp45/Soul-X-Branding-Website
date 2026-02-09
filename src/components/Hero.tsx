@@ -24,7 +24,7 @@ const SpaceHorizonBackground = () => (
     `}</style>
     
     {/* Dark space background */}
-    <div className="absolute inset-0 bg-black" />
+    <div className="absolute inset-0 bg-transparent" />
     
     {/* Subtle twinkling stars */}
     <div className="absolute inset-0">
@@ -76,7 +76,7 @@ const Hero = () => {
     });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <section ref={heroRef} className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden pt-24 md:pt-32" id="hero">
+  return <section ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 md:pt-32 bg-background dark:bg-transparent" id="hero">
       {/* Space horizon background for dark mode */}
       <SpaceHorizonBackground />
 
