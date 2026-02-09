@@ -109,7 +109,7 @@ const ProjectsSection = () => {
   }, [api]);
   const scrollPrev = () => api?.scrollPrev();
   const scrollNext = () => api?.scrollNext();
-  return <section className="py-20 md:py-28 relative overflow-hidden bg-background" id="projects">
+  return <section className="py-20 md:py-28 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">

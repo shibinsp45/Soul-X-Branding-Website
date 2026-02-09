@@ -26,7 +26,7 @@ const AboutVisionSection = () => {
     title: "Partnership, Not Projects",
     description: "We invest in your success. You get a dedicated team that cares about outcomes, not just deliverables."
   }];
-  return <section ref={sectionRef} className="py-16 md:py-20 bg-background relative overflow-hidden" id="about">
+  return <section ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="about">
       {/* Enhanced parallax background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-foreground/[0.02] blur-3xl" style={{
