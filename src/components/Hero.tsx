@@ -45,23 +45,6 @@ const SpaceHorizonBackground = () => (
       ))}
     </div>
     
-    {/* Glow behind moon */}
-    <div 
-      className="absolute left-1/2 -translate-x-1/2 w-[200%] aspect-square"
-      style={{
-        bottom: '-10%',
-        background: 'radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.1) 12%, rgba(255,255,255,0.03) 30%, transparent 50%)',
-      }}
-    />
-    
-    {/* Moon silhouette - curved arc anchored at very bottom */}
-    <div 
-      className="absolute left-1/2 -translate-x-1/2 w-[200%] aspect-square rounded-full bg-[#0a0a0a]"
-      style={{
-        bottom: '-190%',
-        boxShadow: 'inset 0 250px 200px -120px rgba(40,40,40,1)',
-      }}
-    />
   </div>
 );
 
