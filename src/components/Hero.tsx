@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 // Generate stable star positions (created once at module level to prevent re-render flicker)
-const stars = [...Array(80)].map((_, i) => ({
+const stars = [...Array(150)].map((_, i) => ({
   id: i,
-  size: Math.random() * 2 + 1,
+  size: Math.random() * 3 + 1.5,
   left: Math.random() * 100,
-  top: Math.random() * 70,
-  opacity: Math.random() * 0.6 + 0.3,
+  top: Math.random() * 80,
+  opacity: Math.random() * 0.7 + 0.3,
   delay: Math.random() * 4,
   duration: 2 + Math.random() * 3,
 }));
@@ -45,20 +45,21 @@ const SpaceHorizonBackground = () => (
       ))}
     </div>
     
-    {/* Glow behind planet */}
+    {/* Glow behind moon */}
     <div 
-      className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[200%] aspect-square"
+      className="absolute left-1/2 -translate-x-1/2 w-[200%] aspect-square"
       style={{
-        background: 'radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, rgba(255,255,255,0.02) 35%, transparent 55%)',
+        bottom: '-10%',
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.1) 12%, rgba(255,255,255,0.03) 30%, transparent 50%)',
       }}
     />
     
-    {/* Planet silhouette - large curved arc at bottom */}
+    {/* Moon silhouette - curved arc anchored at very bottom */}
     <div 
-      className="absolute left-1/2 -translate-x-1/2 w-[250%] aspect-square rounded-full bg-[#0a0a0a]"
+      className="absolute left-1/2 -translate-x-1/2 w-[200%] aspect-square rounded-full bg-[#0a0a0a]"
       style={{
-        bottom: '-220%',
-        boxShadow: 'inset 0 200px 150px -100px rgba(30,30,30,1)',
+        bottom: '-190%',
+        boxShadow: 'inset 0 250px 200px -120px rgba(40,40,40,1)',
       }}
     />
   </div>
