@@ -87,13 +87,9 @@ const Hero = () => {
           <p className="mt-10 text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
-            We design experiences that
+            Beautiful design that people love,
             <br />
-            <span className="font-sans font-semibold text-foreground">connect emotionally,</span>
-            <br />
-            <span className="font-sans font-semibold text-foreground">convert intuitively,</span>
-            <br />
-            <span className="font-sans font-semibold text-foreground">and endure through trust.</span>
+            businesses trust, and results prove.
           </p>
           
           {/* CTA Buttons with 3D hover */}
