@@ -108,7 +108,7 @@ const ProjectsSection = () => {
         {/* Header */}
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl lg:text-[42px] font-sans font-normal text-foreground text-center mb-14 tracking-tight">
-            Your design journey starts now.
+            Your design journey starts here.
           </h2>
         </AnimatedSection>
 
