@@ -106,11 +106,23 @@ const ProjectsSection = () => {
     <section className="py-20 md:py-28 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
       <div className="section-container relative z-10">
         {/* Header */}
-        <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-sans font-normal text-foreground text-center mb-14 tracking-tight">
-            Your design journey starts here.
-          </h2>
-        </AnimatedSection>
+        <div className="flex items-center justify-between mb-14">
+          <AnimatedSection>
+            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-sans font-normal text-foreground tracking-tight">
+              Your design journey starts here.
+            </h2>
+          </AnimatedSection>
+
+          {projects.length > VISIBLE_COUNT && (
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 shrink-0"
+            >
+              {showAll ? "Show Less" : "View All"}
+              <ArrowRight className={cn("w-4 h-4 transition-transform duration-300", showAll && "rotate-180")} />
+            </button>
+          )}
+        </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -120,17 +132,12 @@ const ProjectsSection = () => {
                 to={`/project/${project.id}`}
                 className="group block relative aspect-[4/5] md:aspect-square rounded-2xl overflow-hidden"
               >
-                {/* Image */}
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-
-                {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                {/* Bottom content */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between">
                   <div>
                     <p className="text-white/60 text-xs uppercase tracking-wider mb-1">
@@ -146,18 +153,6 @@ const ProjectsSection = () => {
             </AnimatedSection>
           ))}
         </div>
-
-        {/* View All / Show Less */}
-        {projects.length > VISIBLE_COUNT && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-6 py-3 rounded-full border border-border text-foreground text-sm font-medium hover:bg-muted transition-colors"
-            >
-              {showAll ? "Show Less" : `View All Projects (${projects.length})`}
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
