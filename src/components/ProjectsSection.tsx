@@ -107,8 +107,8 @@ const ProjectsSection = () => {
       <div className="section-container relative z-10">
         {/* Header */}
         <AnimatedSection>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-foreground text-center mb-14">
-            Discover
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-sans font-normal text-foreground text-center mb-14 tracking-tight">
+            Your design journey starts now.
           </h2>
         </AnimatedSection>
 
