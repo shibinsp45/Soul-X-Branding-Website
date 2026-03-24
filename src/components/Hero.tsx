@@ -110,16 +110,16 @@ const Hero = () => {
           animationDelay: "0.9s"
         }}>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">10+</div>
-              <div className="text-sm text-muted-foreground mt-1">Projects</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">10+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Projects</div>
             </div>
             <div className="text-center border-x border-border card-3d p-4">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">2+</div>
-              <div className="text-sm text-muted-foreground mt-1">Years</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">2+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Years</div>
             </div>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">3+</div>
-              <div className="text-sm text-muted-foreground mt-1">Clients</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">3+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Clients</div>
             </div>
           </div>
         </div>

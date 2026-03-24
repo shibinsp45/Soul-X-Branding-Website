@@ -117,7 +117,7 @@ const AboutVisionSection = () => {
             
             <div className="pt-8 border-t border-background/20">
               <AnimatedSection delay={400}>
-                <p className="text-lg md:text-xl text-background/80 leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-background/80 leading-relaxed mb-6">
                   We envision a world where every digital interaction is intuitive, 
                   beautiful, and meaningful. Where technology enhances human connection 
                   rather than replacing it.

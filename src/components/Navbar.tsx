@@ -184,7 +184,7 @@ const Navbar = () => {
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  className="text-4xl sm:text-5xl font-display font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
+                  className="text-3xl sm:text-4xl font-sans font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-4 py-2 transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);

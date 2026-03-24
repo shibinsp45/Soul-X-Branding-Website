@@ -76,7 +76,7 @@ const TestimonialsSection = () => {
                   "{testimonial.content}"
                 </blockquote>
                 <div className="border-t border-border pt-6">
-                  <div className="font-display font-medium text-foreground">
+                  <div className="font-sans font-medium text-foreground">
                     {testimonial.author}
                   </div>
                   <div className="text-sm text-muted-foreground">

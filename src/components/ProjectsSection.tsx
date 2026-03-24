@@ -108,7 +108,7 @@ const ProjectsSection = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-14">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-sans font-normal text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-normal text-foreground tracking-tight">
               Your design journey starts here.
             </h2>
           </AnimatedSection>

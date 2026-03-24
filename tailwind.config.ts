@@ -176,10 +176,10 @@ export default {
 				'rotate-in': 'rotate-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
 				'blur-in': 'blur-in 0.8s ease-out forwards'
 			},
-			fontFamily: {
+		fontFamily: {
 				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Space Grotesk', 'Inter', 'sans-serif'],
-				'serif': ['"Playfair Display"', 'Georgia', 'serif'],
+				'display': ['Inter', 'system-ui', 'sans-serif'],
+				'serif': ['Inter', 'system-ui', 'sans-serif'],
 			},
 			boxShadow: {
 				'elegant': '0 4px 20px rgba(0, 0, 0, 0.06)',
