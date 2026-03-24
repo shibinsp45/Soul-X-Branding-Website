@@ -71,8 +71,8 @@ const TestimonialsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <ScrollTriggered3DCard key={index} delay={index * 150}>
-              <div className="bg-background p-8 rounded-2xl h-full flex flex-col glow-effect">
-                <blockquote className="text-foreground leading-relaxed mb-8 flex-grow">
+              <div className="bg-background p-6 md:p-8 rounded-2xl h-full flex flex-col glow-effect">
+                <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 md:mb-8 flex-grow">
                   "{testimonial.content}"
                 </blockquote>
                 <div className="border-t border-border pt-6">
