@@ -42,7 +42,7 @@ const ServicesSection = () => {
           {services.map((service, index) => <ScrollTriggered3DCard key={service.number} delay={index * 100}>
               <div className="group p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.05)] h-full">
                 <div className="flex items-start gap-6">
-                  <span className="text-4xl font-display font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-scale-pulse">
+                  <span className="text-3xl md:text-4xl font-sans font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-scale-pulse">
                     {service.number}
                   </span>
                   <div>
