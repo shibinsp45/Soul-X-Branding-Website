@@ -64,7 +64,7 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
                 We're a small, focused team of designers and strategists who 
                 obsess over the details that matter. No layers of account managers. 
                 No templated solutions. Just direct collaboration with people who 
