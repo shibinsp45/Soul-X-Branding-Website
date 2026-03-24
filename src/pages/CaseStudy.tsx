@@ -201,7 +201,7 @@ const CaseStudy = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-display font-medium mb-4">Project Not Found</h1>
+          <h1 className="text-3xl md:text-4xl font-sans font-medium mb-4">Project Not Found</h1>
           <Link to="/#projects" className="button-primary inline-flex items-center">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Projects
@@ -239,13 +239,13 @@ const CaseStudy = () => {
           </AnimatedSection>
           
           <AnimatedSection delay={200}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-medium tracking-tight text-foreground mb-8">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-sans font-medium tracking-tight text-foreground mb-8">
               {study.title}
             </h1>
           </AnimatedSection>
           
           <AnimatedSection delay={300}>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               {study.overview}
             </p>
           </AnimatedSection>
@@ -254,15 +254,15 @@ const CaseStudy = () => {
             <div className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-border">
               <div className="micro-interaction">
                 <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Client</div>
-                <div className="font-display font-medium">{study.client}</div>
+                <div className="font-sans font-medium">{study.client}</div>
               </div>
               <div className="micro-interaction">
                 <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Year</div>
-                <div className="font-display font-medium">{study.year}</div>
+                <div className="font-sans font-medium">{study.year}</div>
               </div>
               <div className="micro-interaction">
                 <div className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Duration</div>
-                <div className="font-display font-medium">{study.duration}</div>
+                <div className="font-sans font-medium">{study.duration}</div>
               </div>
             </div>
           </AnimatedSection>
@@ -281,7 +281,7 @@ const CaseStudy = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <span className="text-[15vw] md:text-[10vw] font-serif italic text-foreground/10 group-hover:scale-110 transition-transform duration-700">
+                <span className="text-[15vw] md:text-[10vw] font-sans text-foreground/10 group-hover:scale-110 transition-transform duration-700">
                   {study.title.charAt(0)}
                 </span>
               )}
@@ -290,12 +290,12 @@ const CaseStudy = () => {
         </div>
       </section>
 
-      {/* Process Section - New */}
+      {/* Process Section */}
       <section className="py-16 md:py-24">
         <div className="section-container">
           <AnimatedSection>
-            <h2 className="text-2xl md:text-3xl font-display font-medium mb-12 text-center">
-              Our <span className="font-serif italic">Process</span>
+            <h2 className="text-2xl md:text-3xl font-sans font-medium mb-12 text-center">
+              Our Process
             </h2>
           </AnimatedSection>
           
@@ -303,10 +303,10 @@ const CaseStudy = () => {
             {['Discovery', 'Strategy', 'Design', 'Delivery'].map((phase, index) => (
               <AnimatedSection key={phase} animation="fade-up" delay={index * 100}>
                 <div className="text-center p-6 bg-secondary/50 rounded-2xl micro-interaction hover:bg-secondary transition-colors">
-                  <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center mx-auto mb-4 font-display font-medium">
+                  <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center mx-auto mb-4 font-sans font-medium">
                     {index + 1}
                   </div>
-                  <h3 className="font-display font-medium text-lg">{phase}</h3>
+                  <h3 className="font-sans font-medium text-lg">{phase}</h3>
                 </div>
               </AnimatedSection>
             ))}
@@ -329,10 +329,10 @@ const CaseStudy = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-display font-medium mb-6">
-                  The <span className="font-serif italic">Challenge</span>
+                <h2 className="text-2xl md:text-3xl font-sans font-medium mb-6">
+                  The Challenge
                 </h2>
-                <p className="text-muted-foreground leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
                   {study.challenge}
                 </p>
               </div>
@@ -345,10 +345,10 @@ const CaseStudy = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-display font-medium mb-6">
-                  Our <span className="font-serif italic">Solution</span>
+                <h2 className="text-2xl md:text-3xl font-sans font-medium mb-6">
+                  Our Solution
                 </h2>
-                <p className="text-background/80 leading-relaxed text-lg">
+                <p className="text-background/80 leading-relaxed text-base md:text-lg">
                   {study.solution}
                 </p>
               </div>
@@ -365,8 +365,8 @@ const CaseStudy = () => {
         
         <div className="section-container relative z-10">
           <AnimatedSection>
-            <h2 className="text-2xl md:text-3xl font-display font-medium mb-4 text-center">
-              The <span className="font-serif italic">Results</span>
+            <h2 className="text-2xl md:text-3xl font-sans font-medium mb-4 text-center">
+              The Results
             </h2>
             <p className="text-background/60 text-center mb-12 max-w-xl mx-auto">
               Measurable outcomes that demonstrate the impact of our work
@@ -377,7 +377,7 @@ const CaseStudy = () => {
             {study.results.map((result, index) => (
               <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
                 <div className="text-center p-8 border border-background/10 rounded-2xl micro-interaction hover:border-background/30 transition-colors hover:bg-background/5">
-                  <p className="text-lg font-display">{result}</p>
+                  <p className="text-base md:text-lg font-sans">{result}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -385,12 +385,12 @@ const CaseStudy = () => {
         </div>
       </section>
 
-      {/* Key Deliverables - New Section */}
+      {/* Key Deliverables */}
       <section className="py-16 md:py-24">
         <div className="section-container">
           <AnimatedSection>
-            <h2 className="text-2xl md:text-3xl font-display font-medium mb-12 text-center">
-              Key <span className="font-serif italic">Deliverables</span>
+            <h2 className="text-2xl md:text-3xl font-sans font-medium mb-12 text-center">
+              Key Deliverables
             </h2>
           </AnimatedSection>
           
@@ -408,7 +408,7 @@ const CaseStudy = () => {
         </div>
       </section>
 
-      {/* Testimonial Placeholder - New Section */}
+      {/* Testimonial Placeholder */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="section-container">
           <AnimatedSection>
@@ -416,7 +416,7 @@ const CaseStudy = () => {
               <svg className="w-12 h-12 mx-auto mb-6 text-foreground/20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
               </svg>
-              <blockquote className="text-xl md:text-2xl font-display font-medium mb-6 text-foreground">
+              <blockquote className="text-lg md:text-xl font-sans font-medium mb-6 text-foreground">
                 "Working with SoulX was a transformative experience. They truly understood our vision and delivered beyond expectations."
               </blockquote>
               <cite className="text-muted-foreground not-italic">
@@ -439,7 +439,7 @@ const CaseStudy = () => {
                 <ArrowLeft className="w-5 h-5 mr-3 transition-transform group-hover:-translate-x-2" />
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Previous</div>
-                  <div className="font-display font-medium text-foreground">
+                  <div className="font-sans font-medium text-foreground">
                     {caseStudies[study.prevProject]?.title}
                   </div>
                 </div>
@@ -453,7 +453,7 @@ const CaseStudy = () => {
               >
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Next</div>
-                  <div className="font-display font-medium text-foreground">
+                  <div className="font-sans font-medium text-foreground">
                     {caseStudies[study.nextProject]?.title}
                   </div>
                 </div>

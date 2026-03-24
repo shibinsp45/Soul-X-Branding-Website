@@ -71,10 +71,10 @@ const Hero = () => {
       }}>
           
           {/* Main headline with staggered animation and 3D effect */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-sans font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
           animationDelay: "0.3s"
         }}>
-            <span className="inline-block hover:animate-tilt transition-transform font-sans">Crafting Design</span>
+            <span className="inline-block hover:animate-tilt transition-transform">Crafting Design</span>
             <br />
             <span className="inline-block hover:animate-tilt text-primary">
               That Feels
@@ -84,7 +84,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheadline */}
-          <p className="mt-10 text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
+          <p className="mt-8 text-base md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
             Beautiful design that people love,
@@ -110,16 +110,16 @@ const Hero = () => {
           animationDelay: "0.9s"
         }}>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">10+</div>
-              <div className="text-sm text-muted-foreground mt-1">Projects</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">10+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Projects</div>
             </div>
             <div className="text-center border-x border-border card-3d p-4">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">2+</div>
-              <div className="text-sm text-muted-foreground mt-1">Years</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">2+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Years</div>
             </div>
             <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
-              <div className="text-3xl md:text-4xl font-display font-medium text-foreground">3+</div>
-              <div className="text-sm text-muted-foreground mt-1">Clients</div>
+              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">3+</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Clients</div>
             </div>
           </div>
         </div>

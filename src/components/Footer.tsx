@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="section-container py-0">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-8">
-            <span className="text-2xl font-display font-semibold">SoulX</span>
+            <span className="text-2xl font-sans font-semibold">SoulX</span>
             <p className="text-background/60 text-sm hidden md:block">
               Crafting seamless experiences
             </p>

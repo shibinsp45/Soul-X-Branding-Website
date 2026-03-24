@@ -56,14 +56,15 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={100}>
-              <h2 className="section-title mb-8 font-sans">Design that drives
-              <br />
-                <span className="font-serif italic font-normal">real results</span>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-medium tracking-tight text-foreground mb-8">
+                Design that drives
+                <br />
+                real results
               </h2>
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
                 We're a small, focused team of designers and strategists who 
                 obsess over the details that matter. No layers of account managers. 
                 No templated solutions. Just direct collaboration with people who 
@@ -83,7 +84,7 @@ const AboutVisionSection = () => {
           <div className="space-y-8">
             {values.map((value, index) => <ScrollTriggered3DCard key={value.title} delay={400 + index * 100}>
                 <div className="border-l-2 border-foreground pl-6 py-4 hover:border-foreground/50 transition-all duration-300 hover:pl-8 bg-secondary/30 rounded-r-xl glow-effect">
-                  <h3 className="text-xl font-medium mb-2 text-foreground font-sans">
+                   <h3 className="text-lg md:text-xl font-medium mb-2 text-foreground font-sans">
                     {value.title}
                   </h3>
                   <p className="text-muted-foreground">
@@ -116,7 +117,7 @@ const AboutVisionSection = () => {
             
             <div className="pt-8 border-t border-background/20">
               <AnimatedSection delay={400}>
-                <p className="text-lg md:text-xl text-background/80 leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-background/80 leading-relaxed mb-6">
                   We envision a world where every digital interaction is intuitive, 
                   beautiful, and meaningful. Where technology enhances human connection 
                   rather than replacing it.
