@@ -56,9 +56,10 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={100}>
-              <h2 className="section-title mb-8 font-sans">Design that drives
-              <br />
-                <span className="font-serif italic font-normal">real results</span>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-medium tracking-tight text-foreground mb-8">
+                Design that drives
+                <br />
+                real results
               </h2>
             </AnimatedSection>
             
