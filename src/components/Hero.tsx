@@ -84,7 +84,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheadline */}
-          <p className="mt-10 text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
+          <p className="mt-8 text-base md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
             Beautiful design that people love,
