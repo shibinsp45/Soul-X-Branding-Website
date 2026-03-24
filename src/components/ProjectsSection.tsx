@@ -124,6 +124,19 @@ const ProjectsSection = () => {
           )}
         </div>
 
+        {/* Project chips for quick access */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              className="px-4 py-1.5 rounded-full text-sm font-medium border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+            >
+              {project.title}
+            </Link>
+          ))}
+        </div>
+
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {displayedProjects.map((project, index) => (
