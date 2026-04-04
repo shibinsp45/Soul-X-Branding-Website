@@ -124,13 +124,13 @@ const ProjectsSection = () => {
           )}
         </div>
 
-        {/* Project chips for quick access */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Project chips for quick access — horizontally scrollable */}
+        <div className="flex gap-2 mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
           {projects.map((project) => (
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="px-4 py-1.5 rounded-full text-sm font-medium border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+              className="px-4 py-1.5 rounded-full text-sm font-medium border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors whitespace-nowrap shrink-0 sm:shrink"
             >
               {project.title}
             </Link>
