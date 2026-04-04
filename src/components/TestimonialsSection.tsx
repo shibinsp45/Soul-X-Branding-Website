@@ -6,6 +6,7 @@ interface TestimonialProps {
   content: string;
   author: string;
   role: string;
+  avatar: string;
 }
 
 const testimonials: TestimonialProps[] = [
