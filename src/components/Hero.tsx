@@ -100,7 +100,7 @@ const Hero = () => {
               See How We Think
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="button-secondary inline-flex items-center justify-center text-lg tilt-hover">
+            <a href="#contact" className="inline-flex items-center justify-center text-lg tilt-hover px-8 py-3 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium">
               View Case Studies
             </a>
           </div>
