@@ -30,7 +30,7 @@ const CTA = () => {
   }, []);
   
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white relative" id="get-access" ref={ctaRef}>
+    <section className="py-8 sm:py-10 md:py-12 bg-white relative" id="get-access" ref={ctaRef}>
       {/* Background gradient at the top has been removed */}
       
       <div className="section-container relative z-10 opacity-0 px-4 sm:px-6">

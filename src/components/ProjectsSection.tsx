@@ -116,10 +116,10 @@ const ProjectsSection = () => {
           {projects.length > VISIBLE_COUNT && (
             <button
               onClick={() => setShowAll(!showAll)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 shrink-0"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors flex items-center gap-2 shrink-0 px-4 py-2 border border-border rounded-full hover:border-foreground/40"
             >
               {showAll ? "Show Less" : "View All"}
-              <ArrowRight className={cn("w-4 h-4 transition-transform duration-300", showAll && "rotate-180")} />
+              <ArrowRight className={cn("w-5 h-5 transition-transform duration-300", showAll && "rotate-180")} />
             </button>
           )}
         </div>

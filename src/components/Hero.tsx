@@ -106,20 +106,20 @@ const Hero = () => {
           </div>
           
           {/* Stats row with 3D cards */}
-          <div className="mt-12 md:mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto opacity-0 animate-slide-up-fade" style={{
+          <div className="mt-10 md:mt-14 mb-8 grid grid-cols-3 gap-6 max-w-md mx-auto opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.9s"
         }}>
-            <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
+            <div className="text-center p-3">
               <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">10+</div>
-              <div className="text-xs md:text-sm text-muted-foreground mt-1">Projects</div>
+              <div className="text-xs text-muted-foreground mt-1">Projects</div>
             </div>
-            <div className="text-center border-x border-border card-3d p-4">
+            <div className="text-center border-x border-border p-3">
               <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">2+</div>
-              <div className="text-xs md:text-sm text-muted-foreground mt-1">Years</div>
+              <div className="text-xs text-muted-foreground mt-1">Years</div>
             </div>
-            <div className="text-center card-3d p-4 rounded-xl hover:bg-secondary/50 transition-colors">
+            <div className="text-center p-3">
               <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">3+</div>
-              <div className="text-xs md:text-sm text-muted-foreground mt-1">Clients</div>
+              <div className="text-xs text-muted-foreground mt-1">Clients</div>
             </div>
           </div>
         </div>

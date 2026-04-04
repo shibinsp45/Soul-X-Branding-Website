@@ -79,12 +79,15 @@ const TestimonialsSection = () => {
                 <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 md:mb-8 flex-grow">
                   "{testimonial.content}"
                 </blockquote>
-                <div className="border-t border-border pt-6">
-                  <div className="font-sans font-medium text-foreground">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.role}
+                <div className="border-t border-border pt-6 flex items-center gap-3">
+                  <img src={testimonial.avatar} alt={testimonial.author} className="w-10 h-10 rounded-full object-cover" />
+                  <div>
+                    <div className="font-sans font-medium text-foreground text-sm">
+                      {testimonial.author}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
               </div>

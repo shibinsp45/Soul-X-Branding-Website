@@ -92,12 +92,6 @@ const AboutVisionSection = () => {
         transform: `perspective(2000px) rotateX(${(0.5 - scrollProgress) * 5}deg)`,
         transition: 'transform 0.3s ease-out'
       }}>
-          {/* Decorative 3D elements */}
-          <div className="absolute top-10 right-10 w-32 h-32 rounded-full border border-background/10 float-3d" />
-          <div className="absolute bottom-10 left-10 w-24 h-24 rounded-full border border-background/5 float-3d" style={{
-          animationDelay: '2s'
-        }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-background/[0.02] blob-morph pointer-events-none" />
           
           <div className="max-w-4xl relative z-10">
             <AnimatedSection>
