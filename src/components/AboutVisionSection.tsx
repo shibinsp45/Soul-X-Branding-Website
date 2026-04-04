@@ -35,14 +35,6 @@ const AboutVisionSection = () => {
         <div className="absolute bottom-40 left-10 w-96 h-96 rounded-full bg-foreground/[0.03] blur-3xl" style={{
         transform: `translateY(${scrollProgress * -80}px)`
       }} />
-        {/* 3D floating shapes */}
-        <div className="absolute top-32 left-1/4 w-20 h-20 border border-foreground/5 rounded-2xl float-3d" style={{
-        animationDelay: '0s'
-      }} />
-        <div className="absolute bottom-1/4 right-1/3 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{
-        animationDelay: '3s'
-      }} />
-        <div className="absolute top-1/2 right-10 w-24 h-24 bg-foreground/[0.01] blob-morph" />
       </div>
 
       <div className="section-container relative z-10">
