@@ -6,23 +6,27 @@ interface TestimonialProps {
   content: string;
   author: string;
   role: string;
+  avatar: string;
 }
 
 const testimonials: TestimonialProps[] = [
   {
     content: "We came to SoulX with a confusing product and left with a brand our users actually understand. Our conversion rate jumped 47% in the first month after launch. They didn't just make things pretty—they made our business work better.",
     author: "Sarah Chen",
-    role: "CEO, Zenith Finance"
+    role: "CEO, Zenith Finance",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face"
   },
   {
     content: "Most agencies give you a logo and disappear. SoulX gave us a complete identity we could actually use—and walked us through exactly how to apply it. Six months later, customers still tell us our packaging is what made them try us.",
     author: "Michael Rodriguez",
-    role: "Founder, Artisan Coffee Co."
+    role: "Founder, Artisan Coffee Co.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
   },
   {
     content: "I was skeptical about hiring a small studio, but that's exactly what made SoulX great. No junior designers learning on our dime. Every meeting was with the people actually doing the work. Our new website cut our sales cycle in half.",
     author: "Dr. Amara Patel",
-    role: "Director, Nova Architecture"
+    role: "Director, Nova Architecture",
+    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face"
   }
 ];
 
@@ -75,12 +79,15 @@ const TestimonialsSection = () => {
                 <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 md:mb-8 flex-grow">
                   "{testimonial.content}"
                 </blockquote>
-                <div className="border-t border-border pt-6">
-                  <div className="font-sans font-medium text-foreground">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.role}
+                <div className="border-t border-border pt-6 flex items-center gap-3">
+                  <img src={testimonial.avatar} alt={testimonial.author} className="w-10 h-10 rounded-full object-cover" />
+                  <div>
+                    <div className="font-sans font-medium text-foreground text-sm">
+                      {testimonial.author}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
               </div>

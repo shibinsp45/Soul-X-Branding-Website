@@ -25,7 +25,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/40 text-sm">
-            © 2024 SoulX. All rights reserved.
+            © 2026 SoulX. All rights reserved.
           </p>
           
         </div>

@@ -35,14 +35,6 @@ const AboutVisionSection = () => {
         <div className="absolute bottom-40 left-10 w-96 h-96 rounded-full bg-foreground/[0.03] blur-3xl" style={{
         transform: `translateY(${scrollProgress * -80}px)`
       }} />
-        {/* 3D floating shapes */}
-        <div className="absolute top-32 left-1/4 w-20 h-20 border border-foreground/5 rounded-2xl float-3d" style={{
-        animationDelay: '0s'
-      }} />
-        <div className="absolute bottom-1/4 right-1/3 w-16 h-16 border border-foreground/5 rounded-full float-3d" style={{
-        animationDelay: '3s'
-      }} />
-        <div className="absolute top-1/2 right-10 w-24 h-24 bg-foreground/[0.01] blob-morph" />
       </div>
 
       <div className="section-container relative z-10">
@@ -100,12 +92,6 @@ const AboutVisionSection = () => {
         transform: `perspective(2000px) rotateX(${(0.5 - scrollProgress) * 5}deg)`,
         transition: 'transform 0.3s ease-out'
       }}>
-          {/* Decorative 3D elements */}
-          <div className="absolute top-10 right-10 w-32 h-32 rounded-full border border-background/10 float-3d" />
-          <div className="absolute bottom-10 left-10 w-24 h-24 rounded-full border border-background/5 float-3d" style={{
-          animationDelay: '2s'
-        }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-background/[0.02] blob-morph pointer-events-none" />
           
           <div className="max-w-4xl relative z-10">
             <AnimatedSection>

@@ -116,21 +116,21 @@ const ProjectsSection = () => {
           {projects.length > VISIBLE_COUNT && (
             <button
               onClick={() => setShowAll(!showAll)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 shrink-0"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors flex items-center gap-2 shrink-0 px-4 py-2 border border-border rounded-full hover:border-foreground/40"
             >
               {showAll ? "Show Less" : "View All"}
-              <ArrowRight className={cn("w-4 h-4 transition-transform duration-300", showAll && "rotate-180")} />
+              <ArrowRight className={cn("w-5 h-5 transition-transform duration-300", showAll && "rotate-180")} />
             </button>
           )}
         </div>
 
-        {/* Project chips for quick access */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Project chips for quick access — horizontally scrollable */}
+        <div className="flex gap-2 mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
           {projects.map((project) => (
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="px-4 py-1.5 rounded-full text-sm font-medium border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+              className="px-4 py-1.5 rounded-full text-sm font-medium border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors whitespace-nowrap shrink-0 sm:shrink"
             >
               {project.title}
             </Link>

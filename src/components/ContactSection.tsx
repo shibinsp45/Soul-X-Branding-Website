@@ -178,15 +178,18 @@ const ContactSection = () => {
 
           {/* Social icons */}
           <AnimatedSection delay={400}>
-            <div className="flex items-center justify-center gap-5 mt-12">
+            <div className="flex items-center justify-center gap-6 mt-12">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                  className="flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Icon className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-foreground/40 transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-medium">{label}</span>
                 </a>
               ))}
             </div>

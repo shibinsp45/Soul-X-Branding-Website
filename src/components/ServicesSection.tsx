@@ -40,16 +40,16 @@ const ServicesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => <ScrollTriggered3DCard key={service.number} delay={index * 100}>
-              <div className="group p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.05)] h-full">
-                <div className="flex items-start gap-6">
-                  <span className="text-3xl md:text-4xl font-sans font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-scale-pulse">
+              <div className="group p-6 md:p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.05)] h-full">
+                <div className="flex items-start gap-4 md:gap-6">
+                  <span className="text-2xl md:text-4xl font-sans font-light text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-scale-pulse shrink-0">
                     {service.number}
                   </span>
-                  <div>
-                    <h3 className="text-lg md:text-xl font-medium text-foreground mb-3 group-hover:translate-x-1 transition-transform font-sans">
+                  <div className="min-w-0">
+                    <h3 className="text-base md:text-xl font-medium text-foreground mb-2 md:mb-3 group-hover:translate-x-1 transition-transform font-sans">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
                   </div>
