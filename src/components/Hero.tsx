@@ -60,18 +60,18 @@ const Hero = () => {
     });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <section ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 md:pt-32 bg-background dark:bg-transparent" id="hero">
+  return <section ref={heroRef} className="min-h-[100svh] flex items-center justify-center relative overflow-hidden pt-20 pb-8 md:pt-28 md:pb-12 bg-background dark:bg-transparent" id="hero">
       {/* Space horizon background for dark mode */}
       <SpaceHorizonBackground />
 
       
-      <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container px-5 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center" style={{
         transform: `translateY(${scrollY * -0.2}px)`
       }}>
           
-          {/* Main headline with staggered animation and 3D effect */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-sans font-medium leading-[0.95] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
+          {/* Main headline */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-sans font-medium leading-[1] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
           animationDelay: "0.3s"
         }}>
             <span className="inline-block hover:animate-tilt transition-transform">Crafting Design</span>
@@ -84,7 +84,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheadline */}
-          <p className="mt-8 text-base md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
+          <p className="mt-5 md:mt-8 text-sm md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
           animationDelay: "0.5s"
         }}>
             Beautiful design that people love,
@@ -92,34 +92,34 @@ const Hero = () => {
             businesses trust, and results prove.
           </p>
           
-          {/* CTA Buttons with 3D hover */}
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-fade" style={{
+          {/* CTA Buttons */}
+          <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-3 justify-center opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.7s"
         }}>
-            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-lg tilt-hover">
+            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-base md:text-lg tilt-hover">
               See How We Think
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="inline-flex items-center justify-center text-lg tilt-hover px-8 py-3 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium">
+            <a href="#contact" className="inline-flex items-center justify-center text-base md:text-lg tilt-hover px-8 py-3 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium">
               View Case Studies
             </a>
           </div>
           
-          {/* Stats row with 3D cards */}
-          <div className="mt-10 md:mt-14 mb-8 grid grid-cols-3 gap-6 max-w-md mx-auto opacity-0 animate-slide-up-fade" style={{
+          {/* Stats row */}
+          <div className="mt-8 md:mt-14 grid grid-cols-3 gap-4 max-w-sm md:max-w-md mx-auto opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.9s"
         }}>
-            <div className="text-center p-3">
-              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">10+</div>
-              <div className="text-xs text-muted-foreground mt-1">Projects</div>
+            <div className="text-center p-2 md:p-3">
+              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">10+</div>
+              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Projects</div>
             </div>
-            <div className="text-center border-x border-border p-3">
-              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">2+</div>
-              <div className="text-xs text-muted-foreground mt-1">Years</div>
+            <div className="text-center border-x border-border p-2 md:p-3">
+              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">2+</div>
+              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Years</div>
             </div>
-            <div className="text-center p-3">
-              <div className="text-2xl md:text-3xl font-sans font-medium text-foreground">3+</div>
-              <div className="text-xs text-muted-foreground mt-1">Clients</div>
+            <div className="text-center p-2 md:p-3">
+              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">3+</div>
+              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Clients</div>
             </div>
           </div>
         </div>

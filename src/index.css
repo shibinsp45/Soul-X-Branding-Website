@@ -124,7 +124,7 @@
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16;
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-4 md:py-12;
   }
 
   .section-title {

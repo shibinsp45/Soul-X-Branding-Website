@@ -62,7 +62,7 @@ const ContactSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-20 bg-background dark:bg-transparent relative overflow-hidden"
+      className="py-12 md:py-20 bg-background dark:bg-transparent relative overflow-hidden"
       id="contact"
     >
       <div className="section-container relative z-10">
@@ -76,7 +76,7 @@ const ContactSection = () => {
           />
 
           <AnimatedSection delay={200}>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 md:mb-10">
               Tell us about your project and we'll get back to you within 24 hours with
               honest feedback on how we can help.
             </p>
@@ -178,7 +178,7 @@ const ContactSection = () => {
 
           {/* Social icons */}
           <AnimatedSection delay={400}>
-            <div className="flex items-center justify-center gap-6 mt-12">
+            <div className="flex items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

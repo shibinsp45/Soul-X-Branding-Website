@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 bg-secondary dark:bg-transparent relative overflow-hidden" id="testimonials">
+    <section ref={sectionRef} className="py-12 md:py-20 bg-secondary dark:bg-transparent relative overflow-hidden" id="testimonials">
       {/* Parallax decorative elements */}
       <div 
         className="absolute top-0 left-1/4 w-64 h-64 bg-foreground/[0.02] rounded-full blur-3xl" 
@@ -63,7 +63,7 @@ const TestimonialsSection = () => {
       <div className="absolute top-1/2 left-10 w-24 h-24 bg-foreground/[0.01] blob-morph" />
 
       <div className="section-container relative z-10">
-        <div className="mb-16">
+        <div className="mb-8 md:mb-16">
           <SectionHeading
             chip="Testimonials"
             title="What our clients"
@@ -72,7 +72,7 @@ const TestimonialsSection = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <ScrollTriggered3DCard key={index} delay={index * 150}>
               <div className="bg-background p-6 md:p-8 rounded-2xl h-full flex flex-col glow-effect">
