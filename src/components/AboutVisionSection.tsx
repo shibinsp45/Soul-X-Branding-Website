@@ -26,7 +26,7 @@ const AboutVisionSection = () => {
     title: "Partnership, Not Projects",
     description: "We invest in your success. You get a dedicated team that cares about outcomes, not just deliverables."
   }];
-  return <section ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="about">
+  return <section ref={sectionRef} className="py-12 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="about">
       {/* Enhanced parallax background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-foreground/[0.02] blur-3xl" style={{
@@ -39,7 +39,7 @@ const AboutVisionSection = () => {
 
       <div className="section-container relative z-10">
         {/* About Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start mb-12 md:mb-24">
           <div>
             <AnimatedSection>
               <div className="soulx-chip mb-6 micro-interaction">
@@ -73,7 +73,7 @@ const AboutVisionSection = () => {
           </div>
           
           {/* Values with 3D cards */}
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             {values.map((value, index) => <ScrollTriggered3DCard key={value.title} delay={400 + index * 100}>
                 <div className="border-l-2 border-foreground pl-6 py-4 hover:border-foreground/50 transition-all duration-300 hover:pl-8 bg-secondary/30 rounded-r-xl glow-effect">
                    <h3 className="text-lg md:text-xl font-medium mb-2 text-foreground font-sans">
@@ -88,7 +88,7 @@ const AboutVisionSection = () => {
         </div>
 
         {/* Vision Content - 3D Dark Section */}
-        <div className="bg-foreground text-background rounded-3xl p-8 md:p-16 relative overflow-hidden card-3d" style={{
+        <div className="bg-foreground text-background rounded-2xl md:rounded-3xl p-6 md:p-16 relative overflow-hidden card-3d" style={{
         transform: `perspective(2000px) rotateX(${(0.5 - scrollProgress) * 5}deg)`,
         transition: 'transform 0.3s ease-out'
       }}>

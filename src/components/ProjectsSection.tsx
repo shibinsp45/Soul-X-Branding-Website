@@ -103,10 +103,10 @@ const ProjectsSection = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, VISIBLE_COUNT);
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
+    <section className="py-12 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
       <div className="section-container relative z-10">
         {/* Header */}
-        <div className="flex items-center justify-between mb-14">
+        <div className="flex items-center justify-between mb-8 md:mb-14">
           <AnimatedSection>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-normal text-foreground tracking-tight">
               Your design journey starts here.
@@ -125,7 +125,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Project chips for quick access — horizontally scrollable */}
-        <div className="flex gap-2 mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
+        <div className="flex gap-2 mb-6 md:mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
           {projects.map((project) => (
             <Link
               key={project.id}
@@ -138,7 +138,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {displayedProjects.map((project, index) => (
             <AnimatedSection key={project.id} delay={index * 100}>
               <Link

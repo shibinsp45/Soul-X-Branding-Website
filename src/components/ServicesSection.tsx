@@ -19,7 +19,7 @@ const services = [{
   description: "Websites that work as hard as you do. Fast, responsive, and built to convert visitors into customers—not just impress them."
 }];
 const ServicesSection = () => {
-  return <section className="py-16 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="services">
+  return <section className="py-12 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="services">
       {/* Decorative 3D elements */}
       <div className="absolute top-20 right-10 w-32 h-32 border border-foreground/5 rounded-3xl float-3d" style={{
       animationDelay: '1s'
@@ -30,7 +30,7 @@ const ServicesSection = () => {
       <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-foreground/[0.01] blob-morph" />
       
       <div className="section-container relative z-10">
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-8 md:mb-16">
           <SectionHeading
             chip="Services"
             title="What we offer"
@@ -38,7 +38,7 @@ const ServicesSection = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {services.map((service, index) => <ScrollTriggered3DCard key={service.number} delay={index * 100}>
               <div className="group p-6 md:p-8 border border-border rounded-2xl transition-all duration-500 hover:border-foreground/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.05)] h-full">
                 <div className="flex items-start gap-4 md:gap-6">
