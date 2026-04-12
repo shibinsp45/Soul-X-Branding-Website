@@ -60,7 +60,7 @@ const Hero = () => {
     });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <section ref={heroRef} className="min-h-[100svh] flex items-center justify-center relative overflow-hidden pt-20 pb-8 md:pt-28 md:pb-12 bg-background dark:bg-transparent" id="hero">
+  return <section ref={heroRef} className="min-h-[auto] md:min-h-[100svh] flex items-center justify-center relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-12 bg-background dark:bg-transparent" id="hero">
       {/* Space horizon background for dark mode */}
       <SpaceHorizonBackground />
 
