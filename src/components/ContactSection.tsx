@@ -62,7 +62,7 @@ const ContactSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-12 md:py-20 bg-background dark:bg-transparent relative overflow-hidden"
+      className="py-16 md:py-24 bg-background dark:bg-transparent relative overflow-hidden"
       id="contact"
     >
       <div className="section-container relative z-10">

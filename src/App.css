@@ -87,14 +87,14 @@
   }
   
   .button-primary, .button-secondary {
-    padding: 0.75rem 1.25rem;
+    padding: 0.625rem 1.25rem;
     font-size: 0.875rem;
-    width: 100%; /* Full width buttons on mobile */
   }
   
   /* Enhanced padding for mobile */
   .section-container {
-    padding: 1.5rem 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   
   /* Better touch targets for mobile */
