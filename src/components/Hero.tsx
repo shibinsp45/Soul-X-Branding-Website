@@ -96,12 +96,12 @@ const Hero = () => {
           <div className="mt-6 md:mt-12 flex flex-row gap-3 justify-center opacity-0 animate-slide-up-fade" style={{
           animationDelay: "0.7s"
         }}>
-            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-sm md:text-lg tilt-hover px-5 py-2.5 md:px-8 md:py-3">
+            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-sm md:text-lg tilt-hover px-5 py-2.5 md:px-8 md:py-3 whitespace-nowrap">
               See How We Think
               <ArrowRight className="ml-1.5 md:ml-2 w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="inline-flex items-center justify-center text-sm md:text-lg tilt-hover px-5 py-2.5 md:px-8 md:py-3 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium">
-              View Case Studies
+            <a href="#contact" className="inline-flex items-center justify-center text-sm md:text-lg tilt-hover px-5 py-2.5 md:px-8 md:py-3 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium whitespace-nowrap">
+              Case Studies
             </a>
           </div>
           
