@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 
 const Index = () => {
   useEffect(() => {
@@ -71,9 +72,13 @@ const Index = () => {
           {/* Smooth gradient transition overlay between hero and about */}
           <div className="hidden dark:block absolute left-0 right-0 pointer-events-none" style={{ top: 'calc(100vh - 120px)', height: '240px', background: 'linear-gradient(to bottom, transparent, hsl(0 0% 3%))' }} />
           <AboutVisionSection />
+          <SectionDivider />
           <ServicesSection />
+          <SectionDivider />
           <ProjectsSection />
+          <SectionDivider />
           <TestimonialsSection />
+          <SectionDivider />
           <ContactSection />
         </div>
       </main>
