@@ -103,7 +103,7 @@ const ProjectsSection = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, VISIBLE_COUNT);
 
   return (
-    <section className="py-12 md:py-20 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
+    <section className="py-16 md:py-24 relative overflow-hidden bg-background dark:bg-transparent" id="projects">
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-14">
