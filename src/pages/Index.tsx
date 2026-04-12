@@ -72,9 +72,13 @@ const Index = () => {
           {/* Smooth gradient transition overlay between hero and about */}
           <div className="hidden dark:block absolute left-0 right-0 pointer-events-none" style={{ top: 'calc(100vh - 120px)', height: '240px', background: 'linear-gradient(to bottom, transparent, hsl(0 0% 3%))' }} />
           <AboutVisionSection />
+          <SectionDivider />
           <ServicesSection />
+          <SectionDivider />
           <ProjectsSection />
+          <SectionDivider />
           <TestimonialsSection />
+          <SectionDivider />
           <ContactSection />
         </div>
       </main>
