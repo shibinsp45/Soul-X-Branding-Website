@@ -67,9 +67,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-4 md:py-5 transition-all duration-500",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
+        "bg-background/60 backdrop-blur-xl border-b border-border/50 shadow-sm supports-[backdrop-filter]:bg-background/40"
       )}
     >
       <div className="container max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
