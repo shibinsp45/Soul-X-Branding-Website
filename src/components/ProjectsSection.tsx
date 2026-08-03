@@ -101,16 +101,13 @@ const categories = ["All", "UX/UI Design", "Brand Identity", "Web Design"];
 
 const INITIAL_COUNT = 3;
 
-const ProjectCard = ({ project, featured = false }: { project: Project; featured?: boolean }) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Link
       to={`/project/${project.id}`}
-      className={cn(
-        "group block relative bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-elegant-hover hover:-translate-y-1",
-        featured && "md:col-span-2 md:grid md:grid-cols-2 md:gap-0"
-      )}
+      className="group flex flex-col h-full bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-elegant-hover hover:-translate-y-1"
     >
-      <div className={cn("relative overflow-hidden", featured ? "aspect-[4/3] md:aspect-auto md:h-full" : "aspect-[4/3]")}>
+      <div className="relative overflow-hidden aspect-[4/3] shrink-0">
         <img
           src={project.image}
           alt={project.title}
@@ -120,7 +117,7 @@ const ProjectCard = ({ project, featured = false }: { project: Project; featured
         <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
-      <div className={cn("p-5 md:p-6 flex flex-col", featured && "md:justify-center")}>
+      <div className="p-5 md:p-6 flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
             {project.category}
@@ -128,11 +125,11 @@ const ProjectCard = ({ project, featured = false }: { project: Project; featured
           <ArrowUpRight className="w-4 h-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
 
-        <h3 className={cn("font-sans font-medium text-foreground leading-tight", featured ? "text-xl md:text-2xl" : "text-lg")}>
+        <h3 className="font-sans font-medium text-foreground text-lg leading-tight">
           {project.title}
         </h3>
 
-        <p className={cn("text-muted-foreground leading-relaxed mt-2", featured ? "text-sm md:text-base line-clamp-3" : "text-sm line-clamp-2")}>
+        <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2 flex-grow">
           {project.description}
         </p>
 
