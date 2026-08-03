@@ -203,7 +203,7 @@ const ProjectsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {displayedProjects.map((project, index) => (
             <AnimatedSection key={project.id} delay={index * 100}>
-              <ProjectCard project={project} featured={index === 0 && activeCategory === "All"} />
+              <ProjectCard project={project} />
             </AnimatedSection>
           ))}
         </div>
