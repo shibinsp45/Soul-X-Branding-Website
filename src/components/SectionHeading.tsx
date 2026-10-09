@@ -35,22 +35,22 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   } = useScrollAnimation({
     threshold: 0.1
   });
-  return <div className={cn(alignment === "center" && "text-center", className)}>
+  return <div className={cn("min-w-0", alignment === "center" && "text-center", className)}>
       {chip && <div ref={chipRef} className={cn("soulx-chip mb-6 micro-interaction transition-all duration-700 ease-out", alignment === "center" && "mx-auto", chipVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")}>
           {chip}
         </div>}
       
-      <h2 ref={titleRef} className={cn("text-2xl md:text-3xl lg:text-4xl font-sans font-normal text-foreground tracking-tight transition-all duration-700 ease-out", subtitle ? "mb-6" : "", titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={{
+      <h2 ref={titleRef} className={cn("section-title transition-all duration-700 ease-out", subtitle ? "mb-4" : "", titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={{
       transitionDelay: "100ms"
     }}>
         {title}
         {titleAccent && <>
             {" "}
-            <span className="font-normal font-sans">{titleAccent}</span>
+            <span className="font-medium font-sans">{titleAccent}</span>
           </>}
       </h2>
       
-      {subtitle && <p ref={subtitleRef} className={cn("section-subtitle mt-0 transition-all duration-700 ease-out", subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={{
+      {subtitle && <p ref={subtitleRef} className={cn("section-subtitle mt-0 transition-all duration-700 ease-out", alignment === "center" && "mx-auto", subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={{
       transitionDelay: "200ms"
     }}>
           {subtitle}

@@ -67,10 +67,10 @@ const Index = () => {
       <Navbar />
       <main>
         {/* Unified dark space background wrapper for seamless sections */}
-        <div className="relative dark:bg-black bg-background">
+        <div className="relative bg-background">
           <Hero />
           {/* Smooth gradient transition overlay between hero and about */}
-          <div className="hidden dark:block absolute left-0 right-0 pointer-events-none" style={{ top: 'calc(100vh - 120px)', height: '240px', background: 'linear-gradient(to bottom, transparent, hsl(0 0% 3%))' }} />
+          <SectionDivider />
           <AboutVisionSection />
           <SectionDivider />
           <ServicesSection />

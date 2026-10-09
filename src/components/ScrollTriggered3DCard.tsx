@@ -51,14 +51,15 @@ const ScrollTriggered3DCard: React.FC<ScrollTriggered3DCardProps> = ({
     setMousePosition({ x: 0.5, y: 0.5 });
   };
 
-  const rotateX = isHovered ? (mousePosition.y - 0.5) * -20 : 0;
-  const rotateY = isHovered ? (mousePosition.x - 0.5) * 20 : 0;
+  const canTilt = window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches;
+  const rotateX = isHovered && canTilt ? (mousePosition.y - 0.5) * -4 : 0;
+  const rotateY = isHovered && canTilt ? (mousePosition.x - 0.5) * 4 : 0;
 
   return (
     <div
       ref={cardRef}
       className={cn(
-        "transition-all duration-500 cursor-pointer",
+        "relative min-w-0 h-full transition-all duration-500 motion-reduce:transform-none motion-reduce:opacity-100",
         isVisible ? "opacity-100" : "opacity-0 translate-y-8",
         className
       )}
