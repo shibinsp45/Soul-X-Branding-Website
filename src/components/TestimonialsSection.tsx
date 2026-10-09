@@ -47,23 +47,8 @@ const TestimonialsSection = () => {
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-secondary dark:bg-transparent relative overflow-hidden" id="testimonials">
-      {/* Parallax decorative elements */}
-      <div 
-        className="absolute top-0 left-1/4 w-64 h-64 bg-foreground/[0.02] rounded-full blur-3xl" 
-        style={{ transform: `translateY(${scrollProgress * 80}px)` }} 
-      />
-      <div 
-        className="absolute bottom-0 right-1/4 w-48 h-48 bg-foreground/[0.02] rounded-full blur-2xl" 
-        style={{ transform: `translateY(${scrollProgress * -60}px)` }} 
-      />
-      
-      {/* 3D floating shapes */}
-      <div className="absolute top-20 right-20 w-16 h-16 border border-foreground/5 rounded-2xl float-3d" />
-      <div className="absolute bottom-32 left-16 w-20 h-20 border border-foreground/5 rounded-full float-3d" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/2 left-10 w-24 h-24 bg-foreground/[0.01] blob-morph" />
-
       <div className="section-container relative z-10">
-        <div className="mb-8 md:mb-16">
+        <div className="mb-8 md:mb-12">
           <SectionHeading
             chip="Testimonials"
             title="What our clients"
@@ -72,16 +57,16 @@ const TestimonialsSection = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <ScrollTriggered3DCard key={index} delay={index * 150}>
-              <div className="bg-background p-6 md:p-8 rounded-2xl h-full flex flex-col glow-effect">
+              <div className="bg-card border border-border p-5 sm:p-6 rounded-lg h-full flex flex-col glow-effect">
                 <blockquote className="text-sm md:text-base text-foreground leading-relaxed mb-6 md:mb-8 flex-grow">
                   "{testimonial.content}"
                 </blockquote>
                 <div className="border-t border-border pt-6 flex items-center gap-3">
-                  <img src={testimonial.avatar} alt={testimonial.author} className="w-10 h-10 rounded-full object-cover" />
-                  <div>
+                  <img src={testimonial.avatar} alt={testimonial.author} className="w-10 h-10 shrink-0 rounded-full object-cover" />
+                  <div className="min-w-0">
                     <div className="font-sans font-medium text-foreground text-sm">
                       {testimonial.author}
                     </div>

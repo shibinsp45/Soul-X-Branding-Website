@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 // Generate stable star positions (created once at module level to prevent re-render flicker)
@@ -31,7 +32,7 @@ const SpaceHorizonBackground = () => (
       {stars.map((star) => (
         <div
           key={star.id}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full bg-foreground"
           style={{
             width: star.size + 'px',
             height: star.size + 'px',
@@ -48,92 +49,36 @@ const SpaceHorizonBackground = () => (
   </div>
 );
 
-const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, {
-      passive: true
-    });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  return <section ref={heroRef} className="min-h-[auto] md:min-h-[100svh] flex items-center justify-center relative overflow-hidden pt-28 pb-10 md:pt-28 md:pb-12 bg-background dark:bg-transparent" id="hero">
-      {/* Space horizon background for dark mode */}
-      <SpaceHorizonBackground />
-
-      
-      <div className="container px-5 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto text-center" style={{
-        transform: `translateY(${scrollY * -0.2}px)`
-      }}>
-          
-          {/* Main headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-sans font-medium leading-[1] tracking-tighter text-foreground opacity-0 animate-blur-in" style={{
-          animationDelay: "0.3s"
-        }}>
-            <span className="inline-block hover:animate-tilt transition-transform">Crafting Design</span>
-            <br />
-            <span className="inline-block hover:animate-tilt text-primary">
-              That Feels
-            </span>
-            <br />
-            <span className="text-foreground/70 inline-block hover:animate-tilt">Human</span>
-          </h1>
-          
-          {/* Subheadline */}
-          <p className="mt-5 md:mt-8 text-sm md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-up-fade font-normal tracking-wide" style={{
-          animationDelay: "0.5s"
-        }}>
-            Beautiful design that people love,
-            <br />
-            businesses trust, and results prove.
-          </p>
-          
-          {/* CTA Buttons */}
-          <div className="mt-6 md:mt-10 flex flex-row gap-2.5 md:gap-3 justify-center opacity-0 animate-slide-up-fade" style={{
-          animationDelay: "0.7s"
-        }}>
-            <a href="#projects" className="button-primary inline-flex items-center justify-center group text-xs md:text-sm tilt-hover px-4 py-2 md:px-6 md:py-2.5 whitespace-nowrap">
-              See How We Think
-              <ArrowRight className="ml-1 md:ml-1.5 w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#contact" className="inline-flex items-center justify-center text-xs md:text-sm tilt-hover px-4 py-2 md:px-6 md:py-2.5 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium whitespace-nowrap">
-              Case Studies
-            </a>
-          </div>
-          
-          {/* Stats row */}
-          <div className="mt-8 md:mt-14 grid grid-cols-3 gap-4 max-w-sm md:max-w-md mx-auto opacity-0 animate-slide-up-fade" style={{
-          animationDelay: "0.9s"
-        }}>
-            <div className="text-center p-2 md:p-3">
-              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">10+</div>
-              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Projects</div>
-            </div>
-            <div className="text-center border-x border-border p-2 md:p-3">
-              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">2+</div>
-              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Years</div>
-            </div>
-            <div className="text-center p-2 md:p-3">
-              <div className="text-xl md:text-3xl font-sans font-medium text-foreground">3+</div>
-              <div className="text-[11px] md:text-xs text-muted-foreground mt-0.5">Clients</div>
-            </div>
-          </div>
+const Hero = () => (
+  <section className="relative overflow-hidden bg-background dark:bg-transparent pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24" id="hero">
+    <SpaceHorizonBackground />
+    <div className="section-container relative z-10 text-center">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-[32px] sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.12] text-foreground animate-blur-in">
+          <span className="block">Crafting Design</span>
+          <span className="block">That Feels <span className="text-muted-foreground">Human</span></span>
+        </h1>
+        <p className="mt-6 sm:mt-8 text-base md:text-lg text-muted-foreground max-w-lg mx-auto leading-relaxed">
+          Beautiful design that people love, businesses trust, and results prove.
+        </p>
+        <div className="mt-7 sm:mt-9 flex items-center justify-center gap-2 sm:gap-3">
+          <Button asChild variant="pill" className="h-10 px-3 sm:px-5 text-xs sm:text-sm group">
+            <a href="#projects">See How We Think <ArrowRight className="transition-transform group-hover:translate-x-1" /></a>
+          </Button>
+          <Button asChild variant="pill-outline" className="h-10 px-3 sm:px-5 text-xs sm:text-sm">
+            <a href="#projects">Case Studies</a>
+          </Button>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in flex flex-col items-center gap-2" style={{
-        animationDelay: "1.2s",
-        transform: `translateY(${scrollY * 0.5}px)`,
-        opacity: Math.max(0, 1 - scrollY * 0.005)
-      }}>
-          
-          
+        <div className="mt-10 sm:mt-12 grid grid-cols-3 max-w-sm mx-auto divide-x divide-border">
+          {[['10+', 'Projects'], ['2+', 'Years'], ['3+', 'Clients']].map(([value, label]) => (
+            <div key={label} className="px-3 py-1">
+              <div className="text-2xl md:text-3xl font-medium text-foreground">{value}</div>
+              <div className="text-xs text-muted-foreground mt-1">{label}</div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
-};
+    </div>
+  </section>
+);
 export default Hero;

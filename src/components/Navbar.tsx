@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
@@ -66,11 +68,11 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-4 md:py-5 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 py-3 md:py-4 transition-all duration-500",
         "bg-background/60 backdrop-blur-xl border-b border-border/50 shadow-sm supports-[backdrop-filter]:bg-background/40"
       )}
     >
-      <div className="container max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="section-container flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -81,13 +83,13 @@ const Navbar = () => {
           }}
           aria-label="SoulX"
         >
-          <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
+          <span className="tracking-tight text-foreground text-2xl font-semibold font-sans">
             Soul X
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -104,7 +106,7 @@ const Navbar = () => {
         </nav>
 
         {/* Right side: Theme Toggle + Mobile Menu */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div
             className={cn(
               "transition-opacity duration-300",
@@ -114,7 +116,7 @@ const Navbar = () => {
             <ThemeToggle />
           </div>
 
-          <button
+          <Button variant="ghost" size="icon"
             type="button"
             className="md:hidden p-2 text-foreground hover:bg-foreground/5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
             onClick={() => setIsMenuOpen(true)}
@@ -128,16 +130,16 @@ const Navbar = () => {
               <span className="block h-0.5 w-6 bg-foreground rounded-full" />
               <span className="block h-0.5 w-6 bg-foreground rounded-full" />
             </span>
-          </button>
+          </Button>
         </div>
       </div>
 
       {/* Mobile Menu (full screen) */}
       <AnimatePresence>
-        {isMenuOpen && (
+        {isMenuOpen && createPortal(
           <motion.div
             id="mobile-menu"
-            className="fixed inset-0 z-[100] md:hidden bg-background"
+            className="fixed inset-0 z-[100] md:hidden bg-background overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
@@ -146,7 +148,7 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="container max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
+            <div className="section-container flex items-center justify-between pt-4">
               <a
                 href="#"
                 className="flex items-center space-x-2"
@@ -156,23 +158,23 @@ const Navbar = () => {
                 }}
                 aria-label="SoulX"
               >
-                <span className="tracking-tight text-foreground text-3xl font-bold font-sans">
+                <span className="tracking-tight text-foreground text-2xl font-semibold font-sans">
                   Soul X
                 </span>
               </a>
 
-              <button
+              <Button variant="ghost" size="icon"
                 type="button"
                 className="p-2 rounded-lg border border-border bg-background hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5 text-foreground" />
-              </button>
+              </Button>
             </div>
 
             <motion.nav
-              className="h-[calc(100dvh-80px)] flex flex-col items-center justify-center gap-8 px-8"
+              className="h-[calc(100dvh-80px)] flex flex-col items-center justify-center gap-4 sm:gap-8 px-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
@@ -195,7 +197,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
             </motion.nav>
-          </motion.div>
+          </motion.div>, document.body
         )}
       </AnimatePresence>
     </header>

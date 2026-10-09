@@ -3,6 +3,7 @@ import { toast } from "@/hooks/use-toast";
 import { Send, Mail, Twitter, Linkedin, Dribbble } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import AnimatedSection from "./AnimatedSection";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -85,12 +86,12 @@ const ContactSection = () => {
           <AnimatedSection delay={300}>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <button className="button-primary inline-flex items-center justify-center group text-lg tilt-hover">
+                <Button variant="pill" className="h-11 px-6 group">
                   Let's Talk
                   <Send className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </button>
+                </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-lg">
+              <DialogContent className="w-[calc(100%-2.5rem)] max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-lg p-5 sm:p-6">
                 <DialogHeader>
                   <DialogTitle className="text-2xl font-sans font-normal">
                     Let's Talk
@@ -157,10 +158,11 @@ const ContactSection = () => {
                       required
                     />
                   </div>
-                  <button
+                  <Button
+                    variant="pill"
                     type="submit"
                     disabled={isSubmitting}
-                    className="button-primary w-full inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed tilt-hover"
+                    className="h-11 px-6 group"
                   >
                     {isSubmitting ? (
                       <span className="animate-pulse">Sending...</span>
@@ -170,7 +172,7 @@ const ContactSection = () => {
                         <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </>
                     )}
-                  </button>
+                  </Button>
                 </form>
               </DialogContent>
             </Dialog>
