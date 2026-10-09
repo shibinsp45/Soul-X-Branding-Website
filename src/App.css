@@ -56,11 +56,11 @@
 
 /* Card shadows */
 .shadow-elegant {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-elegant);
 }
 
 .shadow-elegant-hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-elegant-hover);
 }
 
 /* Add new card animation */
@@ -97,23 +97,7 @@
     padding-right: 1rem;
   }
   
-  /* Better touch targets for mobile */
-  .nav-link, button, a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Adjust text sizes for mobile */
-  .section-title {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-  }
-  
-  .section-subtitle {
-    font-size: 1rem !important;
-  }
+
 }
 
 /* Robot Showcase Section */

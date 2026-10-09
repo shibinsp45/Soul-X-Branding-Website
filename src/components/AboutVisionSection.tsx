@@ -27,19 +27,9 @@ const AboutVisionSection = () => {
     description: "We invest in your success. You get a dedicated team that cares about outcomes, not just deliverables."
   }];
   return <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-background dark:bg-transparent" id="about">
-      {/* Enhanced parallax background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-foreground/[0.02] blur-3xl" style={{
-        transform: `translateY(${scrollProgress * 100}px) scale(${1 + scrollProgress * 0.2})`
-      }} />
-        <div className="absolute bottom-40 left-10 w-96 h-96 rounded-full bg-foreground/[0.03] blur-3xl" style={{
-        transform: `translateY(${scrollProgress * -80}px)`
-      }} />
-      </div>
-
       <div className="section-container relative z-10">
         {/* About Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start mb-12 md:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12 md:mb-16">
           <div>
             <AnimatedSection>
               <div className="soulx-chip mb-6 micro-interaction">
@@ -48,7 +38,7 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={100}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-medium tracking-tight text-foreground mb-8">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-sans font-medium tracking-tight text-foreground mb-6">
                 Design that drives
                 <br />
                 real results
@@ -56,7 +46,7 @@ const AboutVisionSection = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={200}>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                 We're a small, focused team of designers and strategists who 
                 obsess over the details that matter. No layers of account managers. 
                 No templated solutions. Just direct collaboration with people who 
@@ -73,13 +63,13 @@ const AboutVisionSection = () => {
           </div>
           
           {/* Values with 3D cards */}
-          <div className="space-y-4 md:space-y-8">
+          <div className="space-y-4 md:space-y-6">
             {values.map((value, index) => <ScrollTriggered3DCard key={value.title} delay={400 + index * 100}>
-                <div className="border-l-2 border-foreground pl-6 py-4 hover:border-foreground/50 transition-all duration-300 hover:pl-8 bg-secondary/30 rounded-r-xl glow-effect">
+                <div className="border border-border bg-card rounded-lg p-5 sm:p-6 transition-colors duration-300 hover:border-foreground/30">
                    <h3 className="text-lg md:text-xl font-medium mb-2 text-foreground font-sans">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -88,22 +78,18 @@ const AboutVisionSection = () => {
         </div>
 
         {/* Vision Content - 3D Dark Section */}
-        <div className="bg-foreground text-background rounded-2xl md:rounded-3xl p-6 md:p-16 relative overflow-hidden card-3d" style={{
-        transform: `perspective(2000px) rotateX(${(0.5 - scrollProgress) * 5}deg)`,
-        transition: 'transform 0.3s ease-out'
-      }}>
-          
+        <div className="border-t border-border pt-10 md:pt-12 relative">
           <div className="max-w-4xl relative z-10">
             <AnimatedSection>
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-background text-foreground tracking-wider uppercase mb-8 micro-interaction tilt-hover">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-secondary text-muted-foreground mb-6">
                 Our Vision
               </div>
             </AnimatedSection>
             
             
-            <div className="pt-8 border-t border-background/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <AnimatedSection delay={400}>
-                <p className="text-base md:text-lg text-background/80 leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                   We envision a world where every digital interaction is intuitive, 
                   beautiful, and meaningful. Where technology enhances human connection 
                   rather than replacing it.
@@ -111,7 +97,7 @@ const AboutVisionSection = () => {
               </AnimatedSection>
               
               <AnimatedSection delay={500}>
-                <p className="text-background/70 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   Our approach combines rigorous research with creative exploration, 
                   ensuring that every solution we craft is grounded in real human needs 
                   while pushing the boundaries of what's possible.

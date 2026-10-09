@@ -182,8 +182,9 @@ export default {
 				'serif': ['Inter', 'system-ui', 'sans-serif'],
 			},
 			boxShadow: {
-				'elegant': '0 4px 20px rgba(0, 0, 0, 0.06)',
-				'elegant-hover': '0 8px 30px rgba(0, 0, 0, 0.1)',
+				'elegant': 'var(--shadow-elegant)',
+				'elegant-hover': 'var(--shadow-elegant-hover)',
+				'card-glow': 'var(--shadow-card-glow)',
 			}
 		}
 	},

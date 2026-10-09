@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
+import { Button } from "@/components/ui/button";
 
 interface Project {
   id: string;
@@ -105,7 +106,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Link
       to={`/project/${project.id}`}
-      className="group flex flex-col h-full bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-elegant-hover hover:-translate-y-1"
+      className="group flex flex-col min-w-0 h-full bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-elegant-hover hover:-translate-y-1"
     >
       <div className="relative overflow-hidden aspect-[4/3] shrink-0">
         <img
@@ -119,7 +120,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
       <div className="p-5 md:p-6 flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          <span className="text-xs font-medium text-muted-foreground">
             {project.category}
           </span>
           <ArrowUpRight className="w-4 h-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -129,11 +130,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {project.title}
         </h3>
 
-        <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2 flex-grow">
+        <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2 min-h-[2.625rem] flex-grow">
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4 min-h-7">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -178,31 +179,33 @@ const ProjectsSection = () => {
 
         {/* Category Filter */}
         <AnimatedSection delay={100}>
-          <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
             {categories.map((category) => (
-              <button
+              <Button
+                variant="pill-outline"
+                aria-pressed={activeCategory === category}
                 key={category}
                 onClick={() => {
                   setActiveCategory(category);
                   setShowAll(false);
                 }}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 border",
+                  "h-9 px-3 sm:px-4 text-xs sm:text-sm transition-colors",
                   activeCategory === category
                     ? "bg-foreground text-background border-foreground"
                     : "bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground"
                 )}
               >
                 {category}
-              </button>
+              </Button>
             ))}
           </div>
         </AnimatedSection>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-8">
           {displayedProjects.map((project, index) => (
-            <AnimatedSection key={project.id} delay={index * 100}>
+            <AnimatedSection key={project.id} delay={index * 60} className="h-full">
               <ProjectCard project={project} />
             </AnimatedSection>
           ))}
@@ -219,13 +222,14 @@ const ProjectsSection = () => {
         {hasMore && (
           <AnimatedSection delay={200}>
             <div className="flex justify-center mt-10 md:mt-14">
-              <button
+              <Button
+                variant="pill-outline"
                 onClick={() => setShowAll(!showAll)}
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground font-medium hover:border-foreground/40 hover:bg-foreground hover:text-background transition-all duration-300"
+                className="group h-11 px-6"
               >
                 {showAll ? "Show Less" : "View All Projects"}
                 <ArrowRight className={cn("w-4 h-4 transition-transform duration-300", showAll && "rotate-180")} />
-              </button>
+              </Button>
             </div>
           </AnimatedSection>
         )}
