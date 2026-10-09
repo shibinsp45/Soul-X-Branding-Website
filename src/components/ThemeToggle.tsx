@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
@@ -34,7 +35,8 @@ const ThemeToggle: React.FC = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <button
+        <Button
+          variant="outline"
           onClick={toggleTheme}
           className={cn(
             "group flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300",
@@ -59,9 +61,9 @@ const ThemeToggle: React.FC = () => {
             />
           </div>
           <span className="text-foreground whitespace-nowrap text-xs hidden sm:inline">
-            {isDark ? "Dark Soul" : "Vitamin D ON"}
+            {isDark ? "Dark Soul" : "Vitamin D"}
           </span>
-        </button>
+        </Button>
       </TooltipTrigger>
       <TooltipContent side="bottom" className="bg-foreground text-background">
         <p>Switch mood</p>
